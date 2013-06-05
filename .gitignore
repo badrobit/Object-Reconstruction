@@ -1,3 +1,14 @@
+# ROS Stuff
+.cproject
+.project
+.pydevproject
+cmake_install.cmake
+build/
+bin/
+lib/
+msg_gen/
+srv_gen/
+
 # Compiled Object files
 *.slo
 *.lo
