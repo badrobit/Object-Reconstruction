@@ -1,15 +1,10 @@
 cmake_minimum_required(VERSION 2.4.6)
 include($ENV{ROS_ROOT}/core/rosbuild/rosbuild.cmake)
 
-# Set the build type.  Options are:
-#  Coverage       : w/ debug symbols, w/o optimization, w/ code-coverage
-#  Debug          : w/ debug symbols, w/o optimization
-#  Release        : w/o debug symbols, w/ optimization
-#  RelWithDebInfo : w/ debug symbols, w/ optimization
-#  MinSizeRel     : w/o debug symbols, w/ optimization, stripped binaries
-#set(ROS_BUILD_TYPE RelWithDebInfo)
-
 rosbuild_init()
+
+set( GNG_DIR ${PROJECT_SOURCE_DIR}/common/growing_neural_gas )
+set( JOHNSON_APSP_DIR  ${PROJECT_SOURCE_DIR}/common/johnsonAPSP )
 
 #set the default path for built executables to the "bin" directory
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
@@ -29,19 +24,18 @@ set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 #rosbuild_add_executable(example examples/example.cpp)
 #target_link_libraries(example ${PROJECT_NAME})
 
-
 include_directories(
-   ${PROJECT_SOURCE_DIR}/common/include
    ${PROJECT_SOURCE_DIR}/ros/include
 )
 
+#:..... Create GNG Library ........................................................................:
+add_subdirectory( common/growing_neural_gas )
+
 #compile the class(es) into a library
-rosbuild_add_library(my_functionality_lib common/src/my_functional_class.cpp)
+#rosbuild_add_library(my_functionality_lib common/src/my_functional_class.cpp)
 
 #create an executable for your ros node
-rosbuild_add_executable(object_reconstruction ros/nodes/object_reconstruction.cpp)
+#rosbuild_add_executable(object_reconstruction ros/nodes/object_reconstruction.cpp)
 
 #link a executable against the previously created library
-target_link_libraries(object_reconstruction my_functionality_lib)
-
-
+#target_link_libraries(object_reconstruction my_functionality_lib)
