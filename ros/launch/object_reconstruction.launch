@@ -1,6 +1,4 @@
 <?xml version="1.0"?>
 <launch>
-    <node pkg="hbrs_object_reconstruction" type="object_reconstruction" name="hbrs_object_reconstruction" output="screen">
-        <param name="my_param" type="double" value="1.5" />
-    </node>
+    <node pkg="hbrs_object_reconstruction" type="object_reconstruction" name="hbrs_object_reconstruction" output="screen" />
 </launch>

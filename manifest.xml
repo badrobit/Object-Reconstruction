@@ -1,17 +1,13 @@
 <package>
-  <description brief="hbrs_object_reconstruction">
-
-     hbrs_object_reconstruction
-
-  </description>
+  <description brief="hbrs_object_reconstruction"> hbrs_object_reconstruction </description>
   <author>Matthew Roscoe</author>
   <license>BSD</license>
   <review status="unreviewed" notes=""/>
-  <url>http://ros.org/wiki/hbrs_object_reconstruction</url>
+  <url>https://github.com/Bad-Robot/hbrs_object_reconstruction</url>
+  
   <depend package="roscpp"/>
   <depend package="sensor_msgs"/>
   <depend package="std_srvs"/>
-
 </package>
 
 
