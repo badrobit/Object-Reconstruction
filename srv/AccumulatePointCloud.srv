@@ -1,0 +1,7 @@
+# Accumulation Time
+int32 accumulation_time
+
+---
+
+# Accumulated PointCloud
+sensor_msgs/PointCloud2 point_cloud
