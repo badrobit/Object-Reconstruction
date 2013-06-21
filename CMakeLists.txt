@@ -11,25 +11,22 @@ set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 #set the default path for built libraries to the "lib" directory
 set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 
-#uncomment if you have defined messages
-#rosbuild_genmsg()
-#uncomment if you have defined services
-#rosbuild_gensrv()
-
-#common commands for building c++ executables and libraries
-#rosbuild_add_library(${PROJECT_NAME} src/example.cpp)
-#target_link_libraries(${PROJECT_NAME} another_library)
-#rosbuild_add_boost_directories()
-#rosbuild_link_boost(${PROJECT_NAME} thread)
-#rosbuild_add_executable(example examples/example.cpp)
-#target_link_libraries(example ${PROJECT_NAME})
-
 include_directories(
+   ${PROJECT_SOURCE_DIR}/common/include
    ${PROJECT_SOURCE_DIR}/ros/include
 )
 
-#:..... Create GNG Library ........................................................................:
+#:.... Libraries ...................................................................................
+
+#:..... Create GNG Library
 add_subdirectory( common/growing_neural_gas )
+
+#..: ObjectCandidateExtraction
+rosbuild_add_library( ObjectCandidateExtraction ros/src/ObjectCandidateExtraction.cpp )
+
+#..: PlatformExtraction
+rosbuild_add_library( PlatformExtraction ros/src/PlatformExtraction.cpp )
+
 
 #compile the class(es) into a library
 #rosbuild_add_library(my_functionality_lib common/src/my_functional_class.cpp)
