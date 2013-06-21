@@ -3,6 +3,8 @@ include($ENV{ROS_ROOT}/core/rosbuild/rosbuild.cmake)
 
 rosbuild_init()
 
+find_package( PCL 1.3 REQUIRED )
+
 set( GNG_DIR ${PROJECT_SOURCE_DIR}/common/growing_neural_gas )
 set( JOHNSON_APSP_DIR  ${PROJECT_SOURCE_DIR}/common/johnsonAPSP )
 
@@ -14,7 +16,11 @@ set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 include_directories(
    ${PROJECT_SOURCE_DIR}/common/include
    ${PROJECT_SOURCE_DIR}/ros/include
+   ${PCL_INCLUDE_DIRS}
 )
+
+link_directories( ${PCL_LIBRARY_DIRS} )
+add_definitions( ${PCL_DEFINITIONS} )
 
 #:.... Libraries ...................................................................................
 
