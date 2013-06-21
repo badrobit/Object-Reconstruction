@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 2.4.6)
 
 set( CMAKE_BUILD_TYPE "Debug" )
 
+find_package(OpenCV REQUIRED)
+
 #set the default path for built executables to the "bin" directory
 set( EXECUTABLE_OUTPUT_PATH ${GNG_DIR}/bin)
 #set the default path for built libraries to the "lib" directory
@@ -30,8 +32,7 @@ link_directories(
 )
 
 link_libraries(	
-  opencv_highgui
-  opencv_core
+  ${OpenCV_LIBS}
   johnsonAPSP
 )
 

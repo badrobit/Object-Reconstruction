@@ -9,6 +9,7 @@
  	<depend package="std_srvs"/>
   	<depend package="hbrs_srvs"/>
 	<depend package="pcl"/>
+	<rosdep name="opencv2"/>
 </package>
 
 
