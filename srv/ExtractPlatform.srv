@@ -1,0 +1,7 @@
+# PointCloud to extract from
+sensor_msgs/PointCloud2 i_point_cloud
+
+---
+
+# Extracted Platform 
+sensor_msgs/PointCloud2 extracted_platform_cloud

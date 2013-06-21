@@ -39,18 +39,19 @@ PlatformExtraction::~PlatformExtraction()
 }
 
 bool
-PlatformExtraction::ExtractPlatform( hbrs_srvs::OR_ExtractPlatform::Request &req,
-                                     hbrs_srvs::OR_ExtractPlatform::Response & res )
+PlatformExtraction::ExtractPlatform( hbrs_object_reconstruction::ExtractPlatform::Request &req,
+                                     hbrs_object_reconstruction::ExtractPlatform::Response & res )
 {
 	ros::Time start, finish;
 	start = ros::Time::now();
 
 	pcl::PointCloud<pcl::PointXYZ> input_point_cloud;
+	pcl::PointCloud<pcl::PointXYZ> extracted_platform_cloud;
+
 	pcl::fromROSMsg( req.i_point_cloud, input_point_cloud );
 
 	ROS_DEBUG_STREAM( "Platform Extraction: Input Point Cloud Size: " << (int)input_point_cloud.size() );
 
-	/**
 	pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_f ( new pcl::PointCloud<pcl::PointXYZ> );
 	pcl::ModelCoefficients::Ptr coefficients ( new pcl::ModelCoefficients );
 	pcl::PointIndices::Ptr inliers ( new pcl::PointIndices );
@@ -77,7 +78,6 @@ PlatformExtraction::ExtractPlatform( hbrs_srvs::OR_ExtractPlatform::Request &req
 	extract.setNegative( true );
 	extract.filter( *cloud_f );
 	input_point_cloud = *cloud_f;
-	*/
 
 	finish = ros::Time::now();
 	ROS_INFO("platform_extraction_time=%lf", (finish.toSec() - start.toSec() ));

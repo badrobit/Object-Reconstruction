@@ -42,7 +42,7 @@
 #include <pcl/segmentation/sac_segmentation.h>
 #include "pcl/filters/project_inliers.h"
 
-#include <hbrs_srvs/OR_ExtractPlatform.h>
+#include "hbrs_object_reconstruction/ExtractPlatform.h"
 
 class PlatformExtraction
 {
@@ -51,8 +51,8 @@ public:
 	virtual ~PlatformExtraction();
 
 private:
-	bool ExtractPlatform( hbrs_srvs::OR_ExtractPlatform::Request &req,
-			              hbrs_srvs::OR_ExtractPlatform::Response & res );
+	bool ExtractPlatform( hbrs_object_reconstruction::ExtractPlatform::Request &req,
+			              hbrs_object_reconstruction::ExtractPlatform::Response & res );
 
 protected:
 
