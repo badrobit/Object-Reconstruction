@@ -33,16 +33,24 @@ private:
 	 * please.
 	 */
 	 bool AccumulatePointCloud( hbrs_object_reconstruction::AccumulatePointCloud::Request& request,
-			 	 	 	 	 	   hbrs_object_reconstruction::AccumulatePointCloud::Response& response );
+			 	 	 	 	 	hbrs_object_reconstruction::AccumulatePointCloud::Response& response );
 
-	 void addCloud( const pcl::PointCloud<pcl::PointXYZ>::ConstPtr& cloud );
+	 void AddPointCloud( const pcl::PointCloud<pcl::PointXYZ>::Ptr& cloud );
+
+	 void GetAccumulatedPointCloud( pcl::PointCloud<pcl::PointXYZ>& cloud );
+
+	 void ResetAccumulatedPointCloud();
+
+	 int GetPointCloudCount();
+
+protected:
 
 	 typedef pcl::octree::OctreePointCloudOccupancy<pcl::PointXYZ> Octree;
 	 typedef std::unique_ptr<Octree> OctreeUPtr;
 
-protected:
 	 int 						m_cloud_count;
 	 double 					m_resolution;
+	 OctreeUPtr 				m_octree;
 
 
 };

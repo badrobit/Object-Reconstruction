@@ -40,7 +40,7 @@ add_definitions( ${PCL_DEFINITIONS} )
 #:.... Libraries ...................................................................................
 
 #:..... Create GNG Library
-add_subdirectory( common/growing_neural_gas )
+#add_subdirectory( common/growing_neural_gas )
 
 #..: ObjectCandidateExtraction
 rosbuild_add_library( ObjectCandidateExtraction ros/src/ObjectCandidateExtraction.cpp )
