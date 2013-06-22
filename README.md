@@ -11,6 +11,15 @@ This section will outline all of the things that you will require in order to pr
 * [ROS Fuerte](http://www.ros.org/)
 * [PCL 1.6+ (trunk prefered)](http://pointclouds.org/downloads/source.html)
 
+## Downloading
+
+In order to download you simply need to pull and initialize the git repository like you normally due. As we are using extrenally maintained libraries you also need to update the git submodules if this is your first pull you run both commands otherwise run only the second command:
+
+* `git submodule init` - Initalize the submodule
+* `git submodule update` - Update from the externally maintained library if any updates are available. 
+
+For any questions about git's submodules please see the [git Book](http://git-scm.com/book/en/Git-Tools-Submodules)
+
 ## Complilation
 
 ## Running Software
