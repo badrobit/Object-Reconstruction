@@ -3,6 +3,18 @@ include($ENV{ROS_ROOT}/core/rosbuild/rosbuild.cmake)
 
 rosbuild_init()
 
+#:..... Compiler Options :.........................................................................
+
+#...: gnu++0x
+if(CMAKE_COMPILER_IS_GNUCXX)
+    execute_process(COMMAND ${CMAKE_C_COMPILER} -dumpversion OUTPUT_VARIABLE GCC_VERSION)
+    if(GCC_VERSION VERSION_GREATER 4.6 OR GCC_VERSION VERSION_EQUAL 4.6)
+        add_definitions(-std=gnu++0x)
+    else(GCC_VERSION VERSION_GREATER 4.6 OR GCC_VERSION VERSION_EQUAL 4.6)
+        message(SEND_ERROR "You need GCC version 4.6 or greater to compile this package.")
+    endif(GCC_VERSION VERSION_GREATER 4.6 OR GCC_VERSION VERSION_EQUAL 4.6)
+endif(CMAKE_COMPILER_IS_GNUCXX)
+
 rosbuild_gensrv()
 
 find_package( PCL 1.3 REQUIRED )
@@ -36,6 +48,9 @@ rosbuild_add_library( ObjectCandidateExtraction ros/src/ObjectCandidateExtractio
 #..: PlatformExtraction
 rosbuild_add_library( PlatformExtraction ros/src/PlatformExtraction.cpp )
 
+#..: PointCloudAccumulation
+rosbuild_add_library( PointCloudAccumulation ros/src/PointCloudAccumulation.cpp )
+target_link_libraries( PointCloudAccumulation ${PCL_LIBRARIES} )
 
 #compile the class(es) into a library
 #rosbuild_add_library(my_functionality_lib common/src/my_functional_class.cpp)
