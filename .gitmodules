@@ -1,0 +1,3 @@
+[submodule "common/GrowingNeuralGas"]
+	path = common/GrowingNeuralGas
+	url = git@github.com:Bad-Robot/GrowingNeuralGas.git
