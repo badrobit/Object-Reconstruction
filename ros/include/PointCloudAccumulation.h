@@ -10,10 +10,14 @@
 
 #include <memory>
 
+#include <ros/ros.h>
+#include <sensor_msgs/PointCloud2.h>
+
 #include <pcl/point_cloud.h>
 #include <pcl/point_types.h>
-#include <pcl/octree/octree_pointcloud.h>
+#include <pcl/ros/conversions.h>
 #include <pcl/octree/octree_base.h>
+#include <pcl/octree/octree_pointcloud.h>
 #include <pcl/octree/octree_pointcloud_occupancy.h>
 
 #include "hbrs_object_reconstruction/AccumulatePointCloud.h"
@@ -21,7 +25,7 @@
 class PointCloudAccumulation
 {
 public:
-	PointCloudAccumulation();
+	PointCloudAccumulation( ros::NodeHandle i_node_handle );
 	virtual ~PointCloudAccumulation();
 
 private:
@@ -34,6 +38,8 @@ private:
 	 */
 	 bool AccumulatePointCloud( hbrs_object_reconstruction::AccumulatePointCloud::Request& request,
 			 	 	 	 	 	hbrs_object_reconstruction::AccumulatePointCloud::Response& response );
+
+	 void PointCloudCallback( const sensor_msgs::PointCloud2::ConstPtr &ros_cloud );
 
 	 void AddPointCloud( const pcl::PointCloud<pcl::PointXYZ>::Ptr& cloud );
 
@@ -52,7 +58,7 @@ protected:
 	 double 					m_resolution;
 	 OctreeUPtr 				m_octree;
 
-
+	 ros::NodeHandle 			m_node_handler;
 };
 
 #endif /* POINTCLOUDACCUMULATION_H_ */
