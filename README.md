@@ -3,6 +3,18 @@ Occluded Geometry Estimation
 
 ROS source code for my R&amp;D project on Occluded Object Geometry Estimation
 
+## Requirements
+This section will outline all of the things that you will require in order to properly compile and launch the software contained in this package: 
+
+* An OpenNI compatable [RGBD Sensor](http://en.wikipedia.org/wiki/PrimeSense). 
+* A C++ Compiler capable of compiling at least [C++0x](http://gcc.gnu.org/projects/cxx0x.html)
+* [ROS Fuerte](http://www.ros.org/)
+* [PCL 1.6+ (trunk prefered)](http://pointclouds.org/downloads/source.html)
+
+## Complilation
+
+## Running Software
+
 ## Services
 
 The various components of this system are accessible through **ROS Services** which will allow for either internal or external software to call the different parts of the system in the desired order. The following services are offered by the Object Reconstruction system: 
