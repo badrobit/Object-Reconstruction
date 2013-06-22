@@ -56,6 +56,7 @@ protected:
 
 	 int 						m_cloud_count;
 	 double 					m_resolution;
+	 std::string 				m_frame_id;
 	 OctreeUPtr 				m_octree;
 
 	 ros::NodeHandle 			m_node_handler;
