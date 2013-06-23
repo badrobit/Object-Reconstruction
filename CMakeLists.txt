@@ -17,7 +17,7 @@ endif(CMAKE_COMPILER_IS_GNUCXX)
 
 rosbuild_gensrv()
 
-find_package( PCL 1.3 REQUIRED )
+find_package( PCL 1.4 REQUIRED )
 
 set( GNG_DIR ${PROJECT_SOURCE_DIR}/common/growing_neural_gas )
 set( JOHNSON_APSP_DIR  ${PROJECT_SOURCE_DIR}/common/johnsonAPSP )
@@ -42,21 +42,11 @@ add_definitions( ${PCL_DEFINITIONS} )
 #:..... Create GNG Library
 #add_subdirectory( common/growing_neural_gas )
 
-#..: ObjectCandidateExtraction
-rosbuild_add_library( ObjectCandidateExtraction ros/src/ObjectCandidateExtraction.cpp )
-
-#..: PlatformExtraction
-rosbuild_add_library( PlatformExtraction ros/src/PlatformExtraction.cpp )
-
 #..: PointCloudAccumulation
-rosbuild_add_library( PointCloudAccumulation ros/src/PointCloudAccumulation.cpp )
-target_link_libraries( PointCloudAccumulation ${PCL_LIBRARIES} )
+rosbuild_add_library( PointCloudAccumulator ros/src/PointCloudAccumulator.cpp )
+target_link_libraries( PointCloudAccumulator ${PCL_LIBRARIES} )
 
-#compile the class(es) into a library
-#rosbuild_add_library(my_functionality_lib common/src/my_functional_class.cpp)
 
-#create an executable for your ros node
-#rosbuild_add_executable(object_reconstruction ros/nodes/object_reconstruction.cpp)
-
-#link a executable against the previously created library
-#target_link_libraries(object_reconstruction my_functionality_lib)
+#:..... ROS NODE :................................................................................:
+rosbuild_add_executable(hbrs_object_reconstruction ros/nodes/object_reconstruction.cpp)
+target_link_libraries( hbrs_object_reconstruction PointCloudAccumulator )

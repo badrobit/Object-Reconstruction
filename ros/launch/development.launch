@@ -7,5 +7,5 @@
 	<include file="$(find openni_launch)/launch/openni.launch" />
 
 	<!-- Start the Object Reconstruction Node -->
-    <node pkg="hbrs_object_reconstruction" type="object_reconstruction" name="hbrs_object_reconstruction" output="screen" />
+    <node pkg="hbrs_object_reconstruction" type="hbrs_object_reconstruction" name="hbrs_object_reconstruction" output="screen" />
 </launch>
