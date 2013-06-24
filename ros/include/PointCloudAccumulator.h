@@ -38,25 +38,30 @@ typedef pcl::PointCloud<PointNormalT> PointCloudWithNormals;
 class PointCloudAccumulator
 {
 public:
-	PointCloudAccumulator();
+
+	PointCloudAccumulator( ros::NodeHandle i_node_handle );
 	virtual ~PointCloudAccumulator();
 
 private:
 
 	void AlignClouds( const PointCloud::Ptr cloud_src, const PointCloud::Ptr cloud_tgt,
-			          PointCloud::Ptr output, Eigen::Matrix4f &final_transform, bool downsample = false );
+			              PointCloud::Ptr output, Eigen::Matrix4f &final_transform, bool downsample = false );
 
-	bool AccumulatePointClouds( hbrs_object_reconstruction::AccumulatePointCloud::Request request,
-								              hbrs_object_reconstruction::AccumulatePointCloud::Response response );
+	bool AccumulatePointClouds( hbrs_object_reconstruction::AccumulatePointCloud::Request  &request,
+								              hbrs_object_reconstruction::AccumulatePointCloud::Response &response );
 
   void PointCloudCallback( const sensor_msgs::PointCloud2::ConstPtr &ros_cloud );
 
 protected:
 
-  int               m_point_cloud_count; 
-  std::string       m_frame_id;
-  PointCloud::Ptr   m_accumulated_cloud; 
-  Eigen::Matrix4f   m_global_transform; 
+  int                 m_point_cloud_count; 
+  std::string         m_frame_id;
+  PointCloud::Ptr     m_accumulated_cloud; 
+  Eigen::Matrix4f     m_global_transform; 
+
+  ros::NodeHandle     m_node_handler; 
+  ros::ServiceServer  m_accumulate_point_clouds_service; 
+  ros::Publisher      m_accumulated_point_cloud_publisher; 
 
 };
 

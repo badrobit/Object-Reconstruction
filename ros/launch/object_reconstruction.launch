@@ -1,4 +1,11 @@
 <?xml version="1.0"?>
 <launch>
-    <node pkg="hbrs_object_reconstruction" type="object_reconstruction" name="hbrs_object_reconstruction" output="screen" />
+	<!-- Start RVIZ -->
+	<node pkg="rviz" type="rviz" name="rviz" args="--d $(find hbrs_object_reconstruction)/ros/config/object_recognition.vcg" />
+
+	<!-- Start the OpenNI Drivers and ROS Wrapper --> 
+	<include file="$(find openni_launch)/launch/openni.launch" />
+
+	<!-- Start the object reconstruction node -->
+    <node pkg="hbrs_object_reconstruction" type="object_reconstruction" name="hbrs_object_reconstruction" output="log" />
 </launch>
