@@ -8,6 +8,8 @@
 #ifndef POINTCLOUDACCUMULATOR_H_
 #define POINTCLOUDACCUMULATOR_H_
 
+#include <ros/ros.h>
+
 #include <boost/make_shared.hpp>
 #include <pcl/point_types.h>
 #include <pcl/point_cloud.h>
@@ -26,6 +28,8 @@
 
 #include <pcl/visualization/pcl_visualizer.h>
 
+#include <hbrs_object_reconstruction/AccumulatePointCloud.h>
+
 typedef pcl::PointXYZ PointT;
 typedef pcl::PointCloud<PointT> PointCloud;
 typedef pcl::PointNormal PointNormalT;
@@ -42,7 +46,17 @@ private:
 	void AlignClouds( const PointCloud::Ptr cloud_src, const PointCloud::Ptr cloud_tgt,
 			          PointCloud::Ptr output, Eigen::Matrix4f &final_transform, bool downsample = false );
 
+	bool AccumulatePointClouds( hbrs_object_reconstruction::AccumulatePointCloud::Request request,
+								              hbrs_object_reconstruction::AccumulatePointCloud::Response response );
+
+  void PointCloudCallback( const sensor_msgs::PointCloud2::ConstPtr &ros_cloud );
+
 protected:
+
+  int               m_point_cloud_count; 
+  std::string       m_frame_id;
+  PointCloud::Ptr   m_accumulated_cloud; 
+  Eigen::Matrix4f   m_global_transform; 
 
 };
 

@@ -8,13 +8,60 @@
 #include "PointCloudAccumulator.h"
 
 PointCloudAccumulator::PointCloudAccumulator()
-{
-	// TODO Auto-generated constructor stub
+{ 
 }
 
 PointCloudAccumulator::~PointCloudAccumulator()
 {
 	// TODO Auto-generated destructor stub
+}
+
+bool 
+PointCloudAccumulator::AccumulatePointClouds( hbrs_object_reconstruction::AccumulatePointCloud::Request request,
+											  hbrs_object_reconstruction::AccumulatePointCloud::Response response )
+{
+	ROS_INFO_STREAM( "Recived [AccumulatePointCloud] Service Request" ); 
+
+	m_point_cloud_count = 0; 
+	m_global_transform = Eigen::Matrix4f::Identity();
+
+	ros::NodeHandle node_handler; 
+    ros::Subscriber subscriber = node_handler.subscribe("/camera/depth_registered/points", 1, &PointCloudAccumulator::PointCloudCallback, this );
+
+    // Wait some time while data is being accumulated.
+    ros::Time start = ros::Time::now();
+    while( ros::Time::now() < start + ros::Duration( request.accumulation_time ) && ros::ok())
+    {
+      ros::spinOnce();
+    }
+    subscriber.shutdown();
+
+	return false; 
+}
+
+void 
+PointCloudAccumulator::PointCloudCallback( const sensor_msgs::PointCloud2::ConstPtr &ros_cloud )
+{
+	PointCloud::Ptr input_cloud(new PointCloud);
+	pcl::fromROSMsg(*ros_cloud, *input_cloud);
+	m_frame_id = ros_cloud->header.frame_id;
+
+	if( m_point_cloud_count == 0 )
+	{
+		pcl::copyPointCloud( *input_cloud, *m_accumulated_cloud );		
+	}
+	else
+	{
+		PointCloud::Ptr temp (new PointCloud);
+		PointCloud::Ptr result( new PointCloud ); 
+		Eigen::Matrix4f pairTransform;
+
+		AlignClouds( input_cloud, m_accumulated_cloud, temp, pairTransform, true  );
+		pcl::transformPointCloud( *temp, *result, m_global_transform );
+		m_global_transform = pairTransform * m_global_transform;
+		pcl::copyPointCloud( *result, *m_accumulated_cloud );
+		m_point_cloud_count += 1; 
+	}
 }
 
 void
@@ -89,7 +136,7 @@ PointCloudAccumulator::AlignClouds( const PointCloud::Ptr cloud_src,
 	{
 		PCL_INFO ("Iteration Nr. %d.\n", i);
 
-		// save cloud for visualization purpose
+		// save ` for visualization purpose
 		points_with_normals_src = reg_result;
 
 		// Estimate
