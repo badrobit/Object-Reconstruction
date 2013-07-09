@@ -29,33 +29,41 @@ PointCloudAccumulator::AccumulatePointClouds( hbrs_object_reconstruction::Accumu
 	m_point_cloud_count = 0; 
 	m_global_transform = Eigen::Matrix4f::Identity();
 
+	ROS_INFO_STREAM( "Starting polling from RGBD Sensor" );
     ros::Subscriber subscriber = 
     	m_node_handler.subscribe("/camera/depth_registered/points", 1, &PointCloudAccumulator::PointCloudCallback, this );
 
-    // Wait some time while data is being accumulated.
     ros::Time start = ros::Time::now();
     while( ros::Time::now() < start + ros::Duration( request.accumulation_time ) && ros::ok())
     {
       ros::spinOnce();
     }
     subscriber.shutdown();
+    ROS_INFO_STREAM( "Shutting down RGBD Sensor subscriber" );
+    ROS_WARN_STREAM( "Final accumulated PointCloud size: " << m_accumulated_cloud.size() ); 	
 
-    pcl::toROSMsg( *m_accumulated_cloud, response.point_cloud );
+    pcl::toROSMsg( m_accumulated_cloud, response.point_cloud );
     m_accumulated_point_cloud_publisher.publish( response.point_cloud );
 
+    ROS_INFO_STREAM( "PointCloud accumulation completed" ); 
 	return true; 
 }
 
 void 
 PointCloudAccumulator::PointCloudCallback( const sensor_msgs::PointCloud2::ConstPtr &ros_cloud )
 {
-	PointCloud::Ptr input_cloud(new PointCloud);
+	ROS_WARN_STREAM( "PointCloudCallback Started" ); 
+	PointCloud::Ptr input_cloud( new PointCloud );
 	pcl::fromROSMsg(*ros_cloud, *input_cloud);
 	m_frame_id = ros_cloud->header.frame_id;
+	m_accumulated_cloud.header.frame_id = m_frame_id;
 
 	if( m_point_cloud_count == 0 )
 	{
-		pcl::copyPointCloud( *input_cloud, *m_accumulated_cloud );		
+		pcl::copyPointCloud( *input_cloud, m_accumulated_cloud );
+		ROS_WARN_STREAM( "Accumulated PointCloud size: " << m_accumulated_cloud.size() ); 		
+		ROS_WARN_STREAM( "First PointCloud Added" ); 
+		m_point_cloud_count += 1;
 	}
 	else
 	{
@@ -63,10 +71,13 @@ PointCloudAccumulator::PointCloudCallback( const sensor_msgs::PointCloud2::Const
 		PointCloud::Ptr result( new PointCloud ); 
 		Eigen::Matrix4f pairTransform;
 
-		AlignClouds( input_cloud, m_accumulated_cloud, temp, pairTransform, true  );
+		AlignClouds( input_cloud, m_accumulated_cloud.makeShared(), temp, pairTransform, true  );
 		pcl::transformPointCloud( *temp, *result, m_global_transform );
 		m_global_transform = pairTransform * m_global_transform;
-		pcl::copyPointCloud( *result, *m_accumulated_cloud );
+
+		copyPointCloud( *result, m_accumulated_cloud ); 
+
+		ROS_WARN_STREAM( "PointCloud " << m_point_cloud_count << " added to accumulated cloud" ); 
 		m_point_cloud_count += 1; 
 	}
 }
@@ -78,6 +89,8 @@ PointCloudAccumulator::AlignClouds( const PointCloud::Ptr cloud_src,
 		                            Eigen::Matrix4f &final_transform,
 		                            bool downsample )
 {
+	ROS_WARN_STREAM( "Starting PointCloud Allginment" ); 
+
 	// Downsample for consistency and speed
 	// \note enable this for large datasets
 	PointCloud::Ptr src (new PointCloud);
@@ -103,7 +116,7 @@ PointCloudAccumulator::AlignClouds( const PointCloud::Ptr cloud_src,
 	PointCloudWithNormals::Ptr points_with_normals_tgt (new PointCloudWithNormals);
 
 	pcl::NormalEstimation<PointT, PointNormalT> norm_est;
-	pcl::search::KdTree<pcl::PointXYZ>::Ptr tree (new pcl::search::KdTree<pcl::PointXYZ> ());
+	pcl::search::KdTree<PointT>::Ptr tree (new pcl::search::KdTree<PointT> ());
 	norm_est.setSearchMethod (tree);
 	norm_est.setKSearch (30);
 
@@ -172,11 +185,9 @@ PointCloudAccumulator::AlignClouds( const PointCloud::Ptr cloud_src,
 	// Transform target back in source frame
 	pcl::transformPointCloud (*cloud_tgt, *output, targetToSource);
 
-	//PointCloudColorHandlerCustom<PointT> cloud_tgt_h (output, 0, 255, 0);
-	//PointCloudColorHandlerCustom<PointT> cloud_src_h (cloud_src, 255, 0, 0);
-
 	//add the source to the transformed target
 	*output += *cloud_src;
 
   final_transform = targetToSource;
+  ROS_WARN_STREAM( "PointCloud Alignment Completed" ); 
 }

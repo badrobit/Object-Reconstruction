@@ -16,6 +16,7 @@
 #include <pcl/point_representation.h>
 
 #include <pcl/io/pcd_io.h>
+#include <sensor_msgs/PointCloud2.h>
 
 #include <pcl/filters/voxel_grid.h>
 #include <pcl/filters/filter.h>
@@ -30,7 +31,7 @@
 
 #include <hbrs_object_reconstruction/AccumulatePointCloud.h>
 
-typedef pcl::PointXYZ PointT;
+typedef pcl::PointXYZRGB PointT;
 typedef pcl::PointCloud<PointT> PointCloud;
 typedef pcl::PointNormal PointNormalT;
 typedef pcl::PointCloud<PointNormalT> PointCloudWithNormals;
@@ -56,8 +57,8 @@ protected:
 
   int                 m_point_cloud_count; 
   std::string         m_frame_id;
-  PointCloud::Ptr     m_accumulated_cloud; 
   Eigen::Matrix4f     m_global_transform; 
+  PointCloud          m_accumulated_cloud; 
 
   ros::NodeHandle     m_node_handler; 
   ros::ServiceServer  m_accumulate_point_clouds_service; 
