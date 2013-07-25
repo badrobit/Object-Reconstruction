@@ -1,24 +1,22 @@
 #include <HelperFunctions.hpp>
 
 #include <PointCloudAccumulator.h>
-#include <PointCloudPreprocessor.h>
 
 #include <hbrs_object_reconstruction/FixOcclusion.h>
 
 class object_reconstruction_node
 {
 public:
-  object_reconstruction_node()
-  {
-  	m_output_directory = ros::package::getPath( "hbrs_object_reconstruction" );
-  	ROS_WARN_STREAM( "Current Directory set to: " << m_output_directory ); 
+	object_reconstruction_node()
+	{
+		m_output_directory = ros::package::getPath( "hbrs_object_reconstruction" );
+		ROS_WARN_STREAM( "Current Directory set to: " << m_output_directory ); 
 
-  	m_point_cloud_accumulator = PointCloudAccumulator();
-  	m_point_cloud_preprocessor = PointCloudPreprocessor(); 
+		m_point_cloud_accumulator = PointCloudAccumulator();
 
-  	m_fix_occlusions_service = m_node_handler.advertiseService( "FixOcclusions", &object_reconstruction_node::FixOcclusions, this );
-	ROS_INFO_STREAM( "Advertised [FixOcclusions] Service" );
-  }
+		m_fix_occlusions_service = m_node_handler.advertiseService( "FixOcclusions", &object_reconstruction_node::FixOcclusions, this );
+		ROS_INFO_STREAM( "Advertised [FixOcclusions] Service" );
+	}
 
 private:
 
@@ -27,9 +25,14 @@ private:
 	{
 		m_resulting_cloud = m_point_cloud_accumulator.AccumulatePointClouds( 3 ); 
 
-		WriteToPCD( m_output_directory + "/" + "AccumulatedPointCloud", m_resulting_cloud ); 
+		WriteToPCD( m_output_directory + "/" + "01-AccumulatedPointCloud", m_resulting_cloud ); 
 
-		return true; 
+		m_resulting_cloud = PreparePointCloud( m_resulting_cloud ); 
+
+		WriteToPCD( m_output_directory + "/" + "02-PreProcessedPointCloud", m_resulting_cloud ); 
+
+		response.success = true; 
+		return response.success; 
 	}
 
 	std::string 				m_output_directory; 
@@ -40,7 +43,6 @@ private:
   	PointCloud 					m_resulting_cloud; 
 
   	PointCloudAccumulator		m_point_cloud_accumulator; 
-  	PointCloudPreprocessor      m_point_cloud_preprocessor;
 };
 
 

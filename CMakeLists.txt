@@ -43,11 +43,6 @@ add_definitions( ${PCL_DEFINITIONS} )
 rosbuild_add_library( PointCloudAccumulator ros/src/PointCloudAccumulator.cpp )
 target_link_libraries( PointCloudAccumulator ${PCL_LIBRARIES} )
 
-#..: PointCloudPreProcessor
-rosbuild_add_library( PointCloudPreprocessor ros/src/PointCloudPreprocessor.cpp )
-target_link_libraries( PointCloudPreprocessor ${PCL_LIBRARIES} )
-
-
 #:..... ROS NODE :.................................................................................:
 rosbuild_add_executable(hbrs_object_reconstruction ros/nodes/object_reconstruction.cpp)
 target_link_libraries( hbrs_object_reconstruction PointCloudAccumulator )
