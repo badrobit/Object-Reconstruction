@@ -7,11 +7,8 @@
 
 #include "PointCloudAccumulator.h"
 
-PointCloudAccumulator::PointCloudAccumulator( ros::NodeHandle i_node_handle ): m_node_handler( i_node_handle )
+PointCloudAccumulator::PointCloudAccumulator()
 { 
-	m_accumulate_point_clouds_service = m_node_handler.advertiseService( "AccumulatePointClouds", &PointCloudAccumulator::AccumulatePointClouds, this );
-	ROS_INFO_STREAM( "Advertised [AccumulatePointClouds] Service" ); 
-
 	m_accumulated_point_cloud_publisher = m_node_handler.advertise<sensor_msgs::PointCloud2> ( "AccumulatedPointCloud", 1 );
 	ROS_INFO_STREAM( "Now advertising ");
 }
@@ -20,12 +17,9 @@ PointCloudAccumulator::~PointCloudAccumulator()
 {	
 }
 
-bool 
-PointCloudAccumulator::AccumulatePointClouds( hbrs_object_reconstruction::AccumulatePointCloud::Request  &request,
-											  hbrs_object_reconstruction::AccumulatePointCloud::Response &response )
+PointCloud
+PointCloudAccumulator::AccumulatePointClouds( int accumulation_time )
 {
-	ROS_INFO_STREAM( "Recived [AccumulatePointCloud] Service Request" ); 
-
 	m_point_cloud_count = 0; 
 	m_global_transform = Eigen::Matrix4f::Identity();
 
@@ -34,7 +28,7 @@ PointCloudAccumulator::AccumulatePointClouds( hbrs_object_reconstruction::Accumu
     	m_node_handler.subscribe("/camera/depth_registered/points", 1, &PointCloudAccumulator::PointCloudCallback, this );
 
     ros::Time start = ros::Time::now();
-    while( ros::Time::now() < start + ros::Duration( request.accumulation_time ) && ros::ok())
+    while( ros::Time::now() < start + ros::Duration( accumulation_time ) && ros::ok())
     {
       ros::spinOnce();
     }
@@ -42,11 +36,12 @@ PointCloudAccumulator::AccumulatePointClouds( hbrs_object_reconstruction::Accumu
     ROS_INFO_STREAM( "Shutting down RGBD Sensor subscriber" );
     ROS_WARN_STREAM( "Final accumulated PointCloud size: " << m_accumulated_cloud.size() ); 	
 
-    pcl::toROSMsg( m_accumulated_cloud, response.point_cloud );
-    m_accumulated_point_cloud_publisher.publish( response.point_cloud );
+    sensor_msgs::PointCloud2 output_cloud; 
+    pcl::toROSMsg( m_accumulated_cloud, output_cloud );
+    m_accumulated_point_cloud_publisher.publish( output_cloud );
 
     ROS_INFO_STREAM( "PointCloud accumulation completed" ); 
-	return true; 
+	return m_accumulated_cloud; 
 }
 
 void 

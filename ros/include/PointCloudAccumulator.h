@@ -8,50 +8,26 @@
 #ifndef POINTCLOUDACCUMULATOR_H_
 #define POINTCLOUDACCUMULATOR_H_
 
-#include <ros/ros.h>
-
-#include <boost/make_shared.hpp>
-#include <pcl/point_types.h>
-#include <pcl/point_cloud.h>
-#include <pcl/point_representation.h>
-
-#include <pcl/io/pcd_io.h>
 #include <sensor_msgs/PointCloud2.h>
-
-#include <pcl/filters/voxel_grid.h>
-#include <pcl/filters/filter.h>
-
-#include <pcl/features/normal_3d.h>
-
-#include <pcl/registration/icp.h>
-#include <pcl/registration/icp_nl.h>
-#include <pcl/registration/transforms.h>
-
-#include <pcl/visualization/pcl_visualizer.h>
 
 #include <hbrs_object_reconstruction/AccumulatePointCloud.h>
 
-typedef pcl::PointXYZRGB PointT;
-typedef pcl::PointCloud<PointT> PointCloud;
-typedef pcl::PointNormal PointNormalT;
-typedef pcl::PointCloud<PointNormalT> PointCloudWithNormals;
+#include <HelperFunctions.hpp>
 
 class PointCloudAccumulator
 {
 public:
 
-	PointCloudAccumulator( ros::NodeHandle i_node_handle );
+	PointCloudAccumulator();
 	virtual ~PointCloudAccumulator();
+  PointCloud AccumulatePointClouds( int accumulation_time );
 
 private:
 
 	void AlignClouds( const PointCloud::Ptr cloud_src, const PointCloud::Ptr cloud_tgt,
 			              PointCloud::Ptr output, Eigen::Matrix4f &final_transform, bool downsample = false );
 
-	bool AccumulatePointClouds( hbrs_object_reconstruction::AccumulatePointCloud::Request  &request,
-								              hbrs_object_reconstruction::AccumulatePointCloud::Response &response );
-
-  void PointCloudCallback( const sensor_msgs::PointCloud2::ConstPtr &ros_cloud );
+	void PointCloudCallback( const sensor_msgs::PointCloud2::ConstPtr &ros_cloud );
 
 protected:
 
@@ -65,8 +41,6 @@ protected:
   ros::Publisher      m_accumulated_point_cloud_publisher; 
 
 };
-
-#endif /* POINTCLOUDACCUMULATOR_H_ */
 
 // Define a new point representation for < x, y, z, curvature >
 class MyPointRepresentation : public pcl::PointRepresentation <PointNormalT>
@@ -89,3 +63,5 @@ public:
     out[3] = p.curvature;
   }
 };
+
+#endif /* POINTCLOUDACCUMULATOR_H_ */

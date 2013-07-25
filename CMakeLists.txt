@@ -3,7 +3,7 @@ include($ENV{ROS_ROOT}/core/rosbuild/rosbuild.cmake)
 
 rosbuild_init()
 
-#:..... Compiler Options :.........................................................................
+#:..... Compiler Options :.........................................................................:
 
 #...: gnu++0x
 if(CMAKE_COMPILER_IS_GNUCXX)
@@ -21,10 +21,7 @@ find_package( PCL 1.4 REQUIRED )
 
 set( GNG_DIR ${PROJECT_SOURCE_DIR}/common/growing_neural_gas )
 set( JOHNSON_APSP_DIR  ${PROJECT_SOURCE_DIR}/common/johnsonAPSP )
-
-#set the default path for built executables to the "bin" directory
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
-#set the default path for built libraries to the "lib" directory
 set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 
 include_directories(
@@ -37,16 +34,21 @@ include_directories(
 link_directories( ${PCL_LIBRARY_DIRS} )
 add_definitions( ${PCL_DEFINITIONS} )
 
-#:.... Libraries ...................................................................................
+#:.... Libraries ..................................................................................:
 
 #:..... Create GNG Library
-#add_subdirectory( common/growing_neural_gas )
+#add_subdirectory( common/GrowingNeuralGas )
 
 #..: PointCloudAccumulation
 rosbuild_add_library( PointCloudAccumulator ros/src/PointCloudAccumulator.cpp )
 target_link_libraries( PointCloudAccumulator ${PCL_LIBRARIES} )
 
+#..: PointCloudPreProcessor
+rosbuild_add_library( PointCloudPreprocessor ros/src/PointCloudPreprocessor.cpp )
+target_link_libraries( PointCloudPreprocessor ${PCL_LIBRARIES} )
 
-#:..... ROS NODE :................................................................................:
+
+#:..... ROS NODE :.................................................................................:
 rosbuild_add_executable(hbrs_object_reconstruction ros/nodes/object_reconstruction.cpp)
 target_link_libraries( hbrs_object_reconstruction PointCloudAccumulator )
+target_link_libraries( hbrs_object_reconstruction PointCloudPreprocessor )

@@ -6,11 +6,8 @@
   	<url>https://github.com/Bad-Robot/hbrs_object_reconstruction</url>
   	<depend package="roscpp"/>
   	<depend package="sensor_msgs"/>
- 	<depend package="std_srvs"/>
- 	
+ 	<depend package="std_srvs"/> 	
 	<depend package="pcl"/>
 	<depend package="pcl_ros"/>
-	<rosdep name="opencv2"/>
+	<depend package="roslib"/>
 </package>
-
-
