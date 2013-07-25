@@ -9,6 +9,9 @@ lib/
 msg_gen/
 srv_gen/
 
+# PCL FILES
+*.pcd
+
 # Compiled Object files
 *.slo
 *.lo
@@ -22,3 +25,18 @@ srv_gen/
 *.lai
 *.la
 *.a
+
+
+/.settings/org.eclipse.cdt.codan.core.prefs
+/.settings/org.eclipse.cdt.core.prefs
+/.settings/org.eclipse.cdt.ui.prefs
+/src/hbrs_object_reconstruction/__init__.py
+/src/hbrs_object_reconstruction/__init__.pyc
+/src/hbrs_object_reconstruction/srv/__init__.pyc
+/src/hbrs_object_reconstruction/srv/__init__.py
+/src/hbrs_object_reconstruction/srv/_FixOcclusion.pyc
+/src/hbrs_object_reconstruction/srv/_AccumulatePointCloud.py
+/src/hbrs_object_reconstruction/srv/_AccumulatePointCloud.pyc
+/src/hbrs_object_reconstruction/srv/_ExtractPlatform.py
+/src/hbrs_object_reconstruction/srv/_ExtractPlatform.pyc
+/src/hbrs_object_reconstruction/srv/_FixOcclusion.py
