@@ -1,9 +1,16 @@
 #include <HelperFunctions.hpp>
-
 #include <PointCloudAccumulator.h>
-
 #include <hbrs_object_reconstruction/FixOcclusion.h>
 
+/**
+ *	This class is responisble for handeling everything that is related to the object reconstruction.
+ * It is the public interface for all of the backend processing that is required. It advertises the 
+ * following services that the user are able to call: 
+ *
+ * 	<ul>
+ *		<li>FixOcclusions</li>
+ *	</ul>
+ */
 class object_reconstruction_node
 {
 public:
@@ -47,15 +54,16 @@ private:
 
 
 /**
- *  This is the main class for the object reconstruction. It is responsible for starting the whole
- * process.
+ *  This is the main class for the object reconstruction. It is responsible for starting the
+ * processing and launching the object reconstruction node. 
  */
 int main(int argc, char **argv)
 {
+	/// Initialize this ROS node. 
 	ros::init(argc, argv, "hbrs_object_reconstruction");
-
+	/// Create an instance of the object reconstruction.
 	object_reconstruction_node ros_node;
-
+	/// Start the ROS processing for this node. 
 	ros::spin();
 	return 0;
 }

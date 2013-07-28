@@ -1,4 +1,4 @@
-# ROS Stuff
+#:.....: ROS Stuff :...............................................................................#
 .cproject
 .project
 .pydevproject
@@ -8,24 +8,26 @@ bin/
 lib/
 msg_gen/
 srv_gen/
+doc/
 
-# PCL FILES
+#:.....: PCL FILES :...............................................................................#
 *.pcd
 
-# Compiled Object files
+#:.....: Compiled Object files :...................................................................#
 *.slo
 *.lo
 *.o
 
-# Compiled Dynamic libraries
+#:.....: Compiled Dynamic libraries :..............................................................#
 *.so
 *.dylib
 
-# Compiled Static libraries
+#:.....: Compiled Static libraries :...............................................................#
 *.lai
 *.la
 *.a
 
+#:.....: Specific Project Ingores :................................................................#
 
 /.settings/org.eclipse.cdt.codan.core.prefs
 /.settings/org.eclipse.cdt.core.prefs

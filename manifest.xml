@@ -10,4 +10,8 @@
 	<depend package="pcl"/>
 	<depend package="pcl_ros"/>
 	<depend package="roslib"/>
+
+  <export>
+    <rosdoc config="rosdoc.yaml" />
+  </export>
 </package>
