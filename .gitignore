@@ -41,4 +41,6 @@ doc/
 /src/hbrs_object_reconstruction/srv/_AccumulatePointCloud.pyc
 /src/hbrs_object_reconstruction/srv/_ExtractPlatform.py
 /src/hbrs_object_reconstruction/srv/_ExtractPlatform.pyc
+/src/hbrs_object_reconstruction/srv/_FixOcclusion.py/rosdoc.yaml~
+/rosdoc.yaml~
 /src/hbrs_object_reconstruction/srv/_FixOcclusion.py
