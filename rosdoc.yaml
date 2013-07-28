@@ -2,5 +2,5 @@
   name: C++ API
   output_dir: c++
   file_patterns: '*.c *.cpp *.h *.cc *.hh *.dox'
-  javadoc_autobrief:Yes
+  javadoc_autobrief:YES
   tab_size:4

@@ -37,7 +37,6 @@ protected:
   PointCloud          m_accumulated_cloud; 
 
   ros::NodeHandle     m_node_handler; 
-  ros::ServiceServer  m_accumulate_point_clouds_service; 
   ros::Publisher      m_accumulated_point_cloud_publisher; 
 
 };

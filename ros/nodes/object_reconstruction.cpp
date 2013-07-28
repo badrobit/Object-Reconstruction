@@ -1,5 +1,6 @@
 #include <HelperFunctions.hpp>
 #include <PointCloudAccumulator.h>
+#include <ObjectCandidateExtractor.h>
 #include <hbrs_object_reconstruction/FixOcclusion.h>
 
 /**
@@ -20,6 +21,7 @@ public:
 		ROS_WARN_STREAM( "Current Directory set to: " << m_output_directory ); 
 
 		m_point_cloud_accumulator = PointCloudAccumulator();
+		m_object_candidate_extractor = ObjectCandidateExtractor();
 
 		m_fix_occlusions_service = m_node_handler.advertiseService( "FixOcclusions", &object_reconstruction_node::FixOcclusions, this );
 		ROS_INFO_STREAM( "Advertised [FixOcclusions] Service" );
@@ -38,18 +40,21 @@ private:
 
 		WriteToPCD( m_output_directory + "/" + "02-PreProcessedPointCloud", m_resulting_cloud ); 
 
+		m_object_candidates = m_object_candidate_extractor.ExtractCandidateObjects( m_resulting_cloud );
+
 		response.success = true; 
 		return response.success; 
 	}
 
 	std::string 				m_output_directory; 
+	std::vector<PointCloud>     m_object_candidates;
 
   	ros::NodeHandle             m_node_handler;
 	ros::ServiceServer  		m_fix_occlusions_service;
 
   	PointCloud 					m_resulting_cloud; 
-
-  	PointCloudAccumulator		m_point_cloud_accumulator; 
+  	PointCloudAccumulator		m_point_cloud_accumulator;
+  	ObjectCandidateExtractor    m_object_candidate_extractor;
 };
 
 
