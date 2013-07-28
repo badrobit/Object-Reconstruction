@@ -15,12 +15,12 @@ ObjectCandidateExtractor::ObjectCandidateExtractor()
 
 ObjectCandidateExtractor::~ObjectCandidateExtractor()
 {
-  // TODO Auto-generated destructor stub
 }
 
 std::vector< PointCloud >
 ObjectCandidateExtractor::ExtractCandidateObjects( PointCloud input_cloud )
 {
+  ROS_INFO_STREAM( "Starting to Extract Object Candidates" );
   std::vector< PointCloud > object_candidates;
 
   // Create the segmentation object for the planar model and set all the parameters
@@ -81,6 +81,7 @@ ObjectCandidateExtractor::ExtractCandidateObjects( PointCloud input_cloud )
   for (std::vector<pcl::PointIndices>::const_iterator it = cluster_indices.begin (); it != cluster_indices.end (); ++it)
   {
     PointCloud::Ptr cloud_cluster (new PointCloud );
+    cloud_cluster->header.frame_id = input_cloud.header.frame_id;
     for( std::vector<int>::const_iterator pit = it->indices.begin (); pit != it->indices.end (); pit++ )
     {
       cloud_cluster->points.push_back( input_cloud.points[*pit] );
@@ -100,16 +101,20 @@ ObjectCandidateExtractor::ExtractCandidateObjects( PointCloud input_cloud )
 
 bool ObjectCandidateExtractor::PublishObjectCandidates( std::vector< PointCloud > input_vector )
 {
+  ROS_INFO_STREAM( "Publishing Object Candidates" );
   PointCloud output_cloud;
 
+  // Go through all of the passed in pointclouds and add them to one large pointcloud.
   for( int i = 0; i < (int)input_vector.size(); i++ )
   {
     output_cloud += input_vector[i];
     ROS_INFO_STREAM( "Added " << input_vector[i].size() << " to the published candidate cloud" );
   }
 
+  // Create the ROS message that we want to publish and provide it to anyone who is listening.
   sensor_msgs::PointCloud2 ros_output_cloud;
   pcl::toROSMsg( output_cloud, ros_output_cloud );
+  ros_output_cloud.header.frame_id = input_vector[0].header.frame_id;
   m_object_candidates_publisher.publish( ros_output_cloud );
 
   return true;

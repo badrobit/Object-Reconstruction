@@ -22,6 +22,11 @@ public:
    * object candidate extraction.
    */
   ObjectCandidateExtractor();
+
+  /**
+   * \brief Standard destructor that is used to free up any memory or ROS connections that where
+   * created.
+   */
   virtual ~ObjectCandidateExtractor();
 
   /**
@@ -33,6 +38,17 @@ public:
    */
   std::vector< PointCloud > ExtractCandidateObjects( PointCloud input_cloud );
 
+  /**
+   * \brief Function that takes in multiple object candidate point clouds and creates a single
+   * ros message for them.
+   *
+   * \details This function takes in a STD Vector of PCL Point Clouds where each cloud is a
+   * candidate object. It will then combine them all into one single STD_MSGS::PointCloud2 message
+   * that can be published through ROS.
+   *
+   * @param input_vector
+   * @return
+   */
   bool PublishObjectCandidates( std::vector< PointCloud > input_vector );
 
 protected:

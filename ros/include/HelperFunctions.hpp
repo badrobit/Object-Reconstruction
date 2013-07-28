@@ -145,8 +145,7 @@ bool WriteMultipleToPCD( std::string file_name, std::vector<PointCloud> input_cl
       std::stringstream ss;
       ss << file_name << "_" << i << ".pcd";
       std::string file_name_index = ss.str();
-      int temp = pcl::io::savePCDFileASCII( file_name_index, input_clouds[i] );
-      ROS_WARN_STREAM( temp );
+      pcl::io::savePCDFileASCII( file_name_index, input_clouds[i] );
       ROS_INFO_STREAM( "Saved " << input_clouds[i].size() << " datapoints to " << file_name << "_" << i << ".pcd" );
     }
     return true;

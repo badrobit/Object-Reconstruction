@@ -10,7 +10,7 @@
 PointCloudAccumulator::PointCloudAccumulator()
 { 
 	m_accumulated_point_cloud_publisher = m_node_handler.advertise<sensor_msgs::PointCloud2> ( "AccumulatedPointCloud", 1 );
-	ROS_INFO_STREAM( "Now advertising ");
+	ROS_INFO_STREAM( "Now advertising [AccumulatedPointCloud]");
 }
 
 PointCloudAccumulator::~PointCloudAccumulator()
@@ -47,7 +47,7 @@ PointCloudAccumulator::AccumulatePointClouds( int accumulation_time )
 void 
 PointCloudAccumulator::PointCloudCallback( const sensor_msgs::PointCloud2::ConstPtr &ros_cloud )
 {
-	ROS_WARN_STREAM( "PointCloudCallback Started" ); 
+	ROS_DEBUG_STREAM( "PointCloudCallback Started" );
 	PointCloud::Ptr input_cloud( new PointCloud );
 	pcl::fromROSMsg(*ros_cloud, *input_cloud);
 	m_frame_id = ros_cloud->header.frame_id;
@@ -56,8 +56,8 @@ PointCloudAccumulator::PointCloudCallback( const sensor_msgs::PointCloud2::Const
 	if( m_point_cloud_count == 0 )
 	{
 		pcl::copyPointCloud( *input_cloud, m_accumulated_cloud );
-		ROS_WARN_STREAM( "Accumulated PointCloud size: " << m_accumulated_cloud.size() ); 		
-		ROS_WARN_STREAM( "First PointCloud Added" ); 
+		ROS_DEBUG_STREAM( "Accumulated PointCloud size: " << m_accumulated_cloud.size() );
+		ROS_DEBUG_STREAM( "First PointCloud Added" );
 		m_point_cloud_count += 1;
 	}
 	else
@@ -72,7 +72,7 @@ PointCloudAccumulator::PointCloudCallback( const sensor_msgs::PointCloud2::Const
 
 		copyPointCloud( *result, m_accumulated_cloud ); 
 
-		ROS_WARN_STREAM( "PointCloud " << m_point_cloud_count << " added to accumulated cloud" ); 
+		ROS_DEBUG_STREAM( "PointCloud " << m_point_cloud_count << " added to accumulated cloud" );
 		m_point_cloud_count += 1; 
 	}
 }
@@ -84,7 +84,7 @@ PointCloudAccumulator::AlignClouds( const PointCloud::Ptr cloud_src,
 		                            Eigen::Matrix4f &final_transform,
 		                            bool downsample )
 {
-	ROS_WARN_STREAM( "Starting PointCloud Allginment" ); 
+	ROS_DEBUG_STREAM( "Starting PointCloud Allginment" );
 
 	// Downsample for consistency and speed
 	// \note enable this for large datasets
@@ -149,8 +149,6 @@ PointCloudAccumulator::AlignClouds( const PointCloud::Ptr cloud_src,
 	reg.setMaximumIterations (2);
 	for (int i = 0; i < 30; ++i)
 	{
-		PCL_INFO ("Iteration Nr. %d.\n", i);
-
 		// save ` for visualization purpose
 		points_with_normals_src = reg_result;
 
@@ -172,17 +170,15 @@ PointCloudAccumulator::AlignClouds( const PointCloud::Ptr cloud_src,
 		prev = reg.getLastIncrementalTransformation ();
 	}
 
-	//
-	// Get the transformation from target to source
-	targetToSource = Ti.inverse();
+    // Get the transformation from target to source
+    targetToSource = Ti.inverse();
 
-	//
-	// Transform target back in source frame
-	pcl::transformPointCloud (*cloud_tgt, *output, targetToSource);
+    // Transform target back in source frame
+    pcl::transformPointCloud (*cloud_tgt, *output, targetToSource);
 
-	//add the source to the transformed target
-	*output += *cloud_src;
+    //add the source to the transformed target
+    *output += *cloud_src;
 
-  final_transform = targetToSource;
-  ROS_WARN_STREAM( "PointCloud Alignment Completed" ); 
+    final_transform = targetToSource;
+    ROS_WARN_STREAM( "PointCloud Alignment Completed" );
 }

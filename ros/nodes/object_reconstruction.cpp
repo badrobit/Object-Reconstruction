@@ -42,6 +42,10 @@ private:
 
 		m_object_candidates = m_object_candidate_extractor.ExtractCandidateObjects( m_resulting_cloud );
 
+		m_object_candidate_extractor.PublishObjectCandidates( m_object_candidates );
+
+		WriteMultipleToPCD( m_output_directory + "/" + "03-ObjectCandidate", m_object_candidates );
+
 		response.success = true; 
 		return response.success; 
 	}
