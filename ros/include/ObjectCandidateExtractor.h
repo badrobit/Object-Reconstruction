@@ -1,17 +1,19 @@
 /**
- * \headerfile ObjectCandidateExtractor.h
- * \date Jul 28, 2013
- * \author Matthew S Roscoe http://matroscoe.ca
+ * \headerfile PointCloudAccumulator.h
+ * \author Matthew S Roscoe
+ * \date July 30th 2013
+ * \copyright GNU Public License.
  */
 
 #ifndef OBJECTCANDIDATEEXTRACTOR_H_
 #define OBJECTCANDIDATEEXTRACTOR_H_
 
-#include <HelperFunctions.hpp>
+#include <HelperFunctions.h>
 
 /**
  * \class ObjectCandidateExtractor
- * This class is responsible for finding groups of points in a point cloud which could
+ *
+ * \brief This class is responsible for finding groups of points in a point cloud which could
  * represent real world objects.
  */
 class ObjectCandidateExtractor
@@ -52,8 +54,10 @@ public:
   bool PublishObjectCandidates( std::vector< PointCloud > input_vector );
 
 protected:
-  ros::NodeHandle     m_node_handler;
-  ros::Publisher      m_object_candidates_publisher;
+  /** \brief Node Handler for the \ref ObjectCandidateExtractor class */
+  ros::NodeHandle   m_node_handler;
+  /** \brief A ROS publisher for the compiled object candidates */
+  ros::Publisher    m_object_candidates_publisher;
 };
 
 #endif /* OBJECTCANDIDATEEXTRACTOR_H_ */

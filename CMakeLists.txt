@@ -3,9 +3,9 @@ include($ENV{ROS_ROOT}/core/rosbuild/rosbuild.cmake)
 
 rosbuild_init()
 
-#:..... Compiler Options :.........................................................................:
+#.....: Compiler Options :.........................................................................:
 
-#...: gnu++0x
+#.....: gnu++0x
 if(CMAKE_COMPILER_IS_GNUCXX)
     execute_process(COMMAND ${CMAKE_C_COMPILER} -dumpversion OUTPUT_VARIABLE GCC_VERSION)
     if(GCC_VERSION VERSION_GREATER 4.6 OR GCC_VERSION VERSION_EQUAL 4.6)
@@ -34,12 +34,12 @@ include_directories(
 link_directories( ${PCL_LIBRARY_DIRS} )
 add_definitions( ${PCL_DEFINITIONS} )
 
-#:.... Libraries ..................................................................................:
+#.....: Libraries .................................................................................:
 
-#:..... Create GNG Library
+#.....: Create GNG Library
 #add_subdirectory( common/GrowingNeuralGas )
 
-#..: PointCloudAccumulation
+#.....: PointCloudAccumulation
 rosbuild_add_library( PointCloudAccumulator ros/src/PointCloudAccumulator.cpp )
 target_link_libraries( PointCloudAccumulator ${PCL_LIBRARIES} )
 
@@ -47,7 +47,23 @@ target_link_libraries( PointCloudAccumulator ${PCL_LIBRARIES} )
 rosbuild_add_library( ObjectCandidateExtractor ros/src/ObjectCandidateExtractor.cpp )
 target_link_libraries( ObjectCandidateExtractor ${PCL_LIBRARIES} )
 
-#:..... ROS NODE :.................................................................................:
-rosbuild_add_executable(hbrs_object_reconstruction ros/nodes/object_reconstruction.cpp)
+#.....: HelperFunctions
+rosbuild_add_library( HelperFunctions ros/src/HelperFunctions.cpp )
+target_link_libraries( HelperFunctions ${PCL_LIBRARIES} )
+
+#......: ROS NODE :................................................................................:
+rosbuild_add_executable( hbrs_object_reconstruction ros/nodes/object_reconstruction.cpp )
 target_link_libraries( hbrs_object_reconstruction PointCloudAccumulator )
 target_link_libraries( hbrs_object_reconstruction ObjectCandidateExtractor )
+target_link_libraries( hbrs_object_reconstruction HelperFunctions )
+
+#.....: Generate Documentation :...................................................................:
+find_package(Doxygen REQUIRED)
+
+set( DOXYGEN_CONFIGURED_INPUT ${PROJECT_SOURCE_DIR}/Doxyfile )
+
+add_custom_target( Documentation ALL
+                   COMMAND ${CMAKE_COMMAND} -E echo "Building Documentation..."
+                   COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_CONFIGURED_INPUT}
+                   COMMAND ${CMAKE_COMMAND} -E echo "Done Building Documentation."
+                   WORKING_DIRECTORY ${PROJECT_SOURCE_DIR})
