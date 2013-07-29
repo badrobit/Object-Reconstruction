@@ -2,7 +2,7 @@ var NAVTREEINDEX =
 {
 "index.html":[],
 "annotated.html":[0,0],
-"class_helper_functions.html":[0,0,0],
+"class_occluded_geometry_estimation_1_1_helper_functions.html":[0,0,0],
 "class_my_point_representation.html":[0,0,1],
 "classobject__reconstruction__node.html":[0,0,2],
 "class_object_candidate_extractor.html":[0,0,3],

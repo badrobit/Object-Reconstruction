@@ -141,26 +141,29 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00043"></a>00043 <span class="preprocessor">#include &lt;pcl/filters/voxel_grid.h&gt;</span>
 <a name="l00044"></a>00044 <span class="preprocessor">#include &lt;pcl/filters/statistical_outlier_removal.h&gt;</span>
 <a name="l00045"></a>00045 
-<a name="l00050"></a>00050   <span class="keyword">typedef</span> pcl::PointXYZRGB PointT;
-<a name="l00051"></a>00051 
-<a name="l00059"></a>00059   <span class="keyword">typedef</span> pcl::PointCloud&lt;PointT&gt; PointCloud;
-<a name="l00060"></a>00060 
-<a name="l00065"></a>00065   <span class="keyword">typedef</span> pcl::PointNormal PointNormalT;
-<a name="l00066"></a>00066 
-<a name="l00071"></a>00071   <span class="keyword">typedef</span> pcl::PointCloud&lt;PointNormalT&gt; PointCloudWithNormals;
-<a name="l00072"></a>00072 
-<a name="l00077"></a><a class="code" href="class_helper_functions.html">00077</a>   <span class="keyword">class </span><a class="code" href="class_helper_functions.html" title="This class is a grouping of functions that can be accessed from any.">HelperFunctions</a>
-<a name="l00078"></a>00078   {
-<a name="l00079"></a>00079   <span class="keyword">public</span>:
-<a name="l00080"></a>00080 
-<a name="l00094"></a>00094     <span class="keyword">static</span> PointCloud <a class="code" href="class_helper_functions.html#a2e817646b20092d5f7179ba89635b50f" title="This function is responsible for pre-processing the input pointcloud before we attempt object reconst...">PreparePointCloud</a>( PointCloud input_cloud );
-<a name="l00095"></a>00095 
-<a name="l00096"></a>00096 
-<a name="l00105"></a>00105     <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="class_helper_functions.html#a4b25abbfbd620e9218b2949c758a8872" title="A function that is used to write a standard PCL pointcloud to a PointCloud Data File (PCD)...">WriteToPCD</a>( std::string file_name, PointCloud input_cloud );
-<a name="l00106"></a>00106 
-<a name="l00114"></a>00114     <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="class_helper_functions.html#a4428222439104c10e58e04958a231c37" title="Function that is used to write out multiple PointClouds to Multiple PCD Files.">WriteMultipleToPCD</a>( std::string file_name, std::vector&lt;PointCloud&gt; input_clouds );
-<a name="l00115"></a>00115   };
-<a name="l00116"></a>00116 <span class="preprocessor">#endif </span><span class="comment">/* HELPERFUNCTIONS_H_ */</span>
+<a name="l00046"></a>00046 <span class="keyword">namespace </span>OccludedGeometryEstimation
+<a name="l00047"></a>00047 {
+<a name="l00052"></a>00052   <span class="keyword">typedef</span> pcl::PointXYZRGB PointT;
+<a name="l00053"></a>00053 
+<a name="l00061"></a>00061   <span class="keyword">typedef</span> pcl::PointCloud&lt;PointT&gt; PointCloud;
+<a name="l00062"></a>00062 
+<a name="l00067"></a>00067   <span class="keyword">typedef</span> pcl::PointNormal PointNormalT;
+<a name="l00068"></a>00068 
+<a name="l00073"></a>00073   <span class="keyword">typedef</span> pcl::PointCloud&lt;PointNormalT&gt; PointCloudWithNormals;
+<a name="l00074"></a>00074 
+<a name="l00079"></a><a class="code" href="class_occluded_geometry_estimation_1_1_helper_functions.html">00079</a>   <span class="keyword">class </span><a class="code" href="class_occluded_geometry_estimation_1_1_helper_functions.html" title="This class is a grouping of functions that can be accessed from any.">HelperFunctions</a>
+<a name="l00080"></a>00080   {
+<a name="l00081"></a>00081   <span class="keyword">public</span>:
+<a name="l00082"></a>00082 
+<a name="l00096"></a>00096     <span class="keyword">static</span> PointCloud <a class="code" href="class_occluded_geometry_estimation_1_1_helper_functions.html#a1b791fa5ecdce8f72bd9e876ccb44692" title="This function is responsible for pre-processing the input pointcloud before we attempt object reconst...">PreparePointCloud</a>( PointCloud input_cloud );
+<a name="l00097"></a>00097 
+<a name="l00098"></a>00098 
+<a name="l00107"></a>00107     <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="class_occluded_geometry_estimation_1_1_helper_functions.html#a3c5696db450358453fdd9da360435ba7" title="A function that is used to write a standard PCL pointcloud to a PointCloud Data File (PCD)...">WriteToPCD</a>( std::string file_name, PointCloud input_cloud );
+<a name="l00108"></a>00108 
+<a name="l00116"></a>00116     <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="class_occluded_geometry_estimation_1_1_helper_functions.html#a99941df03975253f2c7c3624c959ebfe" title="Function that is used to write out multiple PointClouds to Multiple PCD Files.">WriteMultipleToPCD</a>( std::string file_name, std::vector&lt;PointCloud&gt; input_clouds );
+<a name="l00117"></a>00117   };
+<a name="l00118"></a>00118 }
+<a name="l00119"></a>00119 <span class="preprocessor">#endif </span><span class="comment">/* HELPERFUNCTIONS_H_ */</span>
 </pre></div></div><!-- contents -->
 </div>
 <!-- window showing the filter options -->
@@ -181,7 +184,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul>
       <li class="navelem"><b>HelperFunctions.h</b>      </li>
 
-    <li class="footer">Generated on Mon Jul 29 2013 18:11:30 for Occluded Geometry Estimation by
+    <li class="footer">Generated on Mon Jul 29 2013 18:27:47 for Occluded Geometry Estimation by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>
