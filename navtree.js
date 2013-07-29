@@ -1,9 +1,6 @@
 var NAVTREE =
 [
   [ "Occluded Geometry Estimation", "index.html", [
-    [ "Namespaces", null, [
-      [ "Namespace List", "namespaces.html", "namespaces" ]
-    ] ],
     [ "Classes", null, [
       [ "Class List", "annotated.html", "annotated" ],
       [ "Class Index", "classes.html", null ],
