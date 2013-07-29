@@ -1,0 +1,131 @@
+\hypertarget{_helper_functions_8hpp}{\section{ros/include/\-Helper\-Functions.hpp \-File \-Reference}
+\label{_helper_functions_8hpp}\index{ros/include/\-Helper\-Functions.\-hpp@{ros/include/\-Helper\-Functions.\-hpp}}
+}
+{\ttfamily \#include $<$vector$>$}\*
+{\ttfamily \#include $<$ros/ros.\-h$>$}\*
+{\ttfamily \#include $<$ros/package.\-h$>$}\*
+{\ttfamily \#include $<$sensor\-\_\-msgs/point\-\_\-cloud\-\_\-conversion.\-h$>$}\*
+{\ttfamily \#include $<$sensor\-\_\-msgs/\-Point\-Cloud2.\-h$>$}\*
+{\ttfamily \#include $<$boost/make\-\_\-shared.\-hpp$>$}\*
+{\ttfamily \#include $<$pcl/point\-\_\-types.\-h$>$}\*
+{\ttfamily \#include $<$pcl/point\-\_\-cloud.\-h$>$}\*
+{\ttfamily \#include $<$pcl/point\-\_\-representation.\-h$>$}\*
+{\ttfamily \#include $<$pcl/io/pcd\-\_\-io.\-h$>$}\*
+{\ttfamily \#include $<$pcl/filters/voxel\-\_\-grid.\-h$>$}\*
+{\ttfamily \#include $<$pcl/filters/filter.\-h$>$}\*
+{\ttfamily \#include $<$pcl/filters/extract\-\_\-indices.\-h$>$}\*
+{\ttfamily \#include $<$pcl/kdtree/kdtree.\-h$>$}\*
+{\ttfamily \#include $<$pcl/sample\-\_\-consensus/method\-\_\-types.\-h$>$}\*
+{\ttfamily \#include $<$pcl/sample\-\_\-consensus/model\-\_\-types.\-h$>$}\*
+{\ttfamily \#include $<$pcl/segmentation/sac\-\_\-segmentation.\-h$>$}\*
+{\ttfamily \#include $<$pcl/segmentation/extract\-\_\-clusters.\-h$>$}\*
+{\ttfamily \#include $<$pcl/features/normal\-\_\-3d.\-h$>$}\*
+{\ttfamily \#include $<$pcl/registration/icp.\-h$>$}\*
+{\ttfamily \#include $<$pcl/registration/icp\-\_\-nl.\-h$>$}\*
+{\ttfamily \#include $<$pcl/registration/transforms.\-h$>$}\*
+{\ttfamily \#include $<$pcl/filters/statistical\-\_\-outlier\-\_\-removal.\-h$>$}\*
+\subsection*{\-Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{_helper_functions_8hpp_a33eafffb7a0480b3f826230a0ebba532}{typedef pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B \hyperlink{_helper_functions_8hpp_a33eafffb7a0480b3f826230a0ebba532}{\-Point\-T}}\label{_helper_functions_8hpp_a33eafffb7a0480b3f826230a0ebba532}
+
+\begin{DoxyCompactList}\small\item\em \-Have all points in the project represented by pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B. \end{DoxyCompactList}\item 
+typedef \hyperlink{_helper_functions_8hpp_abb956d1047f4dd2c956fe3cb0dd0004d}{pcl\-::\-Point\-Cloud}$<$ \hyperlink{_helper_functions_8hpp_a33eafffb7a0480b3f826230a0ebba532}{\-Point\-T} $>$ \hyperlink{_helper_functions_8hpp_abb956d1047f4dd2c956fe3cb0dd0004d}{\-Point\-Cloud}
+\begin{DoxyCompactList}\small\item\em \-Have all pointclouds used in the project made up from \hyperlink{_helper_functions_8hpp_a33eafffb7a0480b3f826230a0ebba532}{\-Point\-T}. \end{DoxyCompactList}\item 
+\hypertarget{_helper_functions_8hpp_af8717e40603e7d4bcd56c56ec09aa10e}{typedef pcl\-::\-Point\-Normal \hyperlink{_helper_functions_8hpp_af8717e40603e7d4bcd56c56ec09aa10e}{\-Point\-Normal\-T}}\label{_helper_functions_8hpp_af8717e40603e7d4bcd56c56ec09aa10e}
+
+\begin{DoxyCompactList}\small\item\em \-A standard \-P\-C\-L point that also includes \-Normal \-Information for that point. \end{DoxyCompactList}\item 
+\hypertarget{_helper_functions_8hpp_a8bd43f695aeb20e077921614455eaacd}{typedef \hyperlink{_helper_functions_8hpp_abb956d1047f4dd2c956fe3cb0dd0004d}{pcl\-::\-Point\-Cloud}\*
+$<$ \hyperlink{_helper_functions_8hpp_af8717e40603e7d4bcd56c56ec09aa10e}{\-Point\-Normal\-T} $>$ \hyperlink{_helper_functions_8hpp_a8bd43f695aeb20e077921614455eaacd}{\-Point\-Cloud\-With\-Normals}}\label{_helper_functions_8hpp_a8bd43f695aeb20e077921614455eaacd}
+
+\begin{DoxyCompactList}\small\item\em \-A \-Standard \-P\-C\-L \-Point\-Cloud but where the points all contain normal information as well. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_helper_functions_8hpp_abb956d1047f4dd2c956fe3cb0dd0004d}{\-Point\-Cloud} \hyperlink{_helper_functions_8hpp_aeb4fffd64cc7f70ed4b3fb43ed82cf17}{\-Prepare\-Point\-Cloud} (\hyperlink{_helper_functions_8hpp_abb956d1047f4dd2c956fe3cb0dd0004d}{\-Point\-Cloud} input\-\_\-cloud)
+\begin{DoxyCompactList}\small\item\em \-This function is responsible for pre-\/processing the input pointcloud before we attempt object reconstruction. \end{DoxyCompactList}\item 
+bool \hyperlink{_helper_functions_8hpp_abd025f611b2c10cf21e466eaf912f2cb}{\-Write\-To\-P\-C\-D} (std\-::string file\-\_\-name, \hyperlink{_helper_functions_8hpp_abb956d1047f4dd2c956fe3cb0dd0004d}{\-Point\-Cloud} input\-\_\-cloud)
+\begin{DoxyCompactList}\small\item\em \-A function that is used to write a standard \-P\-C\-L pointcloud to a \-Point\-Cloud \-Data \-File (\-P\-C\-D). \end{DoxyCompactList}\item 
+bool \hyperlink{_helper_functions_8hpp_a2285a90e98abc64fb4c20b890f964704}{\-Write\-Multiple\-To\-P\-C\-D} (std\-::string file\-\_\-name, std\-::vector$<$ \hyperlink{_helper_functions_8hpp_abb956d1047f4dd2c956fe3cb0dd0004d}{\-Point\-Cloud} $>$ input\-\_\-clouds)
+\begin{DoxyCompactList}\small\item\em \-Function that is used to write out multiple \-Point\-Clouds to \-Multiple \-P\-C\-D \-Files. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-A container for commonly used functions for the object reconstruction program which do not belong to just one piece of functionality. 
+
+\subsection{\-Typedef \-Documentation}
+\hypertarget{_helper_functions_8hpp_abb956d1047f4dd2c956fe3cb0dd0004d}{\index{\-Helper\-Functions.\-hpp@{\-Helper\-Functions.\-hpp}!\-Point\-Cloud@{\-Point\-Cloud}}
+\index{\-Point\-Cloud@{\-Point\-Cloud}!HelperFunctions.hpp@{\-Helper\-Functions.\-hpp}}
+\subsubsection[{\-Point\-Cloud}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Point\-Cloud}}}\label{_helper_functions_8hpp_abb956d1047f4dd2c956fe3cb0dd0004d}
+
+
+\-Have all pointclouds used in the project made up from \hyperlink{_helper_functions_8hpp_a33eafffb7a0480b3f826230a0ebba532}{\-Point\-T}. 
+
+\-This representation is used to save time and type matching errors while passing around and working with point clouds. 
+
+\subsection{\-Function \-Documentation}
+\hypertarget{_helper_functions_8hpp_aeb4fffd64cc7f70ed4b3fb43ed82cf17}{\index{\-Helper\-Functions.\-hpp@{\-Helper\-Functions.\-hpp}!\-Prepare\-Point\-Cloud@{\-Prepare\-Point\-Cloud}}
+\index{\-Prepare\-Point\-Cloud@{\-Prepare\-Point\-Cloud}!HelperFunctions.hpp@{\-Helper\-Functions.\-hpp}}
+\subsubsection[{\-Prepare\-Point\-Cloud}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Point\-Cloud} {\bf \-Prepare\-Point\-Cloud} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Point\-Cloud}}]{input\-\_\-cloud}
+\end{DoxyParamCaption}
+)}}\label{_helper_functions_8hpp_aeb4fffd64cc7f70ed4b3fb43ed82cf17}
+
+
+\-This function is responsible for pre-\/processing the input pointcloud before we attempt object reconstruction. 
+
+\-It will perform both a statistical outlier removal which will take the current point cloud and remove any points that are to far removed from all of its neighbors (cleaning up noise). \-It will also perform subsamling in order to make the following computations more efficient.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em input\-\_\-cloud} & \-The point cloud which we want to perform the pre-\/processing on.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-A pre-\/processed (noise removed \& subsampled) pointcloud. 
+\end{DoxyReturn}
+\hypertarget{_helper_functions_8hpp_a2285a90e98abc64fb4c20b890f964704}{\index{\-Helper\-Functions.\-hpp@{\-Helper\-Functions.\-hpp}!\-Write\-Multiple\-To\-P\-C\-D@{\-Write\-Multiple\-To\-P\-C\-D}}
+\index{\-Write\-Multiple\-To\-P\-C\-D@{\-Write\-Multiple\-To\-P\-C\-D}!HelperFunctions.hpp@{\-Helper\-Functions.\-hpp}}
+\subsubsection[{\-Write\-Multiple\-To\-P\-C\-D}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Write\-Multiple\-To\-P\-C\-D} (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{file\-\_\-name, }
+\item[{std\-::vector$<$ {\bf \-Point\-Cloud} $>$}]{input\-\_\-clouds}
+\end{DoxyParamCaption}
+)}}\label{_helper_functions_8hpp_a2285a90e98abc64fb4c20b890f964704}
+
+
+\-Function that is used to write out multiple \-Point\-Clouds to \-Multiple \-P\-C\-D \-Files. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em file\-\_\-name} & \-Desired series of file names. \-Index will be appended to it. \\
+\hline
+{\em input\-\_\-clouds} & \-A std\-::vector that contains at least 2 \-P\-C\-L \-Point\-Cloud. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-If we where able to properly write to \-P\-C\-D files. 
+\end{DoxyReturn}
+\hypertarget{_helper_functions_8hpp_abd025f611b2c10cf21e466eaf912f2cb}{\index{\-Helper\-Functions.\-hpp@{\-Helper\-Functions.\-hpp}!\-Write\-To\-P\-C\-D@{\-Write\-To\-P\-C\-D}}
+\index{\-Write\-To\-P\-C\-D@{\-Write\-To\-P\-C\-D}!HelperFunctions.hpp@{\-Helper\-Functions.\-hpp}}
+\subsubsection[{\-Write\-To\-P\-C\-D}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Write\-To\-P\-C\-D} (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{file\-\_\-name, }
+\item[{{\bf \-Point\-Cloud}}]{input\-\_\-cloud}
+\end{DoxyParamCaption}
+)}}\label{_helper_functions_8hpp_abd025f611b2c10cf21e466eaf912f2cb}
+
+
+\-A function that is used to write a standard \-P\-C\-L pointcloud to a \-Point\-Cloud \-Data \-File (\-P\-C\-D). 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em file\-\_\-name} & \-The file name as a string that you want the \-P\-C\-D file to have. \\
+\hline
+{\em input\-\_\-cloud} & \-The \-P\-C\-L pointcloud that you want to save into an \-A\-S\-C\-I\-I \-P\-C\-D file.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-If we where able to verify if the point cloud was saved to the file properly or not. 
+\end{DoxyReturn}

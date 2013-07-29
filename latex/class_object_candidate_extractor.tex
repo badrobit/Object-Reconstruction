@@ -1,0 +1,87 @@
+\hypertarget{class_object_candidate_extractor}{\section{\-Object\-Candidate\-Extractor \-Class \-Reference}
+\label{class_object_candidate_extractor}\index{\-Object\-Candidate\-Extractor@{\-Object\-Candidate\-Extractor}}
+}
+
+
+{\ttfamily \#include $<$\-Object\-Candidate\-Extractor.\-h$>$}
+
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_object_candidate_extractor_a41916df0d27e926a337fff6e7e762010}{\hyperlink{class_object_candidate_extractor_a41916df0d27e926a337fff6e7e762010}{\-Object\-Candidate\-Extractor} ()}\label{class_object_candidate_extractor_a41916df0d27e926a337fff6e7e762010}
+
+\begin{DoxyCompactList}\small\item\em \-Responsible for initializing and setting up all resources that are required to perform object candidate extraction. \end{DoxyCompactList}\item 
+\hypertarget{class_object_candidate_extractor_ad1aa824172a7d2e6002d5d7e3104d5d3}{virtual \hyperlink{class_object_candidate_extractor_ad1aa824172a7d2e6002d5d7e3104d5d3}{$\sim$\-Object\-Candidate\-Extractor} ()}\label{class_object_candidate_extractor_ad1aa824172a7d2e6002d5d7e3104d5d3}
+
+\begin{DoxyCompactList}\small\item\em \-Standard destructor that is used to free up any memory or \-R\-O\-S connections that where created. \end{DoxyCompactList}\item 
+std\-::vector$<$ \hyperlink{_helper_functions_8hpp_abb956d1047f4dd2c956fe3cb0dd0004d}{\-Point\-Cloud} $>$ \hyperlink{class_object_candidate_extractor_a6a4adbcec19f94bc6073a4b2c2fa6f66}{\-Extract\-Candidate\-Objects} (\hyperlink{_helper_functions_8hpp_abb956d1047f4dd2c956fe3cb0dd0004d}{\-Point\-Cloud} input\-\_\-cloud)
+\begin{DoxyCompactList}\small\item\em \-This function takes in a \-P\-C\-L \-Point \-Cloud and finds any candidate objects contained in the scene. \end{DoxyCompactList}\item 
+bool \hyperlink{class_object_candidate_extractor_ab8848f6d86f7d7798ea30c2e04ae8b59}{\-Publish\-Object\-Candidates} (std\-::vector$<$ \hyperlink{_helper_functions_8hpp_abb956d1047f4dd2c956fe3cb0dd0004d}{\-Point\-Cloud} $>$ input\-\_\-vector)
+\begin{DoxyCompactList}\small\item\em \-Function that takes in multiple object candidate point clouds and creates a single ros message for them. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_object_candidate_extractor_a9a0da45687232f96360f76175a3cb097}{ros\-::\-Node\-Handle {\bfseries m\-\_\-node\-\_\-handler}}\label{class_object_candidate_extractor_a9a0da45687232f96360f76175a3cb097}
+
+\item 
+\hypertarget{class_object_candidate_extractor_a3b5cd0451266eafe0aba2d950a7434e8}{ros\-::\-Publisher {\bfseries m\-\_\-object\-\_\-candidates\-\_\-publisher}}\label{class_object_candidate_extractor_a3b5cd0451266eafe0aba2d950a7434e8}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\begin{DoxyDate}{\-Date}
+\-Jul 28, 2013 
+\end{DoxyDate}
+\begin{DoxyAuthor}{\-Author}
+\-Matthew \-S \-Roscoe \href{http://matroscoe.ca}{\tt http\-://matroscoe.\-ca}
+\end{DoxyAuthor}
+\-This class is responsible for finding groups of points in a point cloud which could represent real world objects. 
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{class_object_candidate_extractor_a6a4adbcec19f94bc6073a4b2c2fa6f66}{\index{\-Object\-Candidate\-Extractor@{\-Object\-Candidate\-Extractor}!\-Extract\-Candidate\-Objects@{\-Extract\-Candidate\-Objects}}
+\index{\-Extract\-Candidate\-Objects@{\-Extract\-Candidate\-Objects}!ObjectCandidateExtractor@{\-Object\-Candidate\-Extractor}}
+\subsubsection[{\-Extract\-Candidate\-Objects}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ {\bf \-Point\-Cloud} $>$ {\bf \-Object\-Candidate\-Extractor\-::\-Extract\-Candidate\-Objects} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Point\-Cloud}}]{input\-\_\-cloud}
+\end{DoxyParamCaption}
+)}}\label{class_object_candidate_extractor_a6a4adbcec19f94bc6073a4b2c2fa6f66}
+
+
+\-This function takes in a \-P\-C\-L \-Point \-Cloud and finds any candidate objects contained in the scene. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em input\-\_\-cloud} & \-The \-P\-C\-L \-Point\-Cloud that will be checked for candidate objects. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-A \-Vector which contains all of the candidate objects. 
+\end{DoxyReturn}
+\hypertarget{class_object_candidate_extractor_ab8848f6d86f7d7798ea30c2e04ae8b59}{\index{\-Object\-Candidate\-Extractor@{\-Object\-Candidate\-Extractor}!\-Publish\-Object\-Candidates@{\-Publish\-Object\-Candidates}}
+\index{\-Publish\-Object\-Candidates@{\-Publish\-Object\-Candidates}!ObjectCandidateExtractor@{\-Object\-Candidate\-Extractor}}
+\subsubsection[{\-Publish\-Object\-Candidates}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Object\-Candidate\-Extractor\-::\-Publish\-Object\-Candidates} (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ {\bf \-Point\-Cloud} $>$}]{input\-\_\-vector}
+\end{DoxyParamCaption}
+)}}\label{class_object_candidate_extractor_ab8848f6d86f7d7798ea30c2e04ae8b59}
+
+
+\-Function that takes in multiple object candidate point clouds and creates a single ros message for them. 
+
+\-This function takes in a \-S\-T\-D \-Vector of \-P\-C\-L \-Point \-Clouds where each cloud is a candidate object. \-It will then combine them all into one single \-S\-T\-D\-\_\-\-M\-S\-G\-S\-::\-Point\-Cloud2 message that can be published through \-R\-O\-S.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em input\-\_\-vector} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+
+\end{DoxyReturn}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+ros/include/\-Object\-Candidate\-Extractor.\-h\item 
+ros/src/\-Object\-Candidate\-Extractor.\-cpp\end{DoxyCompactItemize}
