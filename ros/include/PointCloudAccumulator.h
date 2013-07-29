@@ -40,17 +40,17 @@ public:
 
   private:
   /**
-   * \brief Takes in two \ref PointClouds and merges them together.
+   * \brief Takes in two PointClouds and merges them together.
    * \details
    *
-   * @param cloud_src Input \ref PointCloud to be merged into the \ref cloud_tgt
-   * @param cloud_tgt Master \ref PointCloud that the \ref cloud_srd will be merged into.
-   * @param output The two \ref PointClouds merged together.
-   * @param final_transform An \ref Eigen tranformation matrix
-   * @param downsample Do you want to downsample the source and target \ref PointClouds
+   * @param cloud_src Input PointCloud to be merged into the cloud_tgt
+   * @param cloud_tgt Master PointCloud that the cloud_src will be merged into.
+   * @param output The two PointClouds merged together.
+   * @param final_transform An Eigen tranformation matrix
+   * @param downsample Do you want to downsample the source and target PointClouds
    */
   void AlignClouds( const PointCloud::Ptr cloud_src, const PointCloud::Ptr cloud_tgt,
-                        PointCloud::Ptr output, Eigen::Matrix4f &final_transform, bool downsample = false );
+                    PointCloud::Ptr output, Eigen::Matrix4f &final_transform, bool downsample = false );
 
   /**
    * \brief The function that is called every time that ROS gets a notification that there is a new
