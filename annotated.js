@@ -1,6 +1,6 @@
 var annotated =
 [
-    [ "OccludedGeometryEstimation::HelperFunctions", "class_occluded_geometry_estimation_1_1_helper_functions.html", "class_occluded_geometry_estimation_1_1_helper_functions" ],
+    [ "HelperFunctions", "class_helper_functions.html", "class_helper_functions" ],
     [ "MyPointRepresentation", "class_my_point_representation.html", "class_my_point_representation" ],
     [ "object_reconstruction_node", "classobject__reconstruction__node.html", "classobject__reconstruction__node" ],
     [ "ObjectCandidateExtractor", "class_object_candidate_extractor.html", "class_object_candidate_extractor" ],
