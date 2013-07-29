@@ -109,56 +109,54 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00011"></a>00011 <span class="preprocessor">#include &lt;HelperFunctions.h&gt;</span>
 <a name="l00012"></a>00012 <span class="preprocessor">#include &lt;hbrs_object_reconstruction/AccumulatePointCloud.h&gt;</span>
 <a name="l00013"></a>00013 
-<a name="l00014"></a><a class="code" href="class_point_cloud_accumulator.html">00014</a> <span class="keyword">class </span><a class="code" href="class_point_cloud_accumulator.html">PointCloudAccumulator</a>
-<a name="l00015"></a>00015 {
-<a name="l00016"></a>00016 <span class="keyword">public</span>:
-<a name="l00017"></a>00017 
-<a name="l00018"></a>00018         <a class="code" href="class_point_cloud_accumulator.html">PointCloudAccumulator</a>();
-<a name="l00019"></a>00019         <span class="keyword">virtual</span> ~<a class="code" href="class_point_cloud_accumulator.html">PointCloudAccumulator</a>();
-<a name="l00020"></a>00020   PointCloud AccumulatePointClouds( <span class="keywordtype">int</span> accumulation_time );
-<a name="l00021"></a>00021 
-<a name="l00022"></a>00022 <span class="keyword">private</span>:
-<a name="l00023"></a>00023 
-<a name="l00024"></a>00024         <span class="keywordtype">void</span> AlignClouds( <span class="keyword">const</span> PointCloud::Ptr cloud_src, <span class="keyword">const</span> PointCloud::Ptr cloud_tgt,
-<a name="l00025"></a>00025                                       PointCloud::Ptr output, Eigen::Matrix4f &amp;final_transform, <span class="keywordtype">bool</span> downsample = <span class="keyword">false</span> );
-<a name="l00026"></a>00026 
-<a name="l00027"></a>00027         <span class="keywordtype">void</span> PointCloudCallback( <span class="keyword">const</span> sensor_msgs::PointCloud2::ConstPtr &amp;ros_cloud );
-<a name="l00028"></a>00028 
-<a name="l00029"></a>00029 <span class="keyword">protected</span>:
+<a name="l00018"></a><a class="code" href="class_point_cloud_accumulator.html">00018</a> <span class="keyword">class </span><a class="code" href="class_point_cloud_accumulator.html" title="This class takes two point clouds and merges them together.">PointCloudAccumulator</a>
+<a name="l00019"></a>00019 {
+<a name="l00020"></a>00020 <span class="keyword">public</span>:
+<a name="l00024"></a>00024   <a class="code" href="class_point_cloud_accumulator.html#a8eacc283828c55b809058b54fd082433" title="Standard Constructor.">PointCloudAccumulator</a>();
+<a name="l00025"></a>00025 
+<a name="l00029"></a>00029   <span class="keyword">virtual</span> <a class="code" href="class_point_cloud_accumulator.html#a48db4ff8ad89f27563691af475d8bc3a" title="Standard Destructor.">~PointCloudAccumulator</a>();
 <a name="l00030"></a>00030 
-<a name="l00031"></a>00031   <span class="keywordtype">int</span>                 m_point_cloud_count; 
-<a name="l00032"></a>00032   std::string         m_frame_id;
-<a name="l00033"></a>00033   Eigen::Matrix4f     m_global_transform; 
-<a name="l00034"></a>00034   PointCloud          m_accumulated_cloud; 
-<a name="l00035"></a>00035 
-<a name="l00036"></a>00036   ros::NodeHandle     m_node_handler; 
-<a name="l00037"></a>00037   ros::Publisher      m_accumulated_point_cloud_publisher; 
-<a name="l00038"></a>00038 
-<a name="l00039"></a>00039 };
+<a name="l00039"></a>00039   PointCloud <a class="code" href="class_point_cloud_accumulator.html#a24d93cde9ce3cce292779934f2b97ede" title="Public interface that accumulates point clouds together.">AccumulatePointClouds</a>( <span class="keywordtype">int</span> accumulation_time );
 <a name="l00040"></a>00040 
-<a name="l00041"></a>00041 <span class="comment">// Define a new point representation for &lt; x, y, z, curvature &gt;</span>
-<a name="l00042"></a><a class="code" href="class_my_point_representation.html">00042</a> <span class="keyword">class </span><a class="code" href="class_my_point_representation.html">MyPointRepresentation</a> : <span class="keyword">public</span> pcl::PointRepresentation &lt;PointNormalT&gt;
-<a name="l00043"></a>00043 {
-<a name="l00044"></a>00044   <span class="keyword">using</span> pcl::PointRepresentation&lt;PointNormalT&gt;::nr_dimensions_;
-<a name="l00045"></a>00045 <span class="keyword">public</span>:
-<a name="l00046"></a>00046   <a class="code" href="class_my_point_representation.html">MyPointRepresentation</a> ()
-<a name="l00047"></a>00047   {
-<a name="l00048"></a>00048     <span class="comment">// Define the number of dimensions</span>
-<a name="l00049"></a>00049     nr_dimensions_ = 4;
-<a name="l00050"></a>00050   }
-<a name="l00051"></a>00051 
-<a name="l00052"></a>00052   <span class="comment">// Override the copyToFloatArray method to define our feature vector</span>
-<a name="l00053"></a>00053   <span class="keyword">virtual</span> <span class="keywordtype">void</span> copyToFloatArray (<span class="keyword">const</span> PointNormalT &amp;p, <span class="keywordtype">float</span> * out)<span class="keyword"> const</span>
-<a name="l00054"></a>00054 <span class="keyword">  </span>{
-<a name="l00055"></a>00055     <span class="comment">// &lt; x, y, z, curvature &gt;</span>
-<a name="l00056"></a>00056     out[0] = p.x;
-<a name="l00057"></a>00057     out[1] = p.y;
-<a name="l00058"></a>00058     out[2] = p.z;
-<a name="l00059"></a>00059     out[3] = p.curvature;
-<a name="l00060"></a>00060   }
-<a name="l00061"></a>00061 };
+<a name="l00041"></a>00041   <span class="keyword">private</span>:
+<a name="l00052"></a>00052   <span class="keywordtype">void</span> AlignClouds( <span class="keyword">const</span> PointCloud::Ptr cloud_src, <span class="keyword">const</span> PointCloud::Ptr cloud_tgt,
+<a name="l00053"></a>00053                         PointCloud::Ptr output, Eigen::Matrix4f &amp;final_transform, <span class="keywordtype">bool</span> downsample = <span class="keyword">false</span> );
+<a name="l00054"></a>00054 
+<a name="l00059"></a>00059   <span class="keywordtype">void</span> PointCloudCallback( <span class="keyword">const</span> sensor_msgs::PointCloud2::ConstPtr &amp;ros_cloud );
+<a name="l00060"></a>00060 
+<a name="l00061"></a>00061 <span class="keyword">protected</span>:
 <a name="l00062"></a>00062 
-<a name="l00063"></a>00063 <span class="preprocessor">#endif </span><span class="comment">/* POINTCLOUDACCUMULATOR_H_ */</span>
+<a name="l00064"></a><a class="code" href="class_point_cloud_accumulator.html#a6ebb0ca53506f1ae2d0f6e411e2dff66">00064</a>   <span class="keywordtype">int</span>                 <a class="code" href="class_point_cloud_accumulator.html#a6ebb0ca53506f1ae2d0f6e411e2dff66" title="Total number of point clouds that have been merged.">m_point_cloud_count</a>; 
+<a name="l00066"></a><a class="code" href="class_point_cloud_accumulator.html#af8ef35b00c6d547b8d3fa89ad8a8b49a">00066</a>   std::string         <a class="code" href="class_point_cloud_accumulator.html#af8ef35b00c6d547b8d3fa89ad8a8b49a" title="The reference FrameID to merge the PointCloud into.">m_frame_id</a>;
+<a name="l00069"></a><a class="code" href="class_point_cloud_accumulator.html#a7ea0dd4449475e6939cefbdb0fd260c5">00069</a>   Eigen::Matrix4f     <a class="code" href="class_point_cloud_accumulator.html#a7ea0dd4449475e6939cefbdb0fd260c5" title="The global transformation matrix for moving the target cloud into the reference frame of the source P...">m_global_transform</a>;
+<a name="l00071"></a><a class="code" href="class_point_cloud_accumulator.html#a0db3c1a8e6de37bcb25c260626d63ff0">00071</a>   PointCloud          <a class="code" href="class_point_cloud_accumulator.html#a0db3c1a8e6de37bcb25c260626d63ff0" title="The resulting accumulated PointCloud.">m_accumulated_cloud</a>; 
+<a name="l00073"></a><a class="code" href="class_point_cloud_accumulator.html#ac9070e4cb82ddf04bb50cc2492e597ae">00073</a>   ros::NodeHandle     <a class="code" href="class_point_cloud_accumulator.html#ac9070e4cb82ddf04bb50cc2492e597ae" title="ROS Node Handler for the PointCloudAccumulator.">m_node_handler</a>; 
+<a name="l00075"></a><a class="code" href="class_point_cloud_accumulator.html#a117cbef73e39daeda50c32212a3cc603">00075</a>   ros::Publisher      <a class="code" href="class_point_cloud_accumulator.html#a117cbef73e39daeda50c32212a3cc603" title="ROS Publisher for the completed accumulated PointCloud.">m_accumulated_point_cloud_publisher</a>; 
+<a name="l00076"></a>00076 };
+<a name="l00077"></a>00077 
+<a name="l00078"></a>00078 <span class="comment">// Define a new point representation for &lt; x, y, z, curvature &gt;</span>
+<a name="l00079"></a><a class="code" href="class_my_point_representation.html">00079</a> <span class="keyword">class </span><a class="code" href="class_my_point_representation.html">MyPointRepresentation</a> : <span class="keyword">public</span> pcl::PointRepresentation &lt;PointNormalT&gt;
+<a name="l00080"></a>00080 {
+<a name="l00081"></a>00081   <span class="keyword">using</span> pcl::PointRepresentation&lt;PointNormalT&gt;::nr_dimensions_;
+<a name="l00082"></a>00082 <span class="keyword">public</span>:
+<a name="l00083"></a>00083   <a class="code" href="class_my_point_representation.html">MyPointRepresentation</a> ()
+<a name="l00084"></a>00084   {
+<a name="l00085"></a>00085     <span class="comment">// Define the number of dimensions</span>
+<a name="l00086"></a>00086     nr_dimensions_ = 4;
+<a name="l00087"></a>00087   }
+<a name="l00088"></a>00088 
+<a name="l00089"></a>00089   <span class="comment">// Override the copyToFloatArray method to define our feature vector</span>
+<a name="l00090"></a>00090   <span class="keyword">virtual</span> <span class="keywordtype">void</span> copyToFloatArray (<span class="keyword">const</span> PointNormalT &amp;p, <span class="keywordtype">float</span> * out)<span class="keyword"> const</span>
+<a name="l00091"></a>00091 <span class="keyword">  </span>{
+<a name="l00092"></a>00092     <span class="comment">// &lt; x, y, z, curvature &gt;</span>
+<a name="l00093"></a>00093     out[0] = p.x;
+<a name="l00094"></a>00094     out[1] = p.y;
+<a name="l00095"></a>00095     out[2] = p.z;
+<a name="l00096"></a>00096     out[3] = p.curvature;
+<a name="l00097"></a>00097   }
+<a name="l00098"></a>00098 };
+<a name="l00099"></a>00099 
+<a name="l00100"></a>00100 <span class="preprocessor">#endif </span><span class="comment">/* POINTCLOUDACCUMULATOR_H_ */</span>
 </pre></div></div><!-- contents -->
 </div>
 <!-- window showing the filter options -->
@@ -179,7 +177,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul>
       <li class="navelem"><b>PointCloudAccumulator.h</b>      </li>
 
-    <li class="footer">Generated on Mon Jul 29 2013 19:24:15 for Occluded Geometry Estimation by
+    <li class="footer">Generated on Mon Jul 29 2013 21:17:20 for Occluded Geometry Estimation by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>
