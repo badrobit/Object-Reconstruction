@@ -724,7 +724,8 @@ EXCLUDE                = /home/badrobot/ros_workspace/hbrs_object_reconstruction
                          srv_gen \
                          lib \
                          srv \
-                         src
+                         src \
+                         build
 
 # The EXCLUDE_SYMLINKS tag can be used to select whether or not files or 
 # directories that are symbolic links (a Unix file system feature) are excluded 
