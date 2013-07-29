@@ -7,5 +7,5 @@ var searchData=
   ['m_5fnode_5fhandler',['m_node_handler',['../class_object_candidate_extractor.html#a9a0da45687232f96360f76175a3cb097',1,'ObjectCandidateExtractor::m_node_handler()'],['../class_point_cloud_accumulator.html#ac9070e4cb82ddf04bb50cc2492e597ae',1,'PointCloudAccumulator::m_node_handler()']]],
   ['m_5fobject_5fcandidates_5fpublisher',['m_object_candidates_publisher',['../class_object_candidate_extractor.html#a3b5cd0451266eafe0aba2d950a7434e8',1,'ObjectCandidateExtractor']]],
   ['m_5fpoint_5fcloud_5fcount',['m_point_cloud_count',['../class_point_cloud_accumulator.html#a6ebb0ca53506f1ae2d0f6e411e2dff66',1,'PointCloudAccumulator']]],
-  ['mypointrepresentation',['MyPointRepresentation',['../class_my_point_representation.html',1,'']]]
+  ['mypointrepresentation',['MyPointRepresentation',['../class_my_point_representation.html',1,'MyPointRepresentation'],['../class_my_point_representation.html#ad3ef97432d5cd4a26e64d4b72507d83f',1,'MyPointRepresentation::MyPointRepresentation()']]]
 ];

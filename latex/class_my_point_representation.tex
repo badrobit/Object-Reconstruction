@@ -1,12 +1,57 @@
 \hypertarget{class_my_point_representation}{\section{\-My\-Point\-Representation \-Class \-Reference}
 \label{class_my_point_representation}\index{\-My\-Point\-Representation@{\-My\-Point\-Representation}}
 }
+
+
+\-A new representation of \-Point\-Clouds to include \{\-X,\-Y,\-Z,\-Curvature\} information.  
+
+
 \subsection*{\-Public \-Member \-Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_my_point_representation_adaf372e3a1093398b90a3216494e8a1d}{virtual void {\bfseries copy\-To\-Float\-Array} (const \-Point\-Normal\-T \&p, float $\ast$out) const }\label{class_my_point_representation_adaf372e3a1093398b90a3216494e8a1d}
+\hyperlink{class_my_point_representation_ad3ef97432d5cd4a26e64d4b72507d83f}{\-My\-Point\-Representation} ()
+\begin{DoxyCompactList}\small\item\em \-Standard constructor. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_my_point_representation_ae06ba2388aa5389a76adb967f66cd335}{copy\-To\-Float\-Array} (const \-Point\-Normal\-T \&point\-\_\-in, float $\ast$out) const 
+\begin{DoxyCompactList}\small\item\em \-Override the copy\-To\-Float\-Array method so that we can define the feature vector for this kind of point cloud. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
-\end{DoxyCompactItemize}
+
+\subsection{\-Detailed \-Description}
+\-A new representation of \-Point\-Clouds to include \{\-X,\-Y,\-Z,\-Curvature\} information. 
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{class_my_point_representation_ad3ef97432d5cd4a26e64d4b72507d83f}{\index{\-My\-Point\-Representation@{\-My\-Point\-Representation}!\-My\-Point\-Representation@{\-My\-Point\-Representation}}
+\index{\-My\-Point\-Representation@{\-My\-Point\-Representation}!MyPointRepresentation@{\-My\-Point\-Representation}}
+\subsubsection[{\-My\-Point\-Representation}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-My\-Point\-Representation\-::\-My\-Point\-Representation} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{class_my_point_representation_ad3ef97432d5cd4a26e64d4b72507d83f}
+
+
+\-Standard constructor. 
+
+\-Set the number of dimensions for this \-P\-C\-L\-::\-Point representation to 4. 
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{class_my_point_representation_ae06ba2388aa5389a76adb967f66cd335}{\index{\-My\-Point\-Representation@{\-My\-Point\-Representation}!copy\-To\-Float\-Array@{copy\-To\-Float\-Array}}
+\index{copy\-To\-Float\-Array@{copy\-To\-Float\-Array}!MyPointRepresentation@{\-My\-Point\-Representation}}
+\subsubsection[{copy\-To\-Float\-Array}]{\setlength{\rightskip}{0pt plus 5cm}virtual void {\bf \-My\-Point\-Representation\-::copy\-To\-Float\-Array} (
+\begin{DoxyParamCaption}
+\item[{const \-Point\-Normal\-T \&}]{point\-\_\-in, }
+\item[{float $\ast$}]{out}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline, virtual\mbox{]}}}}\label{class_my_point_representation_ae06ba2388aa5389a76adb967f66cd335}
+
+
+\-Override the copy\-To\-Float\-Array method so that we can define the feature vector for this kind of point cloud. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em point\-\_\-in} & \-Input \-P\-C\-L\-::\-Point which includes normal information. \\
+\hline
+{\em out} & floating point representation of \{x,y,z\} and the curvature of the \-Point. \\
+\hline
+\end{DoxyParams}
 
 
 \-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}

@@ -101,13 +101,77 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <!-- doxytag: class="MyPointRepresentation" -->
+<p>A new representation of PointClouds to include {X,Y,Z,Curvature} information.  
+ <a href="class_my_point_representation.html#details">More...</a></p>
+
 <p><a href="class_my_point_representation-members.html">List of all members.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adaf372e3a1093398b90a3216494e8a1d"></a><!-- doxytag: member="MyPointRepresentation::copyToFloatArray" ref="adaf372e3a1093398b90a3216494e8a1d" args="(const PointNormalT &amp;p, float *out) const " -->
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>copyToFloatArray</b> (const PointNormalT &amp;p, float *out) const </td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_my_point_representation.html#ad3ef97432d5cd4a26e64d4b72507d83f">MyPointRepresentation</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Standard constructor.  <a href="#ad3ef97432d5cd4a26e64d4b72507d83f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_my_point_representation.html#ae06ba2388aa5389a76adb967f66cd335">copyToFloatArray</a> (const PointNormalT &amp;point_in, float *out) const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Override the copyToFloatArray method so that we can define the feature vector for this kind of point cloud.  <a href="#ae06ba2388aa5389a76adb967f66cd335"></a><br/></td></tr>
 </table>
+<hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
+<div class="textblock"><p>A new representation of PointClouds to include {X,Y,Z,Curvature} information. </p>
+</div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="ad3ef97432d5cd4a26e64d4b72507d83f"></a><!-- doxytag: member="MyPointRepresentation::MyPointRepresentation" ref="ad3ef97432d5cd4a26e64d4b72507d83f" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_my_point_representation.html#ad3ef97432d5cd4a26e64d4b72507d83f">MyPointRepresentation::MyPointRepresentation</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Standard constructor. </p>
+<p>Set the number of dimensions for this PCL::Point representation to 4. </p>
+
+</div>
+</div>
+<hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="ae06ba2388aa5389a76adb967f66cd335"></a><!-- doxytag: member="MyPointRepresentation::copyToFloatArray" ref="ae06ba2388aa5389a76adb967f66cd335" args="(const PointNormalT &amp;point_in, float *out) const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void <a class="el" href="class_my_point_representation.html#ae06ba2388aa5389a76adb967f66cd335">MyPointRepresentation::copyToFloatArray</a> </td>
+          <td>(</td>
+          <td class="paramtype">const PointNormalT &amp;&#160;</td>
+          <td class="paramname"><em>point_in</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>out</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const<code> [inline, virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Override the copyToFloatArray method so that we can define the feature vector for this kind of point cloud. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">point_in</td><td>Input PCL::Point which includes normal information. </td></tr>
+    <tr><td class="paramname">out</td><td>floating point representation of {x,y,z} and the curvature of the Point. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>ros/include/<a class="el" href="_point_cloud_accumulator_8h_source.html">PointCloudAccumulator.h</a></li>
 </ul>
@@ -131,7 +195,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>copyToFloatAr
     <ul>
       <li class="navelem"><a class="el" href="class_my_point_representation.html">MyPointRepresentation</a>      </li>
 
-    <li class="footer">Generated on Mon Jul 29 2013 21:17:20 for Occluded Geometry Estimation by
+    <li class="footer">Generated on Mon Jul 29 2013 21:37:53 for Occluded Geometry Estimation by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>
