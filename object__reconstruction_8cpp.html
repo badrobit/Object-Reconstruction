@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>Occluded Geometry Estimation: File Members</title>
+<title>Occluded Geometry Estimation: ros/nodes/object_reconstruction.cpp File Reference</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -75,13 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li class="current"><a href="globals.html"><span>File&#160;Members</span></a></li>
-    </ul>
-  </div>
-  <div id="navrow3" class="tabs2">
-    <ul class="tablist">
-      <li><a href="globals.html"><span>All</span></a></li>
-      <li class="current"><a href="globals_func.html"><span>Functions</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 </div>
@@ -95,16 +89,81 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
 </div>
 <script type="text/javascript">
-  initNavTree('globals_func.html','');
+  initNavTree('object__reconstruction_8cpp.html','');
 </script>
 <div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle">
+<div class="title">ros/nodes/object_reconstruction.cpp File Reference</div>  </div>
+</div><!--header-->
 <div class="contents">
-&#160;<ul>
-<li>main()
-: <a class="el" href="object__reconstruction_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">object_reconstruction.cpp</a>
-</li>
-</ul>
+<div class="textblock"><div class="dynheader">
+Include dependency graph for object_reconstruction.cpp:</div>
+<div class="dyncontent">
+<div class="center"><img src="object__reconstruction_8cpp__incl.png" border="0" usemap="#ros_2nodes_2object__reconstruction_8cpp" alt=""/></div>
+<map name="ros_2nodes_2object__reconstruction_8cpp" id="ros_2nodes_2object__reconstruction_8cpp">
+<area shape="rect" id="node3" href="_helper_functions_8h_source.html" title="HelperFunctions.h" alt="" coords="1761,160,1889,189"/><area shape="rect" id="node51" href="_point_cloud_accumulator_8h_source.html" title="PointCloudAccumulator.h" alt="" coords="1965,83,2136,112"/><area shape="rect" id="node56" href="_object_candidate_extractor_8h_source.html" title="ObjectCandidateExtractor.h" alt="" coords="1760,83,1941,112"/></map>
+</div>
+</div><table class="memberdecls">
+<tr><td colspan="2"><h2><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classobject__reconstruction__node.html">object_reconstruction_node</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This class is responisble for handeling everything that is related to the object reconstruction.  <a href="classobject__reconstruction__node.html#details">More...</a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object__reconstruction_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a> (int argc, char **argv)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the main class for the object reconstruction. It is responsible for starting the processing and launching the object reconstruction node.  <a href="#a3c04138a5bfe5d72780bb7e82a18e627"></a><br/></td></tr>
+</table>
+<hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
+<div class="textblock"><dl class="author"><dt><b>Author:</b></dt><dd>Matthew S Roscoe </dd></dl>
+<dl class="date"><dt><b>Date:</b></dt><dd>July 30th 2013 </dd></dl>
+<dl class="copyright"><dt><b>Copyright:</b></dt><dd>GNU Public License. </dd></dl>
+</div><hr/><h2>Function Documentation</h2>
+<a class="anchor" id="a3c04138a5bfe5d72780bb7e82a18e627"></a><!-- doxytag: member="object_reconstruction.cpp::main" ref="a3c04138a5bfe5d72780bb7e82a18e627" args="(int argc, char **argv)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="object__reconstruction_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a> </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>argv</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>This is the main class for the object reconstruction. It is responsible for starting the processing and launching the object reconstruction node. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">argc</td><td>The input arguments as a std::string </td></tr>
+    <tr><td class="paramname">argv</td><td>The number of input arguments. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Overall program success status. </dd></dl>
+<p>Initialize this ROS node.</p>
+<p>Create an instance of the object reconstruction.</p>
+<p>Start the ROS processing for this node. </p>
+
+</div>
+</div>
 </div><!-- contents -->
+</div>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -119,9 +178,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-</div>
   <div id="nav-path" class="navpath">
     <ul>
+      <li class="navelem"><a class="el" href="object__reconstruction_8cpp.html">object_reconstruction.cpp</a>      </li>
 
     <li class="footer">Generated on Mon Jul 29 2013 21:54:03 for Occluded Geometry Estimation by
     <a href="http://www.doxygen.org/index.html">

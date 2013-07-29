@@ -75,6 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 </div>
@@ -97,28 +98,28 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
-<a name="l00007"></a>00007 <span class="preprocessor">#ifndef OBJECTCANDIDATEEXTRACTOR_H_</span>
-<a name="l00008"></a>00008 <span class="preprocessor"></span><span class="preprocessor">#define OBJECTCANDIDATEEXTRACTOR_H_</span>
-<a name="l00009"></a>00009 <span class="preprocessor"></span>
-<a name="l00010"></a>00010 <span class="preprocessor">#include &lt;HelperFunctions.h&gt;</span>
-<a name="l00011"></a>00011 
-<a name="l00017"></a><a class="code" href="class_object_candidate_extractor.html">00017</a> <span class="keyword">class </span><a class="code" href="class_object_candidate_extractor.html">ObjectCandidateExtractor</a>
-<a name="l00018"></a>00018 {
-<a name="l00019"></a>00019 <span class="keyword">public</span>:
-<a name="l00024"></a>00024   <a class="code" href="class_object_candidate_extractor.html#a41916df0d27e926a337fff6e7e762010" title="Responsible for initializing and setting up all resources that are required to perform object candida...">ObjectCandidateExtractor</a>();
-<a name="l00025"></a>00025 
-<a name="l00030"></a>00030   <span class="keyword">virtual</span> <a class="code" href="class_object_candidate_extractor.html#ad1aa824172a7d2e6002d5d7e3104d5d3" title="Standard destructor that is used to free up any memory or ROS connections that where created...">~ObjectCandidateExtractor</a>();
-<a name="l00031"></a>00031 
-<a name="l00039"></a>00039   std::vector&lt; PointCloud &gt; <a class="code" href="class_object_candidate_extractor.html#a6a4adbcec19f94bc6073a4b2c2fa6f66" title="This function takes in a PCL Point Cloud and finds any candidate objects contained in the scene...">ExtractCandidateObjects</a>( PointCloud input_cloud );
-<a name="l00040"></a>00040 
-<a name="l00052"></a>00052   <span class="keywordtype">bool</span> <a class="code" href="class_object_candidate_extractor.html#ab8848f6d86f7d7798ea30c2e04ae8b59" title="Function that takes in multiple object candidate point clouds and creates a single ros message for th...">PublishObjectCandidates</a>( std::vector&lt; PointCloud &gt; input_vector );
-<a name="l00053"></a>00053 
-<a name="l00054"></a>00054 <span class="keyword">protected</span>:
-<a name="l00056"></a><a class="code" href="class_object_candidate_extractor.html#a9a0da45687232f96360f76175a3cb097">00056</a>   ros::NodeHandle   <a class="code" href="class_object_candidate_extractor.html#a9a0da45687232f96360f76175a3cb097" title="Node Handler for the ObjectCandidateExtractor class.">m_node_handler</a>;
-<a name="l00058"></a><a class="code" href="class_object_candidate_extractor.html#a3b5cd0451266eafe0aba2d950a7434e8">00058</a>   ros::Publisher    <a class="code" href="class_object_candidate_extractor.html#a3b5cd0451266eafe0aba2d950a7434e8" title="A ROS publisher for the compiled object candidates.">m_object_candidates_publisher</a>;
-<a name="l00059"></a>00059 };
-<a name="l00060"></a>00060 
-<a name="l00061"></a>00061 <span class="preprocessor">#endif </span><span class="comment">/* OBJECTCANDIDATEEXTRACTOR_H_ */</span>
+<a name="l00008"></a>00008 <span class="preprocessor">#ifndef OBJECTCANDIDATEEXTRACTOR_H_</span>
+<a name="l00009"></a>00009 <span class="preprocessor"></span><span class="preprocessor">#define OBJECTCANDIDATEEXTRACTOR_H_</span>
+<a name="l00010"></a>00010 <span class="preprocessor"></span>
+<a name="l00011"></a>00011 <span class="preprocessor">#include &lt;HelperFunctions.h&gt;</span>
+<a name="l00012"></a>00012 
+<a name="l00019"></a><a class="code" href="class_object_candidate_extractor.html">00019</a> <span class="keyword">class </span><a class="code" href="class_object_candidate_extractor.html" title="This class is responsible for finding groups of points in a point cloud which could represent real wo...">ObjectCandidateExtractor</a>
+<a name="l00020"></a>00020 {
+<a name="l00021"></a>00021 <span class="keyword">public</span>:
+<a name="l00026"></a>00026   <a class="code" href="class_object_candidate_extractor.html#a41916df0d27e926a337fff6e7e762010" title="Responsible for initializing and setting up all resources that are required to perform object candida...">ObjectCandidateExtractor</a>();
+<a name="l00027"></a>00027 
+<a name="l00032"></a>00032   <span class="keyword">virtual</span> <a class="code" href="class_object_candidate_extractor.html#ad1aa824172a7d2e6002d5d7e3104d5d3" title="Standard destructor that is used to free up any memory or ROS connections that where created...">~ObjectCandidateExtractor</a>();
+<a name="l00033"></a>00033 
+<a name="l00041"></a>00041   std::vector&lt; PointCloud &gt; <a class="code" href="class_object_candidate_extractor.html#a6a4adbcec19f94bc6073a4b2c2fa6f66" title="This function takes in a PCL Point Cloud and finds any candidate objects contained in the scene...">ExtractCandidateObjects</a>( PointCloud input_cloud );
+<a name="l00042"></a>00042 
+<a name="l00054"></a>00054   <span class="keywordtype">bool</span> <a class="code" href="class_object_candidate_extractor.html#ab8848f6d86f7d7798ea30c2e04ae8b59" title="Function that takes in multiple object candidate point clouds and creates a single ros message for th...">PublishObjectCandidates</a>( std::vector&lt; PointCloud &gt; input_vector );
+<a name="l00055"></a>00055 
+<a name="l00056"></a>00056 <span class="keyword">protected</span>:
+<a name="l00058"></a><a class="code" href="class_object_candidate_extractor.html#a9a0da45687232f96360f76175a3cb097">00058</a>   ros::NodeHandle   <a class="code" href="class_object_candidate_extractor.html#a9a0da45687232f96360f76175a3cb097" title="Node Handler for the ObjectCandidateExtractor class.">m_node_handler</a>;
+<a name="l00060"></a><a class="code" href="class_object_candidate_extractor.html#a3b5cd0451266eafe0aba2d950a7434e8">00060</a>   ros::Publisher    <a class="code" href="class_object_candidate_extractor.html#a3b5cd0451266eafe0aba2d950a7434e8" title="A ROS publisher for the compiled object candidates.">m_object_candidates_publisher</a>;
+<a name="l00061"></a>00061 };
+<a name="l00062"></a>00062 
+<a name="l00063"></a>00063 <span class="preprocessor">#endif </span><span class="comment">/* OBJECTCANDIDATEEXTRACTOR_H_ */</span>
 </pre></div></div><!-- contents -->
 </div>
 <!-- window showing the filter options -->
@@ -126,7 +127,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -139,7 +140,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul>
       <li class="navelem"><b>ObjectCandidateExtractor.h</b>      </li>
 
-    <li class="footer">Generated on Mon Jul 29 2013 21:37:53 for Occluded Geometry Estimation by
+    <li class="footer">Generated on Mon Jul 29 2013 21:54:03 for Occluded Geometry Estimation by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>
