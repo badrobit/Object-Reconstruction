@@ -1,0 +1,98 @@
+\hypertarget{class_helper_functions}{\section{\-Helper\-Functions \-Class \-Reference}
+\label{class_helper_functions}\index{\-Helper\-Functions@{\-Helper\-Functions}}
+}
+
+
+\-This class is a grouping of functions that can be accessed from any.  
+
+
+
+
+{\ttfamily \#include $<$\-Helper\-Functions.\-h$>$}
+
+\subsection*{\-Static \-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \-Point\-Cloud \hyperlink{class_helper_functions_a2e817646b20092d5f7179ba89635b50f}{\-Prepare\-Point\-Cloud} (\-Point\-Cloud input\-\_\-cloud)
+\begin{DoxyCompactList}\small\item\em \-This function is responsible for pre-\/processing the input pointcloud before we attempt object reconstruction. \end{DoxyCompactList}\item 
+static bool \hyperlink{class_helper_functions_a4b25abbfbd620e9218b2949c758a8872}{\-Write\-To\-P\-C\-D} (std\-::string file\-\_\-name, \-Point\-Cloud input\-\_\-cloud)
+\begin{DoxyCompactList}\small\item\em \-A function that is used to write a standard \-P\-C\-L pointcloud to a \-Point\-Cloud \-Data \-File (\-P\-C\-D). \end{DoxyCompactList}\item 
+static bool \hyperlink{class_helper_functions_a4428222439104c10e58e04958a231c37}{\-Write\-Multiple\-To\-P\-C\-D} (std\-::string file\-\_\-name, std\-::vector$<$ \-Point\-Cloud $>$ input\-\_\-clouds)
+\begin{DoxyCompactList}\small\item\em \-Function that is used to write out multiple \-Point\-Clouds to \-Multiple \-P\-C\-D \-Files. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-This class is a grouping of functions that can be accessed from any. 
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{class_helper_functions_a2e817646b20092d5f7179ba89635b50f}{\index{\-Helper\-Functions@{\-Helper\-Functions}!\-Prepare\-Point\-Cloud@{\-Prepare\-Point\-Cloud}}
+\index{\-Prepare\-Point\-Cloud@{\-Prepare\-Point\-Cloud}!HelperFunctions@{\-Helper\-Functions}}
+\subsubsection[{\-Prepare\-Point\-Cloud}]{\setlength{\rightskip}{0pt plus 5cm}\-Point\-Cloud {\bf \-Helper\-Functions\-::\-Prepare\-Point\-Cloud} (
+\begin{DoxyParamCaption}
+\item[{\-Point\-Cloud}]{input\-\_\-cloud}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{class_helper_functions_a2e817646b20092d5f7179ba89635b50f}
+
+
+\-This function is responsible for pre-\/processing the input pointcloud before we attempt object reconstruction. 
+
+\-It will perform both a statistical outlier removal which will take the current point cloud and remove any points that are to far removed from all of its neighbors (cleaning up noise). \-It will also perform subsamling in order to make the following computations more efficient.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em input\-\_\-cloud} & \-The point cloud which we want to perform the pre-\/processing on.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-A pre-\/processed (noise removed \& subsampled) pointcloud. 
+\end{DoxyReturn}
+\hypertarget{class_helper_functions_a4428222439104c10e58e04958a231c37}{\index{\-Helper\-Functions@{\-Helper\-Functions}!\-Write\-Multiple\-To\-P\-C\-D@{\-Write\-Multiple\-To\-P\-C\-D}}
+\index{\-Write\-Multiple\-To\-P\-C\-D@{\-Write\-Multiple\-To\-P\-C\-D}!HelperFunctions@{\-Helper\-Functions}}
+\subsubsection[{\-Write\-Multiple\-To\-P\-C\-D}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Helper\-Functions\-::\-Write\-Multiple\-To\-P\-C\-D} (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{file\-\_\-name, }
+\item[{std\-::vector$<$ \-Point\-Cloud $>$}]{input\-\_\-clouds}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{class_helper_functions_a4428222439104c10e58e04958a231c37}
+
+
+\-Function that is used to write out multiple \-Point\-Clouds to \-Multiple \-P\-C\-D \-Files. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em file\-\_\-name} & \-Desired series of file names. \-Index will be appended to it. \\
+\hline
+{\em input\-\_\-clouds} & \-A std\-::vector that contains at least 2 \-P\-C\-L \-Point\-Cloud. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-If we where able to properly write to \-P\-C\-D files. 
+\end{DoxyReturn}
+\hypertarget{class_helper_functions_a4b25abbfbd620e9218b2949c758a8872}{\index{\-Helper\-Functions@{\-Helper\-Functions}!\-Write\-To\-P\-C\-D@{\-Write\-To\-P\-C\-D}}
+\index{\-Write\-To\-P\-C\-D@{\-Write\-To\-P\-C\-D}!HelperFunctions@{\-Helper\-Functions}}
+\subsubsection[{\-Write\-To\-P\-C\-D}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Helper\-Functions\-::\-Write\-To\-P\-C\-D} (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{file\-\_\-name, }
+\item[{\-Point\-Cloud}]{input\-\_\-cloud}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{class_helper_functions_a4b25abbfbd620e9218b2949c758a8872}
+
+
+\-A function that is used to write a standard \-P\-C\-L pointcloud to a \-Point\-Cloud \-Data \-File (\-P\-C\-D). 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em file\-\_\-name} & \-The file name as a string that you want the \-P\-C\-D file to have. \\
+\hline
+{\em input\-\_\-cloud} & \-The \-P\-C\-L pointcloud that you want to save into an \-A\-S\-C\-I\-I \-P\-C\-D file.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-If we where able to verify if the point cloud was saved to the file properly or not. 
+\end{DoxyReturn}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+ros/include/\-Helper\-Functions.\-h\item 
+ros/src/\-Helper\-Functions.\-cpp\end{DoxyCompactItemize}

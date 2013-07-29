@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>Object Occlusion Repair: ObjectCandidateExtractor Class Reference</title>
+<title>Occluded Geometry Estimation: ObjectCandidateExtractor Class Reference</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -32,7 +32,7 @@
   
   
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Object Occlusion Repair
+   <div id="projectname">Occluded Geometry Estimation
    &#160;<span id="projectnumber">1.0</span>
    </div>
    
@@ -52,6 +52,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -114,9 +115,9 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad1aa824172a7d2e6002d5d7e3104d5d3"></a><!-- doxytag: member="ObjectCandidateExtractor::~ObjectCandidateExtractor" ref="ad1aa824172a7d2e6002d5d7e3104d5d3" args="()" -->
 virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object_candidate_extractor.html#ad1aa824172a7d2e6002d5d7e3104d5d3">~ObjectCandidateExtractor</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Standard destructor that is used to free up any memory or ROS connections that where created. <br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="_helper_functions_8hpp.html#abb956d1047f4dd2c956fe3cb0dd0004d">PointCloud</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object_candidate_extractor.html#a6a4adbcec19f94bc6073a4b2c2fa6f66">ExtractCandidateObjects</a> (<a class="el" href="_helper_functions_8hpp.html#abb956d1047f4dd2c956fe3cb0dd0004d">PointCloud</a> input_cloud)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::vector&lt; PointCloud &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object_candidate_extractor.html#a6a4adbcec19f94bc6073a4b2c2fa6f66">ExtractCandidateObjects</a> (PointCloud input_cloud)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This function takes in a PCL Point Cloud and finds any candidate objects contained in the scene.  <a href="#a6a4adbcec19f94bc6073a4b2c2fa6f66"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object_candidate_extractor.html#ab8848f6d86f7d7798ea30c2e04ae8b59">PublishObjectCandidates</a> (std::vector&lt; <a class="el" href="_helper_functions_8hpp.html#abb956d1047f4dd2c956fe3cb0dd0004d">PointCloud</a> &gt; input_vector)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object_candidate_extractor.html#ab8848f6d86f7d7798ea30c2e04ae8b59">PublishObjectCandidates</a> (std::vector&lt; PointCloud &gt; input_vector)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Function that takes in multiple object candidate point clouds and creates a single ros message for them.  <a href="#ab8848f6d86f7d7798ea30c2e04ae8b59"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -135,9 +136,9 @@ ros::Publisher&#160;</td><td class="memItemRight" valign="bottom"><b>m_object_ca
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; <a class="el" href="_helper_functions_8hpp.html#abb956d1047f4dd2c956fe3cb0dd0004d">PointCloud</a> &gt; <a class="el" href="class_object_candidate_extractor.html#a6a4adbcec19f94bc6073a4b2c2fa6f66">ObjectCandidateExtractor::ExtractCandidateObjects</a> </td>
+          <td class="memname">std::vector&lt; PointCloud &gt; <a class="el" href="class_object_candidate_extractor.html#a6a4adbcec19f94bc6073a4b2c2fa6f66">ObjectCandidateExtractor::ExtractCandidateObjects</a> </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_helper_functions_8hpp.html#abb956d1047f4dd2c956fe3cb0dd0004d">PointCloud</a>&#160;</td>
+          <td class="paramtype">PointCloud&#160;</td>
           <td class="paramname"><em>input_cloud</em></td><td>)</td>
           <td></td>
         </tr>
@@ -163,7 +164,7 @@ ros::Publisher&#160;</td><td class="memItemRight" valign="bottom"><b>m_object_ca
         <tr>
           <td class="memname">bool <a class="el" href="class_object_candidate_extractor.html#ab8848f6d86f7d7798ea30c2e04ae8b59">ObjectCandidateExtractor::PublishObjectCandidates</a> </td>
           <td>(</td>
-          <td class="paramtype">std::vector&lt; <a class="el" href="_helper_functions_8hpp.html#abb956d1047f4dd2c956fe3cb0dd0004d">PointCloud</a> &gt;&#160;</td>
+          <td class="paramtype">std::vector&lt; PointCloud &gt;&#160;</td>
           <td class="paramname"><em>input_vector</em></td><td>)</td>
           <td></td>
         </tr>
@@ -194,7 +195,7 @@ ros::Publisher&#160;</td><td class="memItemRight" valign="bottom"><b>m_object_ca
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -207,7 +208,7 @@ ros::Publisher&#160;</td><td class="memItemRight" valign="bottom"><b>m_object_ca
     <ul>
       <li class="navelem"><a class="el" href="class_object_candidate_extractor.html">ObjectCandidateExtractor</a>      </li>
 
-    <li class="footer">Generated on Mon Jul 29 2013 13:19:15 for Object Occlusion Repair by
+    <li class="footer">Generated on Mon Jul 29 2013 17:31:41 for Occluded Geometry Estimation by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>
