@@ -9,24 +9,20 @@
 \subsection*{\-Public \-Member \-Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_object_candidate_extractor_a41916df0d27e926a337fff6e7e762010}{\hyperlink{class_object_candidate_extractor_a41916df0d27e926a337fff6e7e762010}{\-Object\-Candidate\-Extractor} ()}\label{class_object_candidate_extractor_a41916df0d27e926a337fff6e7e762010}
-
+\hyperlink{class_object_candidate_extractor_a41916df0d27e926a337fff6e7e762010}{\-Object\-Candidate\-Extractor} ()
 \begin{DoxyCompactList}\small\item\em \-Responsible for initializing and setting up all resources that are required to perform object candidate extraction. \end{DoxyCompactList}\item 
-\hypertarget{class_object_candidate_extractor_ad1aa824172a7d2e6002d5d7e3104d5d3}{virtual \hyperlink{class_object_candidate_extractor_ad1aa824172a7d2e6002d5d7e3104d5d3}{$\sim$\-Object\-Candidate\-Extractor} ()}\label{class_object_candidate_extractor_ad1aa824172a7d2e6002d5d7e3104d5d3}
-
+virtual \hyperlink{class_object_candidate_extractor_ad1aa824172a7d2e6002d5d7e3104d5d3}{$\sim$\-Object\-Candidate\-Extractor} ()
 \begin{DoxyCompactList}\small\item\em \-Standard destructor that is used to free up any memory or \-R\-O\-S connections that where created. \end{DoxyCompactList}\item 
-std\-::vector$<$ \-Point\-Cloud $>$ \hyperlink{class_object_candidate_extractor_a6a4adbcec19f94bc6073a4b2c2fa6f66}{\-Extract\-Candidate\-Objects} (\-Point\-Cloud input\-\_\-cloud)
+std\-::vector$<$ \hyperlink{_helper_functions_8h_abb956d1047f4dd2c956fe3cb0dd0004d}{\-Point\-Cloud} $>$ \hyperlink{class_object_candidate_extractor_a6a4adbcec19f94bc6073a4b2c2fa6f66}{\-Extract\-Candidate\-Objects} (\hyperlink{_helper_functions_8h_abb956d1047f4dd2c956fe3cb0dd0004d}{\-Point\-Cloud} input\-\_\-cloud)
 \begin{DoxyCompactList}\small\item\em \-This function takes in a \-P\-C\-L \-Point \-Cloud and finds any candidate objects contained in the scene. \end{DoxyCompactList}\item 
-bool \hyperlink{class_object_candidate_extractor_ab8848f6d86f7d7798ea30c2e04ae8b59}{\-Publish\-Object\-Candidates} (std\-::vector$<$ \-Point\-Cloud $>$ input\-\_\-vector)
+bool \hyperlink{class_object_candidate_extractor_ab8848f6d86f7d7798ea30c2e04ae8b59}{\-Publish\-Object\-Candidates} (std\-::vector$<$ \hyperlink{_helper_functions_8h_abb956d1047f4dd2c956fe3cb0dd0004d}{\-Point\-Cloud} $>$ input\-\_\-vector)
 \begin{DoxyCompactList}\small\item\em \-Function that takes in multiple object candidate point clouds and creates a single ros message for them. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{\-Protected \-Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_object_candidate_extractor_a9a0da45687232f96360f76175a3cb097}{ros\-::\-Node\-Handle \hyperlink{class_object_candidate_extractor_a9a0da45687232f96360f76175a3cb097}{m\-\_\-node\-\_\-handler}}\label{class_object_candidate_extractor_a9a0da45687232f96360f76175a3cb097}
-
+ros\-::\-Node\-Handle \hyperlink{class_object_candidate_extractor_a9a0da45687232f96360f76175a3cb097}{m\-\_\-node\-\_\-handler}
 \begin{DoxyCompactList}\small\item\em \-Node \-Handler for the \hyperlink{class_object_candidate_extractor}{\-Object\-Candidate\-Extractor} class. \end{DoxyCompactList}\item 
-\hypertarget{class_object_candidate_extractor_a3b5cd0451266eafe0aba2d950a7434e8}{ros\-::\-Publisher \hyperlink{class_object_candidate_extractor_a3b5cd0451266eafe0aba2d950a7434e8}{m\-\_\-object\-\_\-candidates\-\_\-publisher}}\label{class_object_candidate_extractor_a3b5cd0451266eafe0aba2d950a7434e8}
-
+ros\-::\-Publisher \hyperlink{class_object_candidate_extractor_a3b5cd0451266eafe0aba2d950a7434e8}{m\-\_\-object\-\_\-candidates\-\_\-publisher}
 \begin{DoxyCompactList}\small\item\em \-A \-R\-O\-S publisher for the compiled object candidates. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -44,12 +40,37 @@ bool \hyperlink{class_object_candidate_extractor_ab8848f6d86f7d7798ea30c2e04ae8b
 \end{DoxyCopyright}
 
 
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{class_object_candidate_extractor_a41916df0d27e926a337fff6e7e762010}{\index{\-Object\-Candidate\-Extractor@{\-Object\-Candidate\-Extractor}!\-Object\-Candidate\-Extractor@{\-Object\-Candidate\-Extractor}}
+\index{\-Object\-Candidate\-Extractor@{\-Object\-Candidate\-Extractor}!ObjectCandidateExtractor@{\-Object\-Candidate\-Extractor}}
+\subsubsection[{\-Object\-Candidate\-Extractor}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Object\-Candidate\-Extractor\-::\-Object\-Candidate\-Extractor} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_object_candidate_extractor_a41916df0d27e926a337fff6e7e762010}
+
+
+\-Responsible for initializing and setting up all resources that are required to perform object candidate extraction. 
+
+\hypertarget{class_object_candidate_extractor_ad1aa824172a7d2e6002d5d7e3104d5d3}{\index{\-Object\-Candidate\-Extractor@{\-Object\-Candidate\-Extractor}!$\sim$\-Object\-Candidate\-Extractor@{$\sim$\-Object\-Candidate\-Extractor}}
+\index{$\sim$\-Object\-Candidate\-Extractor@{$\sim$\-Object\-Candidate\-Extractor}!ObjectCandidateExtractor@{\-Object\-Candidate\-Extractor}}
+\subsubsection[{$\sim$\-Object\-Candidate\-Extractor}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Object\-Candidate\-Extractor\-::$\sim$\-Object\-Candidate\-Extractor} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}\label{class_object_candidate_extractor_ad1aa824172a7d2e6002d5d7e3104d5d3}
+
+
+\-Standard destructor that is used to free up any memory or \-R\-O\-S connections that where created. 
+
+
+
 \subsection{\-Member \-Function \-Documentation}
 \hypertarget{class_object_candidate_extractor_a6a4adbcec19f94bc6073a4b2c2fa6f66}{\index{\-Object\-Candidate\-Extractor@{\-Object\-Candidate\-Extractor}!\-Extract\-Candidate\-Objects@{\-Extract\-Candidate\-Objects}}
 \index{\-Extract\-Candidate\-Objects@{\-Extract\-Candidate\-Objects}!ObjectCandidateExtractor@{\-Object\-Candidate\-Extractor}}
-\subsubsection[{\-Extract\-Candidate\-Objects}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ \-Point\-Cloud $>$ {\bf \-Object\-Candidate\-Extractor\-::\-Extract\-Candidate\-Objects} (
+\subsubsection[{\-Extract\-Candidate\-Objects}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ {\bf \-Point\-Cloud} $>$ {\bf \-Object\-Candidate\-Extractor\-::\-Extract\-Candidate\-Objects} (
 \begin{DoxyParamCaption}
-\item[{\-Point\-Cloud}]{input\-\_\-cloud}
+\item[{{\bf \-Point\-Cloud}}]{input\-\_\-cloud}
 \end{DoxyParamCaption}
 )}}\label{class_object_candidate_extractor_a6a4adbcec19f94bc6073a4b2c2fa6f66}
 
@@ -68,7 +89,7 @@ bool \hyperlink{class_object_candidate_extractor_ab8848f6d86f7d7798ea30c2e04ae8b
 \index{\-Publish\-Object\-Candidates@{\-Publish\-Object\-Candidates}!ObjectCandidateExtractor@{\-Object\-Candidate\-Extractor}}
 \subsubsection[{\-Publish\-Object\-Candidates}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Object\-Candidate\-Extractor\-::\-Publish\-Object\-Candidates} (
 \begin{DoxyParamCaption}
-\item[{std\-::vector$<$ \-Point\-Cloud $>$}]{input\-\_\-vector}
+\item[{std\-::vector$<$ {\bf \-Point\-Cloud} $>$}]{input\-\_\-vector}
 \end{DoxyParamCaption}
 )}}\label{class_object_candidate_extractor_ab8848f6d86f7d7798ea30c2e04ae8b59}
 
@@ -87,7 +108,24 @@ bool \hyperlink{class_object_candidate_extractor_ab8848f6d86f7d7798ea30c2e04ae8b
 \end{DoxyReturn}
 
 
+\subsection{\-Member \-Data \-Documentation}
+\hypertarget{class_object_candidate_extractor_a9a0da45687232f96360f76175a3cb097}{\index{\-Object\-Candidate\-Extractor@{\-Object\-Candidate\-Extractor}!m\-\_\-node\-\_\-handler@{m\-\_\-node\-\_\-handler}}
+\index{m\-\_\-node\-\_\-handler@{m\-\_\-node\-\_\-handler}!ObjectCandidateExtractor@{\-Object\-Candidate\-Extractor}}
+\subsubsection[{m\-\_\-node\-\_\-handler}]{\setlength{\rightskip}{0pt plus 5cm}ros\-::\-Node\-Handle {\bf \-Object\-Candidate\-Extractor\-::m\-\_\-node\-\_\-handler}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{class_object_candidate_extractor_a9a0da45687232f96360f76175a3cb097}
+
+
+\-Node \-Handler for the \hyperlink{class_object_candidate_extractor}{\-Object\-Candidate\-Extractor} class. 
+
+\hypertarget{class_object_candidate_extractor_a3b5cd0451266eafe0aba2d950a7434e8}{\index{\-Object\-Candidate\-Extractor@{\-Object\-Candidate\-Extractor}!m\-\_\-object\-\_\-candidates\-\_\-publisher@{m\-\_\-object\-\_\-candidates\-\_\-publisher}}
+\index{m\-\_\-object\-\_\-candidates\-\_\-publisher@{m\-\_\-object\-\_\-candidates\-\_\-publisher}!ObjectCandidateExtractor@{\-Object\-Candidate\-Extractor}}
+\subsubsection[{m\-\_\-object\-\_\-candidates\-\_\-publisher}]{\setlength{\rightskip}{0pt plus 5cm}ros\-::\-Publisher {\bf \-Object\-Candidate\-Extractor\-::m\-\_\-object\-\_\-candidates\-\_\-publisher}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{class_object_candidate_extractor_a3b5cd0451266eafe0aba2d950a7434e8}
+
+
+\-A \-R\-O\-S publisher for the compiled object candidates. 
+
+
+
 \-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
 \item 
-ros/include/\-Object\-Candidate\-Extractor.\-h\item 
-ros/src/\-Object\-Candidate\-Extractor.\-cpp\end{DoxyCompactItemize}
+ros/include/\hyperlink{_object_candidate_extractor_8h}{\-Object\-Candidate\-Extractor.\-h}\item 
+ros/src/\hyperlink{_object_candidate_extractor_8cpp}{\-Object\-Candidate\-Extractor.\-cpp}\end{DoxyCompactItemize}

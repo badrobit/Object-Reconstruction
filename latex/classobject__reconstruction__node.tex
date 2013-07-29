@@ -6,11 +6,42 @@
 \-This class is responisble for handeling everything that is related to the object reconstruction.  
 
 
+
+
+\-Collaboration diagram for object\-\_\-reconstruction\-\_\-node\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classobject__reconstruction__node__coll__graph}
+\end{center}
+\end{figure}
 \subsection*{\-Public \-Member \-Functions}
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{classobject__reconstruction__node_a6e45abbc296968691a0195ebcdf11fd0}{object\-\_\-reconstruction\-\_\-node} ()
 \begin{DoxyCompactList}\small\item\em \-Constructor method for the \-Object\-Reconstruction\-Node. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Private \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classobject__reconstruction__node_ae6faada7785b1d2a84f605eb2c7bddea}{\-Fix\-Occlusions} (hbrs\-\_\-object\-\_\-reconstruction\-::\-Fix\-Occlusion\-::\-Request \&request, hbrs\-\_\-object\-\_\-reconstruction\-::\-Fix\-Occlusion\-::\-Response \&response)
+\begin{DoxyCompactList}\small\item\em \-Function that creates the \char`\"{}state machine\char`\"{} that connects all of the components for the \-Occluded \-Geometry \-Estimation system. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Private \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\-::string \hyperlink{classobject__reconstruction__node_a4177671d10573e28564ba3945bb05cb5}{m\-\_\-output\-\_\-directory}
+\begin{DoxyCompactList}\small\item\em \-Directory to write the \-P\-C\-D files to. \end{DoxyCompactList}\item 
+std\-::vector$<$ \hyperlink{_helper_functions_8h_abb956d1047f4dd2c956fe3cb0dd0004d}{\-Point\-Cloud} $>$ \hyperlink{classobject__reconstruction__node_a1c2d6c9c999230706a087a87aca78cce}{m\-\_\-object\-\_\-candidates}
+\begin{DoxyCompactList}\small\item\em \-List of object candidates that we need to work with. \end{DoxyCompactList}\item 
+ros\-::\-Node\-Handle \hyperlink{classobject__reconstruction__node_ac4c5d38f03eefaea752963d27555c222}{m\-\_\-node\-\_\-handler}
+\begin{DoxyCompactList}\small\item\em \-The \-R\-O\-S node handler for the object reconstruction process. \end{DoxyCompactList}\item 
+ros\-::\-Service\-Server \hyperlink{classobject__reconstruction__node_a0beb4c4e79ee822d4ca5bb320eb8ddfd}{m\-\_\-fix\-\_\-occlusions\-\_\-service}
+\begin{DoxyCompactList}\small\item\em \-The \-R\-O\-S \-Service server that advertises any services that this node offers. \end{DoxyCompactList}\item 
+\hyperlink{_helper_functions_8h_abb956d1047f4dd2c956fe3cb0dd0004d}{\-Point\-Cloud} \hyperlink{classobject__reconstruction__node_ab8f97cd647f37bc708c8d7542150c17c}{m\-\_\-resulting\-\_\-cloud}
+\begin{DoxyCompactList}\small\item\em \-A temporary point cloud that we move from one step to another to track changes. \end{DoxyCompactList}\item 
+\hyperlink{class_point_cloud_accumulator}{\-Point\-Cloud\-Accumulator} \hyperlink{classobject__reconstruction__node_aa3895b09cfc1f4e4ace4f7c28515b89d}{m\-\_\-point\-\_\-cloud\-\_\-accumulator}
+\begin{DoxyCompactList}\small\item\em \-Reference object for the \hyperlink{class_point_cloud_accumulator}{\-Point\-Cloud\-Accumulator}. \end{DoxyCompactList}\item 
+\hyperlink{class_object_candidate_extractor}{\-Object\-Candidate\-Extractor} \hyperlink{classobject__reconstruction__node_a5c9dce10dc493b97dff5f1aac13a7501}{m\-\_\-object\-\_\-candidate\-\_\-extractor}
+\begin{DoxyCompactList}\small\item\em \-Reference object for the \hyperlink{class_object_candidate_extractor}{\-Object\-Candidate\-Extractor}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{\-Detailed \-Description}
@@ -34,6 +65,83 @@
 \-Constructor method for the \-Object\-Reconstruction\-Node. 
 
 \-This method creates all of the required connections for this \-R\-O\-S node as well as starting all of the subcomponents that this functionality requires. 
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{classobject__reconstruction__node_ae6faada7785b1d2a84f605eb2c7bddea}{\index{object\-\_\-reconstruction\-\_\-node@{object\-\_\-reconstruction\-\_\-node}!\-Fix\-Occlusions@{\-Fix\-Occlusions}}
+\index{\-Fix\-Occlusions@{\-Fix\-Occlusions}!object_reconstruction_node@{object\-\_\-reconstruction\-\_\-node}}
+\subsubsection[{\-Fix\-Occlusions}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf object\-\_\-reconstruction\-\_\-node\-::\-Fix\-Occlusions} (
+\begin{DoxyParamCaption}
+\item[{hbrs\-\_\-object\-\_\-reconstruction\-::\-Fix\-Occlusion\-::\-Request \&}]{request, }
+\item[{hbrs\-\_\-object\-\_\-reconstruction\-::\-Fix\-Occlusion\-::\-Response \&}]{response}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline, private\mbox{]}}}}\label{classobject__reconstruction__node_ae6faada7785b1d2a84f605eb2c7bddea}
+
+
+\-Function that creates the \char`\"{}state machine\char`\"{} that connects all of the components for the \-Occluded \-Geometry \-Estimation system. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em request} & \-The \-R\-O\-S service request handle. \\
+\hline
+{\em response} & \-The \-R\-O\-S service response that the caller requires. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-If the overall service process was completed successfully. 
+\end{DoxyReturn}
+
+
+\subsection{\-Member \-Data \-Documentation}
+\hypertarget{classobject__reconstruction__node_a0beb4c4e79ee822d4ca5bb320eb8ddfd}{\index{object\-\_\-reconstruction\-\_\-node@{object\-\_\-reconstruction\-\_\-node}!m\-\_\-fix\-\_\-occlusions\-\_\-service@{m\-\_\-fix\-\_\-occlusions\-\_\-service}}
+\index{m\-\_\-fix\-\_\-occlusions\-\_\-service@{m\-\_\-fix\-\_\-occlusions\-\_\-service}!object_reconstruction_node@{object\-\_\-reconstruction\-\_\-node}}
+\subsubsection[{m\-\_\-fix\-\_\-occlusions\-\_\-service}]{\setlength{\rightskip}{0pt plus 5cm}ros\-::\-Service\-Server {\bf object\-\_\-reconstruction\-\_\-node\-::m\-\_\-fix\-\_\-occlusions\-\_\-service}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classobject__reconstruction__node_a0beb4c4e79ee822d4ca5bb320eb8ddfd}
+
+
+\-The \-R\-O\-S \-Service server that advertises any services that this node offers. 
+
+\hypertarget{classobject__reconstruction__node_ac4c5d38f03eefaea752963d27555c222}{\index{object\-\_\-reconstruction\-\_\-node@{object\-\_\-reconstruction\-\_\-node}!m\-\_\-node\-\_\-handler@{m\-\_\-node\-\_\-handler}}
+\index{m\-\_\-node\-\_\-handler@{m\-\_\-node\-\_\-handler}!object_reconstruction_node@{object\-\_\-reconstruction\-\_\-node}}
+\subsubsection[{m\-\_\-node\-\_\-handler}]{\setlength{\rightskip}{0pt plus 5cm}ros\-::\-Node\-Handle {\bf object\-\_\-reconstruction\-\_\-node\-::m\-\_\-node\-\_\-handler}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classobject__reconstruction__node_ac4c5d38f03eefaea752963d27555c222}
+
+
+\-The \-R\-O\-S node handler for the object reconstruction process. 
+
+\hypertarget{classobject__reconstruction__node_a5c9dce10dc493b97dff5f1aac13a7501}{\index{object\-\_\-reconstruction\-\_\-node@{object\-\_\-reconstruction\-\_\-node}!m\-\_\-object\-\_\-candidate\-\_\-extractor@{m\-\_\-object\-\_\-candidate\-\_\-extractor}}
+\index{m\-\_\-object\-\_\-candidate\-\_\-extractor@{m\-\_\-object\-\_\-candidate\-\_\-extractor}!object_reconstruction_node@{object\-\_\-reconstruction\-\_\-node}}
+\subsubsection[{m\-\_\-object\-\_\-candidate\-\_\-extractor}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Object\-Candidate\-Extractor} {\bf object\-\_\-reconstruction\-\_\-node\-::m\-\_\-object\-\_\-candidate\-\_\-extractor}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classobject__reconstruction__node_a5c9dce10dc493b97dff5f1aac13a7501}
+
+
+\-Reference object for the \hyperlink{class_object_candidate_extractor}{\-Object\-Candidate\-Extractor}. 
+
+\hypertarget{classobject__reconstruction__node_a1c2d6c9c999230706a087a87aca78cce}{\index{object\-\_\-reconstruction\-\_\-node@{object\-\_\-reconstruction\-\_\-node}!m\-\_\-object\-\_\-candidates@{m\-\_\-object\-\_\-candidates}}
+\index{m\-\_\-object\-\_\-candidates@{m\-\_\-object\-\_\-candidates}!object_reconstruction_node@{object\-\_\-reconstruction\-\_\-node}}
+\subsubsection[{m\-\_\-object\-\_\-candidates}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<${\bf \-Point\-Cloud}$>$ {\bf object\-\_\-reconstruction\-\_\-node\-::m\-\_\-object\-\_\-candidates}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classobject__reconstruction__node_a1c2d6c9c999230706a087a87aca78cce}
+
+
+\-List of object candidates that we need to work with. 
+
+\hypertarget{classobject__reconstruction__node_a4177671d10573e28564ba3945bb05cb5}{\index{object\-\_\-reconstruction\-\_\-node@{object\-\_\-reconstruction\-\_\-node}!m\-\_\-output\-\_\-directory@{m\-\_\-output\-\_\-directory}}
+\index{m\-\_\-output\-\_\-directory@{m\-\_\-output\-\_\-directory}!object_reconstruction_node@{object\-\_\-reconstruction\-\_\-node}}
+\subsubsection[{m\-\_\-output\-\_\-directory}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string {\bf object\-\_\-reconstruction\-\_\-node\-::m\-\_\-output\-\_\-directory}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classobject__reconstruction__node_a4177671d10573e28564ba3945bb05cb5}
+
+
+\-Directory to write the \-P\-C\-D files to. 
+
+\hypertarget{classobject__reconstruction__node_aa3895b09cfc1f4e4ace4f7c28515b89d}{\index{object\-\_\-reconstruction\-\_\-node@{object\-\_\-reconstruction\-\_\-node}!m\-\_\-point\-\_\-cloud\-\_\-accumulator@{m\-\_\-point\-\_\-cloud\-\_\-accumulator}}
+\index{m\-\_\-point\-\_\-cloud\-\_\-accumulator@{m\-\_\-point\-\_\-cloud\-\_\-accumulator}!object_reconstruction_node@{object\-\_\-reconstruction\-\_\-node}}
+\subsubsection[{m\-\_\-point\-\_\-cloud\-\_\-accumulator}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Point\-Cloud\-Accumulator} {\bf object\-\_\-reconstruction\-\_\-node\-::m\-\_\-point\-\_\-cloud\-\_\-accumulator}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classobject__reconstruction__node_aa3895b09cfc1f4e4ace4f7c28515b89d}
+
+
+\-Reference object for the \hyperlink{class_point_cloud_accumulator}{\-Point\-Cloud\-Accumulator}. 
+
+\hypertarget{classobject__reconstruction__node_ab8f97cd647f37bc708c8d7542150c17c}{\index{object\-\_\-reconstruction\-\_\-node@{object\-\_\-reconstruction\-\_\-node}!m\-\_\-resulting\-\_\-cloud@{m\-\_\-resulting\-\_\-cloud}}
+\index{m\-\_\-resulting\-\_\-cloud@{m\-\_\-resulting\-\_\-cloud}!object_reconstruction_node@{object\-\_\-reconstruction\-\_\-node}}
+\subsubsection[{m\-\_\-resulting\-\_\-cloud}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Point\-Cloud} {\bf object\-\_\-reconstruction\-\_\-node\-::m\-\_\-resulting\-\_\-cloud}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classobject__reconstruction__node_ab8f97cd647f37bc708c8d7542150c17c}
+
+
+\-A temporary point cloud that we move from one step to another to track changes. 
+
+
 
 \-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
 \item 

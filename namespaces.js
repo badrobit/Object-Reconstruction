@@ -1,6 +1,5 @@
 var namespaces =
 [
-    [ "hbrs_object_reconstruction::srv::_AccumulatePointCloud", "namespacehbrs__object__reconstruction_1_1srv_1_1___accumulate_point_cloud.html", "namespacehbrs__object__reconstruction_1_1srv_1_1___accumulate_point_cloud" ],
-    [ "hbrs_object_reconstruction::srv::_ExtractPlatform", "namespacehbrs__object__reconstruction_1_1srv_1_1___extract_platform.html", "namespacehbrs__object__reconstruction_1_1srv_1_1___extract_platform" ],
-    [ "hbrs_object_reconstruction::srv::_FixOcclusion", "namespacehbrs__object__reconstruction_1_1srv_1_1___fix_occlusion.html", "namespacehbrs__object__reconstruction_1_1srv_1_1___fix_occlusion" ]
+    [ "_setup_util", "namespace__setup__util.html", "namespace__setup__util" ],
+    [ "generate_cached_setup", "namespacegenerate__cached__setup.html", "namespacegenerate__cached__setup" ]
 ];

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['helperfunctions_2ehpp',['HelperFunctions.hpp',['../_helper_functions_8hpp.html',1,'']]]
+  ['helperfunctions_2ecpp',['HelperFunctions.cpp',['../_helper_functions_8cpp.html',1,'']]],
+  ['helperfunctions_2eh',['HelperFunctions.h',['../_helper_functions_8h.html',1,'']]]
 ];

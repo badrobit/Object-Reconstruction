@@ -52,6 +52,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -109,39 +110,72 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a41916df0d27e926a337fff6e7e762010"></a><!-- doxytag: member="ObjectCandidateExtractor::ObjectCandidateExtractor" ref="a41916df0d27e926a337fff6e7e762010" args="()" -->
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object_candidate_extractor.html#a41916df0d27e926a337fff6e7e762010">ObjectCandidateExtractor</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Responsible for initializing and setting up all resources that are required to perform object candidate extraction. <br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad1aa824172a7d2e6002d5d7e3104d5d3"></a><!-- doxytag: member="ObjectCandidateExtractor::~ObjectCandidateExtractor" ref="ad1aa824172a7d2e6002d5d7e3104d5d3" args="()" -->
-virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object_candidate_extractor.html#ad1aa824172a7d2e6002d5d7e3104d5d3">~ObjectCandidateExtractor</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Standard destructor that is used to free up any memory or ROS connections that where created. <br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">std::vector&lt; PointCloud &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object_candidate_extractor.html#a6a4adbcec19f94bc6073a4b2c2fa6f66">ExtractCandidateObjects</a> (PointCloud input_cloud)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object_candidate_extractor.html#a41916df0d27e926a337fff6e7e762010">ObjectCandidateExtractor</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Responsible for initializing and setting up all resources that are required to perform object candidate extraction.  <a href="#a41916df0d27e926a337fff6e7e762010"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object_candidate_extractor.html#ad1aa824172a7d2e6002d5d7e3104d5d3">~ObjectCandidateExtractor</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Standard destructor that is used to free up any memory or ROS connections that where created.  <a href="#ad1aa824172a7d2e6002d5d7e3104d5d3"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="_helper_functions_8h.html#abb956d1047f4dd2c956fe3cb0dd0004d">PointCloud</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object_candidate_extractor.html#a6a4adbcec19f94bc6073a4b2c2fa6f66">ExtractCandidateObjects</a> (<a class="el" href="_helper_functions_8h.html#abb956d1047f4dd2c956fe3cb0dd0004d">PointCloud</a> input_cloud)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This function takes in a PCL Point Cloud and finds any candidate objects contained in the scene.  <a href="#a6a4adbcec19f94bc6073a4b2c2fa6f66"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object_candidate_extractor.html#ab8848f6d86f7d7798ea30c2e04ae8b59">PublishObjectCandidates</a> (std::vector&lt; PointCloud &gt; input_vector)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object_candidate_extractor.html#ab8848f6d86f7d7798ea30c2e04ae8b59">PublishObjectCandidates</a> (std::vector&lt; <a class="el" href="_helper_functions_8h.html#abb956d1047f4dd2c956fe3cb0dd0004d">PointCloud</a> &gt; input_vector)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Function that takes in multiple object candidate point clouds and creates a single ros message for them.  <a href="#ab8848f6d86f7d7798ea30c2e04ae8b59"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9a0da45687232f96360f76175a3cb097"></a><!-- doxytag: member="ObjectCandidateExtractor::m_node_handler" ref="a9a0da45687232f96360f76175a3cb097" args="" -->
-ros::NodeHandle&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object_candidate_extractor.html#a9a0da45687232f96360f76175a3cb097">m_node_handler</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Node Handler for the <a class="el" href="class_object_candidate_extractor.html">ObjectCandidateExtractor</a> class. <br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3b5cd0451266eafe0aba2d950a7434e8"></a><!-- doxytag: member="ObjectCandidateExtractor::m_object_candidates_publisher" ref="a3b5cd0451266eafe0aba2d950a7434e8" args="" -->
-ros::Publisher&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object_candidate_extractor.html#a3b5cd0451266eafe0aba2d950a7434e8">m_object_candidates_publisher</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A ROS publisher for the compiled object candidates. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">ros::NodeHandle&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object_candidate_extractor.html#a9a0da45687232f96360f76175a3cb097">m_node_handler</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Node Handler for the <a class="el" href="class_object_candidate_extractor.html">ObjectCandidateExtractor</a> class.  <a href="#a9a0da45687232f96360f76175a3cb097"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">ros::Publisher&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object_candidate_extractor.html#a3b5cd0451266eafe0aba2d950a7434e8">m_object_candidates_publisher</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A ROS publisher for the compiled object candidates.  <a href="#a3b5cd0451266eafe0aba2d950a7434e8"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>This class is responsible for finding groups of points in a point cloud which could represent real world objects. </p>
 <dl class="author"><dt><b>Author:</b></dt><dd>Matthew S Roscoe </dd></dl>
 <dl class="date"><dt><b>Date:</b></dt><dd>July 30th 2013 </dd></dl>
 <dl class="copyright"><dt><b>Copyright:</b></dt><dd>GNU Public License. </dd></dl>
-</div><hr/><h2>Member Function Documentation</h2>
+</div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a41916df0d27e926a337fff6e7e762010"></a><!-- doxytag: member="ObjectCandidateExtractor::ObjectCandidateExtractor" ref="a41916df0d27e926a337fff6e7e762010" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_object_candidate_extractor.html#a41916df0d27e926a337fff6e7e762010">ObjectCandidateExtractor::ObjectCandidateExtractor</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Responsible for initializing and setting up all resources that are required to perform object candidate extraction. </p>
+
+</div>
+</div>
+<a class="anchor" id="ad1aa824172a7d2e6002d5d7e3104d5d3"></a><!-- doxytag: member="ObjectCandidateExtractor::~ObjectCandidateExtractor" ref="ad1aa824172a7d2e6002d5d7e3104d5d3" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_object_candidate_extractor.html#ad1aa824172a7d2e6002d5d7e3104d5d3">ObjectCandidateExtractor::~ObjectCandidateExtractor</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Standard destructor that is used to free up any memory or ROS connections that where created. </p>
+
+</div>
+</div>
+<hr/><h2>Member Function Documentation</h2>
 <a class="anchor" id="a6a4adbcec19f94bc6073a4b2c2fa6f66"></a><!-- doxytag: member="ObjectCandidateExtractor::ExtractCandidateObjects" ref="a6a4adbcec19f94bc6073a4b2c2fa6f66" args="(PointCloud input_cloud)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; PointCloud &gt; <a class="el" href="class_object_candidate_extractor.html#a6a4adbcec19f94bc6073a4b2c2fa6f66">ObjectCandidateExtractor::ExtractCandidateObjects</a> </td>
+          <td class="memname">std::vector&lt; <a class="el" href="_helper_functions_8h.html#abb956d1047f4dd2c956fe3cb0dd0004d">PointCloud</a> &gt; <a class="el" href="class_object_candidate_extractor.html#a6a4adbcec19f94bc6073a4b2c2fa6f66">ObjectCandidateExtractor::ExtractCandidateObjects</a> </td>
           <td>(</td>
-          <td class="paramtype">PointCloud&#160;</td>
+          <td class="paramtype"><a class="el" href="_helper_functions_8h.html#abb956d1047f4dd2c956fe3cb0dd0004d">PointCloud</a>&#160;</td>
           <td class="paramname"><em>input_cloud</em></td><td>)</td>
           <td></td>
         </tr>
@@ -167,7 +201,7 @@ ros::Publisher&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
         <tr>
           <td class="memname">bool <a class="el" href="class_object_candidate_extractor.html#ab8848f6d86f7d7798ea30c2e04ae8b59">ObjectCandidateExtractor::PublishObjectCandidates</a> </td>
           <td>(</td>
-          <td class="paramtype">std::vector&lt; PointCloud &gt;&#160;</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="_helper_functions_8h.html#abb956d1047f4dd2c956fe3cb0dd0004d">PointCloud</a> &gt;&#160;</td>
           <td class="paramname"><em>input_vector</em></td><td>)</td>
           <td></td>
         </tr>
@@ -187,9 +221,40 @@ ros::Publisher&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
 
 </div>
 </div>
+<hr/><h2>Member Data Documentation</h2>
+<a class="anchor" id="a9a0da45687232f96360f76175a3cb097"></a><!-- doxytag: member="ObjectCandidateExtractor::m_node_handler" ref="a9a0da45687232f96360f76175a3cb097" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ros::NodeHandle <a class="el" href="class_object_candidate_extractor.html#a9a0da45687232f96360f76175a3cb097">ObjectCandidateExtractor::m_node_handler</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Node Handler for the <a class="el" href="class_object_candidate_extractor.html">ObjectCandidateExtractor</a> class. </p>
+
+</div>
+</div>
+<a class="anchor" id="a3b5cd0451266eafe0aba2d950a7434e8"></a><!-- doxytag: member="ObjectCandidateExtractor::m_object_candidates_publisher" ref="a3b5cd0451266eafe0aba2d950a7434e8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ros::Publisher <a class="el" href="class_object_candidate_extractor.html#a3b5cd0451266eafe0aba2d950a7434e8">ObjectCandidateExtractor::m_object_candidates_publisher</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>A ROS publisher for the compiled object candidates. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>ros/include/<a class="el" href="_object_candidate_extractor_8h_source.html">ObjectCandidateExtractor.h</a></li>
-<li>ros/src/ObjectCandidateExtractor.cpp</li>
+<li>ros/src/<a class="el" href="_object_candidate_extractor_8cpp.html">ObjectCandidateExtractor.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div>
@@ -198,7 +263,7 @@ ros::Publisher&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -211,7 +276,7 @@ ros::Publisher&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
     <ul>
       <li class="navelem"><a class="el" href="class_object_candidate_extractor.html">ObjectCandidateExtractor</a>      </li>
 
-    <li class="footer">Generated on Mon Jul 29 2013 21:54:03 for Occluded Geometry Estimation by
+    <li class="footer">Generated on Mon Jul 29 2013 22:04:32 for Occluded Geometry Estimation by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

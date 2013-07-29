@@ -52,6 +52,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -97,7 +98,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">ros/include/HelperFunctions.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a href="_helper_functions_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
 <a name="l00008"></a>00008 <span class="preprocessor">#ifndef HELPERFUNCTIONS_H_</span>
 <a name="l00009"></a>00009 <span class="preprocessor"></span><span class="preprocessor">#define HELPERFUNCTIONS_H_</span>
 <a name="l00010"></a>00010 <span class="preprocessor"></span>
@@ -136,22 +137,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00043"></a>00043 <span class="preprocessor">#include &lt;pcl/filters/voxel_grid.h&gt;</span>
 <a name="l00044"></a>00044 <span class="preprocessor">#include &lt;pcl/filters/statistical_outlier_removal.h&gt;</span>
 <a name="l00045"></a>00045 
-<a name="l00050"></a>00050 <span class="keyword">typedef</span> pcl::PointXYZRGB PointT;
+<a name="l00050"></a><a class="code" href="_helper_functions_8h.html#a33eafffb7a0480b3f826230a0ebba532">00050</a> <span class="keyword">typedef</span> pcl::PointXYZRGB <a class="code" href="_helper_functions_8h.html#a33eafffb7a0480b3f826230a0ebba532" title="Have all points in the project represented by pcl::PointXYZRGB.">PointT</a>;
 <a name="l00051"></a>00051 
-<a name="l00059"></a>00059 <span class="keyword">typedef</span> pcl::PointCloud&lt;PointT&gt; PointCloud;
+<a name="l00059"></a><a class="code" href="_helper_functions_8h.html#abb956d1047f4dd2c956fe3cb0dd0004d">00059</a> <span class="keyword">typedef</span> pcl::PointCloud&lt;PointT&gt; <a class="code" href="_helper_functions_8h.html#abb956d1047f4dd2c956fe3cb0dd0004d" title="Have all pointclouds used in the project made up from PointT.">PointCloud</a>;
 <a name="l00060"></a>00060 
-<a name="l00065"></a>00065 <span class="keyword">typedef</span> pcl::PointNormal PointNormalT;
+<a name="l00065"></a><a class="code" href="_helper_functions_8h.html#af8717e40603e7d4bcd56c56ec09aa10e">00065</a> <span class="keyword">typedef</span> pcl::PointNormal <a class="code" href="_helper_functions_8h.html#af8717e40603e7d4bcd56c56ec09aa10e" title="A standard PCL point that also includes Normal Information for that point.">PointNormalT</a>;
 <a name="l00066"></a>00066 
-<a name="l00071"></a>00071 <span class="keyword">typedef</span> pcl::PointCloud&lt;PointNormalT&gt; PointCloudWithNormals;
+<a name="l00071"></a><a class="code" href="_helper_functions_8h.html#a8bd43f695aeb20e077921614455eaacd">00071</a> <span class="keyword">typedef</span> pcl::PointCloud&lt;PointNormalT&gt; <a class="code" href="_helper_functions_8h.html#a8bd43f695aeb20e077921614455eaacd" title="A Standard PCL PointCloud but where the points all contain normal information as well.">PointCloudWithNormals</a>;
 <a name="l00072"></a>00072 
 <a name="l00077"></a><a class="code" href="class_helper_functions.html">00077</a> <span class="keyword">class </span><a class="code" href="class_helper_functions.html" title="This class is a grouping of functions that can be accessed from any.">HelperFunctions</a>
 <a name="l00078"></a>00078 {
 <a name="l00079"></a>00079 <span class="keyword">public</span>:
 <a name="l00080"></a>00080 
-<a name="l00094"></a>00094   <span class="keyword">static</span> PointCloud <a class="code" href="class_helper_functions.html#a2e817646b20092d5f7179ba89635b50f" title="This function is responsible for pre-processing the input pointcloud before we attempt object reconst...">PreparePointCloud</a>( PointCloud input_cloud );
+<a name="l00094"></a>00094   <span class="keyword">static</span> <a class="code" href="_helper_functions_8h.html#abb956d1047f4dd2c956fe3cb0dd0004d" title="Have all pointclouds used in the project made up from PointT.">PointCloud</a> <a class="code" href="class_helper_functions.html#a2e817646b20092d5f7179ba89635b50f" title="This function is responsible for pre-processing the input pointcloud before we attempt object reconst...">PreparePointCloud</a>( <a class="code" href="_helper_functions_8h.html#abb956d1047f4dd2c956fe3cb0dd0004d" title="Have all pointclouds used in the project made up from PointT.">PointCloud</a> input_cloud );
 <a name="l00095"></a>00095 
 <a name="l00096"></a>00096 
-<a name="l00105"></a>00105   <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="class_helper_functions.html#a4b25abbfbd620e9218b2949c758a8872" title="A function that is used to write a standard PCL pointcloud to a PointCloud Data File (PCD)...">WriteToPCD</a>( std::string file_name, PointCloud input_cloud );
+<a name="l00105"></a>00105   <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="class_helper_functions.html#a4b25abbfbd620e9218b2949c758a8872" title="A function that is used to write a standard PCL pointcloud to a PointCloud Data File (PCD)...">WriteToPCD</a>( std::string file_name, <a class="code" href="_helper_functions_8h.html#abb956d1047f4dd2c956fe3cb0dd0004d" title="Have all pointclouds used in the project made up from PointT.">PointCloud</a> input_cloud );
 <a name="l00106"></a>00106 
 <a name="l00114"></a>00114   <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="class_helper_functions.html#a4428222439104c10e58e04958a231c37" title="Function that is used to write out multiple PointClouds to Multiple PCD Files.">WriteMultipleToPCD</a>( std::string file_name, std::vector&lt;PointCloud&gt; input_clouds );
 <a name="l00115"></a>00115 };
@@ -163,7 +164,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -174,9 +175,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
   <div id="nav-path" class="navpath">
     <ul>
-      <li class="navelem"><b>HelperFunctions.h</b>      </li>
+      <li class="navelem"><a class="el" href="_helper_functions_8h.html">HelperFunctions.h</a>      </li>
 
-    <li class="footer">Generated on Mon Jul 29 2013 21:54:03 for Occluded Geometry Estimation by
+    <li class="footer">Generated on Mon Jul 29 2013 22:04:32 for Occluded Geometry Estimation by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

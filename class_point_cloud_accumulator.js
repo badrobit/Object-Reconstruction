@@ -3,6 +3,8 @@ var class_point_cloud_accumulator =
     [ "PointCloudAccumulator", "class_point_cloud_accumulator.html#a8eacc283828c55b809058b54fd082433", null ],
     [ "~PointCloudAccumulator", "class_point_cloud_accumulator.html#a48db4ff8ad89f27563691af475d8bc3a", null ],
     [ "AccumulatePointClouds", "class_point_cloud_accumulator.html#a24d93cde9ce3cce292779934f2b97ede", null ],
+    [ "AlignClouds", "class_point_cloud_accumulator.html#a65bc804d7dd9615f5d4386b067f45136", null ],
+    [ "PointCloudCallback", "class_point_cloud_accumulator.html#a40ac068a2dc2fb940a3eca433005a90d", null ],
     [ "m_accumulated_cloud", "class_point_cloud_accumulator.html#a0db3c1a8e6de37bcb25c260626d63ff0", null ],
     [ "m_accumulated_point_cloud_publisher", "class_point_cloud_accumulator.html#a117cbef73e39daeda50c32212a3cc603", null ],
     [ "m_frame_id", "class_point_cloud_accumulator.html#af8ef35b00c6d547b8d3fa89ad8a8b49a", null ],

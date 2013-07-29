@@ -52,6 +52,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -95,7 +96,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div id="doc-content">
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a>  </div>
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a>  </div>
   <div class="headertitle">
 <div class="title">object_reconstruction_node Class Reference</div>  </div>
 </div><!--header-->
@@ -103,6 +106,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <!-- doxytag: class="object_reconstruction_node" -->
 <p>This class is responisble for handeling everything that is related to the object reconstruction.  
  <a href="classobject__reconstruction__node.html#details">More...</a></p>
+<div class="dynheader">
+Collaboration diagram for object_reconstruction_node:</div>
+<div class="dyncontent">
+<div class="center"><img src="classobject__reconstruction__node__coll__graph.png" border="0" usemap="#object__reconstruction__node_coll__map" alt="Collaboration graph"/></div>
+<map name="object__reconstruction__node_coll__map" id="object__reconstruction__node_coll__map">
+<area shape="rect" id="node4" href="class_point_cloud_accumulator.html" title="This class takes two point clouds and merges them together." alt="" coords="435,124,592,153"/><area shape="rect" id="node6" title="STL class." alt="" coords="224,87,304,116"/><area shape="rect" id="node8" title="STL class." alt="" coords="7,87,172,116"/><area shape="rect" id="node10" href="class_object_candidate_extractor.html" title="This class is responsible for finding groups of points in a point cloud which could represent real wo..." alt="" coords="428,177,599,207"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 
 <p><a href="classobject__reconstruction__node-members.html">List of all members.</a></p>
 <table class="memberdecls">
@@ -110,6 +120,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classobject__reconstruction__node.html#a6e45abbc296968691a0195ebcdf11fd0">object_reconstruction_node</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor method for the ObjectReconstructionNode.  <a href="#a6e45abbc296968691a0195ebcdf11fd0"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classobject__reconstruction__node.html#ae6faada7785b1d2a84f605eb2c7bddea">FixOcclusions</a> (hbrs_object_reconstruction::FixOcclusion::Request &amp;request, hbrs_object_reconstruction::FixOcclusion::Response &amp;response)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Function that creates the "state machine" that connects all of the components for the Occluded Geometry Estimation system.  <a href="#ae6faada7785b1d2a84f605eb2c7bddea"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classobject__reconstruction__node.html#a4177671d10573e28564ba3945bb05cb5">m_output_directory</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Directory to write the PCD files to.  <a href="#a4177671d10573e28564ba3945bb05cb5"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="_helper_functions_8h.html#abb956d1047f4dd2c956fe3cb0dd0004d">PointCloud</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classobject__reconstruction__node.html#a1c2d6c9c999230706a087a87aca78cce">m_object_candidates</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">List of object candidates that we need to work with.  <a href="#a1c2d6c9c999230706a087a87aca78cce"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">ros::NodeHandle&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classobject__reconstruction__node.html#ac4c5d38f03eefaea752963d27555c222">m_node_handler</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The ROS node handler for the object reconstruction process.  <a href="#ac4c5d38f03eefaea752963d27555c222"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">ros::ServiceServer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classobject__reconstruction__node.html#a0beb4c4e79ee822d4ca5bb320eb8ddfd">m_fix_occlusions_service</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The ROS Service server that advertises any services that this node offers.  <a href="#a0beb4c4e79ee822d4ca5bb320eb8ddfd"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_helper_functions_8h.html#abb956d1047f4dd2c956fe3cb0dd0004d">PointCloud</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classobject__reconstruction__node.html#ab8f97cd647f37bc708c8d7542150c17c">m_resulting_cloud</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A temporary point cloud that we move from one step to another to track changes.  <a href="#ab8f97cd647f37bc708c8d7542150c17c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_point_cloud_accumulator.html">PointCloudAccumulator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classobject__reconstruction__node.html#aa3895b09cfc1f4e4ace4f7c28515b89d">m_point_cloud_accumulator</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Reference object for the <a class="el" href="class_point_cloud_accumulator.html" title="This class takes two point clouds and merges them together.">PointCloudAccumulator</a>.  <a href="#aa3895b09cfc1f4e4ace4f7c28515b89d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_object_candidate_extractor.html">ObjectCandidateExtractor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classobject__reconstruction__node.html#a5c9dce10dc493b97dff5f1aac13a7501">m_object_candidate_extractor</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Reference object for the <a class="el" href="class_object_candidate_extractor.html" title="This class is responsible for finding groups of points in a point cloud which could represent real wo...">ObjectCandidateExtractor</a>.  <a href="#a5c9dce10dc493b97dff5f1aac13a7501"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>This class is responisble for handeling everything that is related to the object reconstruction. </p>
@@ -138,6 +168,150 @@ FixOcclusions</li>
 
 </div>
 </div>
+<hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="ae6faada7785b1d2a84f605eb2c7bddea"></a><!-- doxytag: member="object_reconstruction_node::FixOcclusions" ref="ae6faada7785b1d2a84f605eb2c7bddea" args="(hbrs_object_reconstruction::FixOcclusion::Request &amp;request, hbrs_object_reconstruction::FixOcclusion::Response &amp;response)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classobject__reconstruction__node.html#ae6faada7785b1d2a84f605eb2c7bddea">object_reconstruction_node::FixOcclusions</a> </td>
+          <td>(</td>
+          <td class="paramtype">hbrs_object_reconstruction::FixOcclusion::Request &amp;&#160;</td>
+          <td class="paramname"><em>request</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">hbrs_object_reconstruction::FixOcclusion::Response &amp;&#160;</td>
+          <td class="paramname"><em>response</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline, private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Function that creates the "state machine" that connects all of the components for the Occluded Geometry Estimation system. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">request</td><td>The ROS service request handle. </td></tr>
+    <tr><td class="paramname">response</td><td>The ROS service response that the caller requires. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>If the overall service process was completed successfully. </dd></dl>
+
+</div>
+</div>
+<hr/><h2>Member Data Documentation</h2>
+<a class="anchor" id="a0beb4c4e79ee822d4ca5bb320eb8ddfd"></a><!-- doxytag: member="object_reconstruction_node::m_fix_occlusions_service" ref="a0beb4c4e79ee822d4ca5bb320eb8ddfd" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ros::ServiceServer <a class="el" href="classobject__reconstruction__node.html#a0beb4c4e79ee822d4ca5bb320eb8ddfd">object_reconstruction_node::m_fix_occlusions_service</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>The ROS Service server that advertises any services that this node offers. </p>
+
+</div>
+</div>
+<a class="anchor" id="ac4c5d38f03eefaea752963d27555c222"></a><!-- doxytag: member="object_reconstruction_node::m_node_handler" ref="ac4c5d38f03eefaea752963d27555c222" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ros::NodeHandle <a class="el" href="classobject__reconstruction__node.html#ac4c5d38f03eefaea752963d27555c222">object_reconstruction_node::m_node_handler</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>The ROS node handler for the object reconstruction process. </p>
+
+</div>
+</div>
+<a class="anchor" id="a5c9dce10dc493b97dff5f1aac13a7501"></a><!-- doxytag: member="object_reconstruction_node::m_object_candidate_extractor" ref="a5c9dce10dc493b97dff5f1aac13a7501" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_object_candidate_extractor.html">ObjectCandidateExtractor</a> <a class="el" href="classobject__reconstruction__node.html#a5c9dce10dc493b97dff5f1aac13a7501">object_reconstruction_node::m_object_candidate_extractor</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Reference object for the <a class="el" href="class_object_candidate_extractor.html" title="This class is responsible for finding groups of points in a point cloud which could represent real wo...">ObjectCandidateExtractor</a>. </p>
+
+</div>
+</div>
+<a class="anchor" id="a1c2d6c9c999230706a087a87aca78cce"></a><!-- doxytag: member="object_reconstruction_node::m_object_candidates" ref="a1c2d6c9c999230706a087a87aca78cce" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="_helper_functions_8h.html#abb956d1047f4dd2c956fe3cb0dd0004d">PointCloud</a>&gt; <a class="el" href="classobject__reconstruction__node.html#a1c2d6c9c999230706a087a87aca78cce">object_reconstruction_node::m_object_candidates</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>List of object candidates that we need to work with. </p>
+
+</div>
+</div>
+<a class="anchor" id="a4177671d10573e28564ba3945bb05cb5"></a><!-- doxytag: member="object_reconstruction_node::m_output_directory" ref="a4177671d10573e28564ba3945bb05cb5" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string <a class="el" href="classobject__reconstruction__node.html#a4177671d10573e28564ba3945bb05cb5">object_reconstruction_node::m_output_directory</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Directory to write the PCD files to. </p>
+
+</div>
+</div>
+<a class="anchor" id="aa3895b09cfc1f4e4ace4f7c28515b89d"></a><!-- doxytag: member="object_reconstruction_node::m_point_cloud_accumulator" ref="aa3895b09cfc1f4e4ace4f7c28515b89d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_point_cloud_accumulator.html">PointCloudAccumulator</a> <a class="el" href="classobject__reconstruction__node.html#aa3895b09cfc1f4e4ace4f7c28515b89d">object_reconstruction_node::m_point_cloud_accumulator</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Reference object for the <a class="el" href="class_point_cloud_accumulator.html" title="This class takes two point clouds and merges them together.">PointCloudAccumulator</a>. </p>
+
+</div>
+</div>
+<a class="anchor" id="ab8f97cd647f37bc708c8d7542150c17c"></a><!-- doxytag: member="object_reconstruction_node::m_resulting_cloud" ref="ab8f97cd647f37bc708c8d7542150c17c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_helper_functions_8h.html#abb956d1047f4dd2c956fe3cb0dd0004d">PointCloud</a> <a class="el" href="classobject__reconstruction__node.html#ab8f97cd647f37bc708c8d7542150c17c">object_reconstruction_node::m_resulting_cloud</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>A temporary point cloud that we move from one step to another to track changes. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>ros/nodes/<a class="el" href="object__reconstruction_8cpp.html">object_reconstruction.cpp</a></li>
 </ul>
@@ -148,7 +322,7 @@ FixOcclusions</li>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -161,7 +335,7 @@ FixOcclusions</li>
     <ul>
       <li class="navelem"><a class="el" href="classobject__reconstruction__node.html">object_reconstruction_node</a>      </li>
 
-    <li class="footer">Generated on Mon Jul 29 2013 21:54:03 for Occluded Geometry Estimation by
+    <li class="footer">Generated on Mon Jul 29 2013 22:04:32 for Occluded Geometry Estimation by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

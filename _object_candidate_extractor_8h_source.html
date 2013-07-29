@@ -52,6 +52,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -97,11 +98,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">ros/include/ObjectCandidateExtractor.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a href="_object_candidate_extractor_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
 <a name="l00008"></a>00008 <span class="preprocessor">#ifndef OBJECTCANDIDATEEXTRACTOR_H_</span>
 <a name="l00009"></a>00009 <span class="preprocessor"></span><span class="preprocessor">#define OBJECTCANDIDATEEXTRACTOR_H_</span>
 <a name="l00010"></a>00010 <span class="preprocessor"></span>
-<a name="l00011"></a>00011 <span class="preprocessor">#include &lt;HelperFunctions.h&gt;</span>
+<a name="l00011"></a>00011 <span class="preprocessor">#include &lt;<a class="code" href="_helper_functions_8h.html">HelperFunctions.h</a>&gt;</span>
 <a name="l00012"></a>00012 
 <a name="l00019"></a><a class="code" href="class_object_candidate_extractor.html">00019</a> <span class="keyword">class </span><a class="code" href="class_object_candidate_extractor.html" title="This class is responsible for finding groups of points in a point cloud which could represent real wo...">ObjectCandidateExtractor</a>
 <a name="l00020"></a>00020 {
@@ -110,7 +111,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00027"></a>00027 
 <a name="l00032"></a>00032   <span class="keyword">virtual</span> <a class="code" href="class_object_candidate_extractor.html#ad1aa824172a7d2e6002d5d7e3104d5d3" title="Standard destructor that is used to free up any memory or ROS connections that where created...">~ObjectCandidateExtractor</a>();
 <a name="l00033"></a>00033 
-<a name="l00041"></a>00041   std::vector&lt; PointCloud &gt; <a class="code" href="class_object_candidate_extractor.html#a6a4adbcec19f94bc6073a4b2c2fa6f66" title="This function takes in a PCL Point Cloud and finds any candidate objects contained in the scene...">ExtractCandidateObjects</a>( PointCloud input_cloud );
+<a name="l00041"></a>00041   std::vector&lt; PointCloud &gt; <a class="code" href="class_object_candidate_extractor.html#a6a4adbcec19f94bc6073a4b2c2fa6f66" title="This function takes in a PCL Point Cloud and finds any candidate objects contained in the scene...">ExtractCandidateObjects</a>( <a class="code" href="_helper_functions_8h.html#abb956d1047f4dd2c956fe3cb0dd0004d" title="Have all pointclouds used in the project made up from PointT.">PointCloud</a> input_cloud );
 <a name="l00042"></a>00042 
 <a name="l00054"></a>00054   <span class="keywordtype">bool</span> <a class="code" href="class_object_candidate_extractor.html#ab8848f6d86f7d7798ea30c2e04ae8b59" title="Function that takes in multiple object candidate point clouds and creates a single ros message for th...">PublishObjectCandidates</a>( std::vector&lt; PointCloud &gt; input_vector );
 <a name="l00055"></a>00055 
@@ -127,7 +128,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -138,9 +139,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
   <div id="nav-path" class="navpath">
     <ul>
-      <li class="navelem"><b>ObjectCandidateExtractor.h</b>      </li>
+      <li class="navelem"><a class="el" href="_object_candidate_extractor_8h.html">ObjectCandidateExtractor.h</a>      </li>
 
-    <li class="footer">Generated on Mon Jul 29 2013 21:54:03 for Occluded Geometry Estimation by
+    <li class="footer">Generated on Mon Jul 29 2013 22:04:32 for Occluded Geometry Estimation by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

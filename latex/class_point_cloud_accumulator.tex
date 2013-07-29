@@ -18,35 +18,34 @@
 \subsection*{\-Public \-Member \-Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_point_cloud_accumulator_a8eacc283828c55b809058b54fd082433}{\hyperlink{class_point_cloud_accumulator_a8eacc283828c55b809058b54fd082433}{\-Point\-Cloud\-Accumulator} ()}\label{class_point_cloud_accumulator_a8eacc283828c55b809058b54fd082433}
-
+\hyperlink{class_point_cloud_accumulator_a8eacc283828c55b809058b54fd082433}{\-Point\-Cloud\-Accumulator} ()
 \begin{DoxyCompactList}\small\item\em \-Standard \-Constructor. \end{DoxyCompactList}\item 
-\hypertarget{class_point_cloud_accumulator_a48db4ff8ad89f27563691af475d8bc3a}{virtual \hyperlink{class_point_cloud_accumulator_a48db4ff8ad89f27563691af475d8bc3a}{$\sim$\-Point\-Cloud\-Accumulator} ()}\label{class_point_cloud_accumulator_a48db4ff8ad89f27563691af475d8bc3a}
-
+virtual \hyperlink{class_point_cloud_accumulator_a48db4ff8ad89f27563691af475d8bc3a}{$\sim$\-Point\-Cloud\-Accumulator} ()
 \begin{DoxyCompactList}\small\item\em \-Standard \-Destructor. \end{DoxyCompactList}\item 
-\-Point\-Cloud \hyperlink{class_point_cloud_accumulator_a24d93cde9ce3cce292779934f2b97ede}{\-Accumulate\-Point\-Clouds} (int accumulation\-\_\-time)
+\hyperlink{_helper_functions_8h_abb956d1047f4dd2c956fe3cb0dd0004d}{\-Point\-Cloud} \hyperlink{class_point_cloud_accumulator_a24d93cde9ce3cce292779934f2b97ede}{\-Accumulate\-Point\-Clouds} (int accumulation\-\_\-time)
 \begin{DoxyCompactList}\small\item\em \-Public interface that accumulates point clouds together. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{\-Protected \-Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_point_cloud_accumulator_a6ebb0ca53506f1ae2d0f6e411e2dff66}{int \hyperlink{class_point_cloud_accumulator_a6ebb0ca53506f1ae2d0f6e411e2dff66}{m\-\_\-point\-\_\-cloud\-\_\-count}}\label{class_point_cloud_accumulator_a6ebb0ca53506f1ae2d0f6e411e2dff66}
-
+int \hyperlink{class_point_cloud_accumulator_a6ebb0ca53506f1ae2d0f6e411e2dff66}{m\-\_\-point\-\_\-cloud\-\_\-count}
 \begin{DoxyCompactList}\small\item\em \-Total number of point clouds that have been merged. \end{DoxyCompactList}\item 
-\hypertarget{class_point_cloud_accumulator_af8ef35b00c6d547b8d3fa89ad8a8b49a}{std\-::string \hyperlink{class_point_cloud_accumulator_af8ef35b00c6d547b8d3fa89ad8a8b49a}{m\-\_\-frame\-\_\-id}}\label{class_point_cloud_accumulator_af8ef35b00c6d547b8d3fa89ad8a8b49a}
-
+std\-::string \hyperlink{class_point_cloud_accumulator_af8ef35b00c6d547b8d3fa89ad8a8b49a}{m\-\_\-frame\-\_\-id}
 \begin{DoxyCompactList}\small\item\em \-The reference \-Frame\-I\-D to merge the \-Point\-Cloud into. \end{DoxyCompactList}\item 
-\hypertarget{class_point_cloud_accumulator_a7ea0dd4449475e6939cefbdb0fd260c5}{\-Eigen\-::\-Matrix4f \hyperlink{class_point_cloud_accumulator_a7ea0dd4449475e6939cefbdb0fd260c5}{m\-\_\-global\-\_\-transform}}\label{class_point_cloud_accumulator_a7ea0dd4449475e6939cefbdb0fd260c5}
-
+\-Eigen\-::\-Matrix4f \hyperlink{class_point_cloud_accumulator_a7ea0dd4449475e6939cefbdb0fd260c5}{m\-\_\-global\-\_\-transform}
 \begin{DoxyCompactList}\small\item\em \-The global transformation matrix for moving the target cloud into the reference frame of the source \-Point\-Cloud. \end{DoxyCompactList}\item 
-\hypertarget{class_point_cloud_accumulator_a0db3c1a8e6de37bcb25c260626d63ff0}{\-Point\-Cloud \hyperlink{class_point_cloud_accumulator_a0db3c1a8e6de37bcb25c260626d63ff0}{m\-\_\-accumulated\-\_\-cloud}}\label{class_point_cloud_accumulator_a0db3c1a8e6de37bcb25c260626d63ff0}
-
+\hyperlink{_helper_functions_8h_abb956d1047f4dd2c956fe3cb0dd0004d}{\-Point\-Cloud} \hyperlink{class_point_cloud_accumulator_a0db3c1a8e6de37bcb25c260626d63ff0}{m\-\_\-accumulated\-\_\-cloud}
 \begin{DoxyCompactList}\small\item\em \-The resulting accumulated \-Point\-Cloud. \end{DoxyCompactList}\item 
-\hypertarget{class_point_cloud_accumulator_ac9070e4cb82ddf04bb50cc2492e597ae}{ros\-::\-Node\-Handle \hyperlink{class_point_cloud_accumulator_ac9070e4cb82ddf04bb50cc2492e597ae}{m\-\_\-node\-\_\-handler}}\label{class_point_cloud_accumulator_ac9070e4cb82ddf04bb50cc2492e597ae}
-
+ros\-::\-Node\-Handle \hyperlink{class_point_cloud_accumulator_ac9070e4cb82ddf04bb50cc2492e597ae}{m\-\_\-node\-\_\-handler}
 \begin{DoxyCompactList}\small\item\em \-R\-O\-S \-Node \-Handler for the \hyperlink{class_point_cloud_accumulator}{\-Point\-Cloud\-Accumulator}. \end{DoxyCompactList}\item 
-\hypertarget{class_point_cloud_accumulator_a117cbef73e39daeda50c32212a3cc603}{ros\-::\-Publisher \hyperlink{class_point_cloud_accumulator_a117cbef73e39daeda50c32212a3cc603}{m\-\_\-accumulated\-\_\-point\-\_\-cloud\-\_\-publisher}}\label{class_point_cloud_accumulator_a117cbef73e39daeda50c32212a3cc603}
-
+ros\-::\-Publisher \hyperlink{class_point_cloud_accumulator_a117cbef73e39daeda50c32212a3cc603}{m\-\_\-accumulated\-\_\-point\-\_\-cloud\-\_\-publisher}
 \begin{DoxyCompactList}\small\item\em \-R\-O\-S \-Publisher for the completed accumulated \-Point\-Cloud. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Private \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_point_cloud_accumulator_a65bc804d7dd9615f5d4386b067f45136}{\-Align\-Clouds} (const \-Point\-Cloud\-::\-Ptr cloud\-\_\-src, const \-Point\-Cloud\-::\-Ptr cloud\-\_\-tgt, \-Point\-Cloud\-::\-Ptr output, \-Eigen\-::\-Matrix4f \&final\-\_\-transform, bool downsample=false)
+\begin{DoxyCompactList}\small\item\em \-Takes in two \-Point\-Clouds and merges them together. \end{DoxyCompactList}\item 
+void \hyperlink{class_point_cloud_accumulator_a40ac068a2dc2fb940a3eca433005a90d}{\-Point\-Cloud\-Callback} (const sensor\-\_\-msgs\-::\-Point\-Cloud2\-::\-Const\-Ptr \&ros\-\_\-cloud)
+\begin{DoxyCompactList}\small\item\em \-The function that is called every time that \-R\-O\-S gets a notification that there is a new \-Point\-Cloud available. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{\-Detailed \-Description}
@@ -63,10 +62,35 @@
 \end{DoxyCopyright}
 
 
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{class_point_cloud_accumulator_a8eacc283828c55b809058b54fd082433}{\index{\-Point\-Cloud\-Accumulator@{\-Point\-Cloud\-Accumulator}!\-Point\-Cloud\-Accumulator@{\-Point\-Cloud\-Accumulator}}
+\index{\-Point\-Cloud\-Accumulator@{\-Point\-Cloud\-Accumulator}!PointCloudAccumulator@{\-Point\-Cloud\-Accumulator}}
+\subsubsection[{\-Point\-Cloud\-Accumulator}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Point\-Cloud\-Accumulator\-::\-Point\-Cloud\-Accumulator} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_point_cloud_accumulator_a8eacc283828c55b809058b54fd082433}
+
+
+\-Standard \-Constructor. 
+
+\hypertarget{class_point_cloud_accumulator_a48db4ff8ad89f27563691af475d8bc3a}{\index{\-Point\-Cloud\-Accumulator@{\-Point\-Cloud\-Accumulator}!$\sim$\-Point\-Cloud\-Accumulator@{$\sim$\-Point\-Cloud\-Accumulator}}
+\index{$\sim$\-Point\-Cloud\-Accumulator@{$\sim$\-Point\-Cloud\-Accumulator}!PointCloudAccumulator@{\-Point\-Cloud\-Accumulator}}
+\subsubsection[{$\sim$\-Point\-Cloud\-Accumulator}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Point\-Cloud\-Accumulator\-::$\sim$\-Point\-Cloud\-Accumulator} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}\label{class_point_cloud_accumulator_a48db4ff8ad89f27563691af475d8bc3a}
+
+
+\-Standard \-Destructor. 
+
+
+
 \subsection{\-Member \-Function \-Documentation}
 \hypertarget{class_point_cloud_accumulator_a24d93cde9ce3cce292779934f2b97ede}{\index{\-Point\-Cloud\-Accumulator@{\-Point\-Cloud\-Accumulator}!\-Accumulate\-Point\-Clouds@{\-Accumulate\-Point\-Clouds}}
 \index{\-Accumulate\-Point\-Clouds@{\-Accumulate\-Point\-Clouds}!PointCloudAccumulator@{\-Point\-Cloud\-Accumulator}}
-\subsubsection[{\-Accumulate\-Point\-Clouds}]{\setlength{\rightskip}{0pt plus 5cm}\-Point\-Cloud {\bf \-Point\-Cloud\-Accumulator\-::\-Accumulate\-Point\-Clouds} (
+\subsubsection[{\-Accumulate\-Point\-Clouds}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Point\-Cloud} {\bf \-Point\-Cloud\-Accumulator\-::\-Accumulate\-Point\-Clouds} (
 \begin{DoxyParamCaption}
 \item[{int}]{accumulation\-\_\-time}
 \end{DoxyParamCaption}
@@ -83,9 +107,98 @@
 \begin{DoxyReturn}{\-Returns}
 \-A single \-Point\-Cloud that contains all of the merged point clouds. 
 \end{DoxyReturn}
+\hypertarget{class_point_cloud_accumulator_a65bc804d7dd9615f5d4386b067f45136}{\index{\-Point\-Cloud\-Accumulator@{\-Point\-Cloud\-Accumulator}!\-Align\-Clouds@{\-Align\-Clouds}}
+\index{\-Align\-Clouds@{\-Align\-Clouds}!PointCloudAccumulator@{\-Point\-Cloud\-Accumulator}}
+\subsubsection[{\-Align\-Clouds}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Point\-Cloud\-Accumulator\-::\-Align\-Clouds} (
+\begin{DoxyParamCaption}
+\item[{const \-Point\-Cloud\-::\-Ptr}]{cloud\-\_\-src, }
+\item[{const \-Point\-Cloud\-::\-Ptr}]{cloud\-\_\-tgt, }
+\item[{\-Point\-Cloud\-::\-Ptr}]{output, }
+\item[{\-Eigen\-::\-Matrix4f \&}]{final\-\_\-transform, }
+\item[{bool}]{downsample = {\ttfamily false}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{class_point_cloud_accumulator_a65bc804d7dd9615f5d4386b067f45136}
+
+
+\-Takes in two \-Point\-Clouds and merges them together. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em cloud\-\_\-src} & \-Input \-Point\-Cloud to be merged into the cloud\-\_\-tgt \\
+\hline
+{\em cloud\-\_\-tgt} & \-Master \-Point\-Cloud that the cloud\-\_\-src will be merged into. \\
+\hline
+{\em output} & \-The two \-Point\-Clouds merged together. \\
+\hline
+{\em final\-\_\-transform} & \-An \-Eigen tranformation matrix \\
+\hline
+{\em downsample} & \-Do you want to downsample the source and target \-Point\-Clouds \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_point_cloud_accumulator_a40ac068a2dc2fb940a3eca433005a90d}{\index{\-Point\-Cloud\-Accumulator@{\-Point\-Cloud\-Accumulator}!\-Point\-Cloud\-Callback@{\-Point\-Cloud\-Callback}}
+\index{\-Point\-Cloud\-Callback@{\-Point\-Cloud\-Callback}!PointCloudAccumulator@{\-Point\-Cloud\-Accumulator}}
+\subsubsection[{\-Point\-Cloud\-Callback}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Point\-Cloud\-Accumulator\-::\-Point\-Cloud\-Callback} (
+\begin{DoxyParamCaption}
+\item[{const sensor\-\_\-msgs\-::\-Point\-Cloud2\-::\-Const\-Ptr \&}]{ros\-\_\-cloud}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{class_point_cloud_accumulator_a40ac068a2dc2fb940a3eca433005a90d}
+
+
+\-The function that is called every time that \-R\-O\-S gets a notification that there is a new \-Point\-Cloud available. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em ros\-\_\-cloud} & \-The new \-Point\-Cloud message that is being provided by \-R\-O\-S. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{\-Member \-Data \-Documentation}
+\hypertarget{class_point_cloud_accumulator_a0db3c1a8e6de37bcb25c260626d63ff0}{\index{\-Point\-Cloud\-Accumulator@{\-Point\-Cloud\-Accumulator}!m\-\_\-accumulated\-\_\-cloud@{m\-\_\-accumulated\-\_\-cloud}}
+\index{m\-\_\-accumulated\-\_\-cloud@{m\-\_\-accumulated\-\_\-cloud}!PointCloudAccumulator@{\-Point\-Cloud\-Accumulator}}
+\subsubsection[{m\-\_\-accumulated\-\_\-cloud}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Point\-Cloud} {\bf \-Point\-Cloud\-Accumulator\-::m\-\_\-accumulated\-\_\-cloud}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{class_point_cloud_accumulator_a0db3c1a8e6de37bcb25c260626d63ff0}
+
+
+\-The resulting accumulated \-Point\-Cloud. 
+
+\hypertarget{class_point_cloud_accumulator_a117cbef73e39daeda50c32212a3cc603}{\index{\-Point\-Cloud\-Accumulator@{\-Point\-Cloud\-Accumulator}!m\-\_\-accumulated\-\_\-point\-\_\-cloud\-\_\-publisher@{m\-\_\-accumulated\-\_\-point\-\_\-cloud\-\_\-publisher}}
+\index{m\-\_\-accumulated\-\_\-point\-\_\-cloud\-\_\-publisher@{m\-\_\-accumulated\-\_\-point\-\_\-cloud\-\_\-publisher}!PointCloudAccumulator@{\-Point\-Cloud\-Accumulator}}
+\subsubsection[{m\-\_\-accumulated\-\_\-point\-\_\-cloud\-\_\-publisher}]{\setlength{\rightskip}{0pt plus 5cm}ros\-::\-Publisher {\bf \-Point\-Cloud\-Accumulator\-::m\-\_\-accumulated\-\_\-point\-\_\-cloud\-\_\-publisher}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{class_point_cloud_accumulator_a117cbef73e39daeda50c32212a3cc603}
+
+
+\-R\-O\-S \-Publisher for the completed accumulated \-Point\-Cloud. 
+
+\hypertarget{class_point_cloud_accumulator_af8ef35b00c6d547b8d3fa89ad8a8b49a}{\index{\-Point\-Cloud\-Accumulator@{\-Point\-Cloud\-Accumulator}!m\-\_\-frame\-\_\-id@{m\-\_\-frame\-\_\-id}}
+\index{m\-\_\-frame\-\_\-id@{m\-\_\-frame\-\_\-id}!PointCloudAccumulator@{\-Point\-Cloud\-Accumulator}}
+\subsubsection[{m\-\_\-frame\-\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string {\bf \-Point\-Cloud\-Accumulator\-::m\-\_\-frame\-\_\-id}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{class_point_cloud_accumulator_af8ef35b00c6d547b8d3fa89ad8a8b49a}
+
+
+\-The reference \-Frame\-I\-D to merge the \-Point\-Cloud into. 
+
+\hypertarget{class_point_cloud_accumulator_a7ea0dd4449475e6939cefbdb0fd260c5}{\index{\-Point\-Cloud\-Accumulator@{\-Point\-Cloud\-Accumulator}!m\-\_\-global\-\_\-transform@{m\-\_\-global\-\_\-transform}}
+\index{m\-\_\-global\-\_\-transform@{m\-\_\-global\-\_\-transform}!PointCloudAccumulator@{\-Point\-Cloud\-Accumulator}}
+\subsubsection[{m\-\_\-global\-\_\-transform}]{\setlength{\rightskip}{0pt plus 5cm}\-Eigen\-::\-Matrix4f {\bf \-Point\-Cloud\-Accumulator\-::m\-\_\-global\-\_\-transform}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{class_point_cloud_accumulator_a7ea0dd4449475e6939cefbdb0fd260c5}
+
+
+\-The global transformation matrix for moving the target cloud into the reference frame of the source \-Point\-Cloud. 
+
+\hypertarget{class_point_cloud_accumulator_ac9070e4cb82ddf04bb50cc2492e597ae}{\index{\-Point\-Cloud\-Accumulator@{\-Point\-Cloud\-Accumulator}!m\-\_\-node\-\_\-handler@{m\-\_\-node\-\_\-handler}}
+\index{m\-\_\-node\-\_\-handler@{m\-\_\-node\-\_\-handler}!PointCloudAccumulator@{\-Point\-Cloud\-Accumulator}}
+\subsubsection[{m\-\_\-node\-\_\-handler}]{\setlength{\rightskip}{0pt plus 5cm}ros\-::\-Node\-Handle {\bf \-Point\-Cloud\-Accumulator\-::m\-\_\-node\-\_\-handler}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{class_point_cloud_accumulator_ac9070e4cb82ddf04bb50cc2492e597ae}
+
+
+\-R\-O\-S \-Node \-Handler for the \hyperlink{class_point_cloud_accumulator}{\-Point\-Cloud\-Accumulator}. 
+
+\hypertarget{class_point_cloud_accumulator_a6ebb0ca53506f1ae2d0f6e411e2dff66}{\index{\-Point\-Cloud\-Accumulator@{\-Point\-Cloud\-Accumulator}!m\-\_\-point\-\_\-cloud\-\_\-count@{m\-\_\-point\-\_\-cloud\-\_\-count}}
+\index{m\-\_\-point\-\_\-cloud\-\_\-count@{m\-\_\-point\-\_\-cloud\-\_\-count}!PointCloudAccumulator@{\-Point\-Cloud\-Accumulator}}
+\subsubsection[{m\-\_\-point\-\_\-cloud\-\_\-count}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-Point\-Cloud\-Accumulator\-::m\-\_\-point\-\_\-cloud\-\_\-count}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{class_point_cloud_accumulator_a6ebb0ca53506f1ae2d0f6e411e2dff66}
+
+
+\-Total number of point clouds that have been merged. 
+
 
 
 \-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
 \item 
-ros/include/\-Point\-Cloud\-Accumulator.\-h\item 
-ros/src/\-Point\-Cloud\-Accumulator.\-cpp\end{DoxyCompactItemize}
+ros/include/\hyperlink{_point_cloud_accumulator_8h}{\-Point\-Cloud\-Accumulator.\-h}\item 
+ros/src/\hyperlink{_point_cloud_accumulator_8cpp}{\-Point\-Cloud\-Accumulator.\-cpp}\end{DoxyCompactItemize}

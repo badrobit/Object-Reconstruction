@@ -52,6 +52,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -100,6 +101,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 This is the complete list of members for <a class="el" href="class_point_cloud_accumulator.html">PointCloudAccumulator</a>, including all inherited members.<table>
   <tr class="memlist"><td><a class="el" href="class_point_cloud_accumulator.html#a24d93cde9ce3cce292779934f2b97ede">AccumulatePointClouds</a>(int accumulation_time)</td><td><a class="el" href="class_point_cloud_accumulator.html">PointCloudAccumulator</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_point_cloud_accumulator.html#a65bc804d7dd9615f5d4386b067f45136">AlignClouds</a>(const PointCloud::Ptr cloud_src, const PointCloud::Ptr cloud_tgt, PointCloud::Ptr output, Eigen::Matrix4f &amp;final_transform, bool downsample=false)</td><td><a class="el" href="class_point_cloud_accumulator.html">PointCloudAccumulator</a></td><td><code> [private]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_point_cloud_accumulator.html#a0db3c1a8e6de37bcb25c260626d63ff0">m_accumulated_cloud</a></td><td><a class="el" href="class_point_cloud_accumulator.html">PointCloudAccumulator</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_point_cloud_accumulator.html#a117cbef73e39daeda50c32212a3cc603">m_accumulated_point_cloud_publisher</a></td><td><a class="el" href="class_point_cloud_accumulator.html">PointCloudAccumulator</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_point_cloud_accumulator.html#af8ef35b00c6d547b8d3fa89ad8a8b49a">m_frame_id</a></td><td><a class="el" href="class_point_cloud_accumulator.html">PointCloudAccumulator</a></td><td><code> [protected]</code></td></tr>
@@ -107,6 +109,7 @@ This is the complete list of members for <a class="el" href="class_point_cloud_a
   <tr class="memlist"><td><a class="el" href="class_point_cloud_accumulator.html#ac9070e4cb82ddf04bb50cc2492e597ae">m_node_handler</a></td><td><a class="el" href="class_point_cloud_accumulator.html">PointCloudAccumulator</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_point_cloud_accumulator.html#a6ebb0ca53506f1ae2d0f6e411e2dff66">m_point_cloud_count</a></td><td><a class="el" href="class_point_cloud_accumulator.html">PointCloudAccumulator</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_point_cloud_accumulator.html#a8eacc283828c55b809058b54fd082433">PointCloudAccumulator</a>()</td><td><a class="el" href="class_point_cloud_accumulator.html">PointCloudAccumulator</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_point_cloud_accumulator.html#a40ac068a2dc2fb940a3eca433005a90d">PointCloudCallback</a>(const sensor_msgs::PointCloud2::ConstPtr &amp;ros_cloud)</td><td><a class="el" href="class_point_cloud_accumulator.html">PointCloudAccumulator</a></td><td><code> [private]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_point_cloud_accumulator.html#a48db4ff8ad89f27563691af475d8bc3a">~PointCloudAccumulator</a>()</td><td><a class="el" href="class_point_cloud_accumulator.html">PointCloudAccumulator</a></td><td><code> [virtual]</code></td></tr>
 </table></div><!-- contents -->
 <!-- window showing the filter options -->
@@ -114,7 +117,7 @@ This is the complete list of members for <a class="el" href="class_point_cloud_a
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -127,7 +130,7 @@ This is the complete list of members for <a class="el" href="class_point_cloud_a
   <div id="nav-path" class="navpath">
     <ul>
 
-    <li class="footer">Generated on Mon Jul 29 2013 21:54:03 for Occluded Geometry Estimation by
+    <li class="footer">Generated on Mon Jul 29 2013 22:04:32 for Occluded Geometry Estimation by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>
