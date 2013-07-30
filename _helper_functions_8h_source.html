@@ -105,57 +105,78 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00012"></a>00012 
 <a name="l00013"></a>00013 <span class="preprocessor">#include &lt;ros/ros.h&gt;</span>
 <a name="l00014"></a>00014 <span class="preprocessor">#include &lt;ros/package.h&gt;</span>
-<a name="l00015"></a>00015 
-<a name="l00016"></a>00016 <span class="preprocessor">#include &lt;sensor_msgs/point_cloud_conversion.h&gt;</span>
-<a name="l00017"></a>00017 <span class="preprocessor">#include &lt;sensor_msgs/PointCloud2.h&gt;</span>
-<a name="l00018"></a>00018 
-<a name="l00019"></a>00019 <span class="preprocessor">#include &lt;boost/make_shared.hpp&gt;</span>
-<a name="l00020"></a>00020 <span class="preprocessor">#include &lt;pcl/point_types.h&gt;</span>
-<a name="l00021"></a>00021 <span class="preprocessor">#include &lt;pcl/point_cloud.h&gt;</span>
-<a name="l00022"></a>00022 <span class="preprocessor">#include &lt;pcl/point_representation.h&gt;</span>
-<a name="l00023"></a>00023 
-<a name="l00024"></a>00024 <span class="preprocessor">#include &lt;pcl/io/pcd_io.h&gt;</span>
-<a name="l00025"></a>00025 
-<a name="l00026"></a>00026 <span class="preprocessor">#include &lt;pcl/filters/voxel_grid.h&gt;</span>
-<a name="l00027"></a>00027 <span class="preprocessor">#include &lt;pcl/filters/filter.h&gt;</span>
-<a name="l00028"></a>00028 
-<a name="l00029"></a>00029 <span class="preprocessor">#include &lt;pcl/filters/extract_indices.h&gt;</span>
-<a name="l00030"></a>00030 <span class="preprocessor">#include &lt;pcl/kdtree/kdtree.h&gt;</span>
-<a name="l00031"></a>00031 
-<a name="l00032"></a>00032 <span class="preprocessor">#include &lt;pcl/sample_consensus/method_types.h&gt;</span>
-<a name="l00033"></a>00033 <span class="preprocessor">#include &lt;pcl/sample_consensus/model_types.h&gt;</span>
-<a name="l00034"></a>00034 <span class="preprocessor">#include &lt;pcl/segmentation/sac_segmentation.h&gt;</span>
-<a name="l00035"></a>00035 <span class="preprocessor">#include &lt;pcl/segmentation/extract_clusters.h&gt;</span>
-<a name="l00036"></a>00036 
-<a name="l00037"></a>00037 <span class="preprocessor">#include &lt;pcl/features/normal_3d.h&gt;</span>
-<a name="l00038"></a>00038 
-<a name="l00039"></a>00039 <span class="preprocessor">#include &lt;pcl/registration/icp.h&gt;</span>
-<a name="l00040"></a>00040 <span class="preprocessor">#include &lt;pcl/registration/icp_nl.h&gt;</span>
-<a name="l00041"></a>00041 <span class="preprocessor">#include &lt;pcl/registration/transforms.h&gt;</span>
-<a name="l00042"></a>00042 
-<a name="l00043"></a>00043 <span class="preprocessor">#include &lt;pcl/filters/voxel_grid.h&gt;</span>
-<a name="l00044"></a>00044 <span class="preprocessor">#include &lt;pcl/filters/statistical_outlier_removal.h&gt;</span>
-<a name="l00045"></a>00045 
-<a name="l00050"></a><a class="code" href="_helper_functions_8h.html#a33eafffb7a0480b3f826230a0ebba532">00050</a> <span class="keyword">typedef</span> pcl::PointXYZRGB <a class="code" href="_helper_functions_8h.html#a33eafffb7a0480b3f826230a0ebba532" title="Have all points in the project represented by pcl::PointXYZRGB.">PointT</a>;
-<a name="l00051"></a>00051 
-<a name="l00059"></a><a class="code" href="_helper_functions_8h.html#abb956d1047f4dd2c956fe3cb0dd0004d">00059</a> <span class="keyword">typedef</span> pcl::PointCloud&lt;PointT&gt; <a class="code" href="_helper_functions_8h.html#abb956d1047f4dd2c956fe3cb0dd0004d" title="Have all pointclouds used in the project made up from PointT.">PointCloud</a>;
+<a name="l00015"></a>00015 <span class="preprocessor">#include &lt;visualization_msgs/Marker.h&gt;</span>
+<a name="l00016"></a>00016 
+<a name="l00017"></a>00017 <span class="preprocessor">#include &lt;sensor_msgs/point_cloud_conversion.h&gt;</span>
+<a name="l00018"></a>00018 <span class="preprocessor">#include &lt;sensor_msgs/PointCloud2.h&gt;</span>
+<a name="l00019"></a>00019 
+<a name="l00020"></a>00020 <span class="preprocessor">#include &lt;boost/make_shared.hpp&gt;</span>
+<a name="l00021"></a>00021 <span class="preprocessor">#include &lt;pcl/point_types.h&gt;</span>
+<a name="l00022"></a>00022 <span class="preprocessor">#include &lt;pcl/point_cloud.h&gt;</span>
+<a name="l00023"></a>00023 <span class="preprocessor">#include &lt;pcl/point_representation.h&gt;</span>
+<a name="l00024"></a>00024 
+<a name="l00025"></a>00025 <span class="preprocessor">#include &lt;pcl/io/pcd_io.h&gt;</span>
+<a name="l00026"></a>00026 
+<a name="l00027"></a>00027 <span class="preprocessor">#include &lt;pcl/common/common.h&gt;</span>
+<a name="l00028"></a>00028 <span class="preprocessor">#include &lt;pcl/io/pcd_io.h&gt;</span>
+<a name="l00029"></a>00029 <span class="preprocessor">#include &lt;pcl/features/normal_3d_omp.h&gt;</span>
+<a name="l00030"></a>00030 <span class="preprocessor">#include &lt;pcl/surface/mls.h&gt;</span>
+<a name="l00031"></a>00031 <span class="preprocessor">#include &lt;pcl/surface/mls_omp.h&gt;</span>
+<a name="l00032"></a>00032 <span class="preprocessor">#include &lt;pcl/surface/poisson.h&gt;</span>
+<a name="l00033"></a>00033 <span class="preprocessor">#include &lt;pcl/io/vtk_io.h&gt;</span>
+<a name="l00034"></a>00034 
+<a name="l00035"></a>00035 <span class="preprocessor">#include &lt;pcl/filters/voxel_grid.h&gt;</span>
+<a name="l00036"></a>00036 <span class="preprocessor">#include &lt;pcl/filters/filter.h&gt;</span>
+<a name="l00037"></a>00037 
+<a name="l00038"></a>00038 <span class="preprocessor">#include &lt;pcl/filters/extract_indices.h&gt;</span>
+<a name="l00039"></a>00039 <span class="preprocessor">#include &lt;pcl/kdtree/kdtree.h&gt;</span>
+<a name="l00040"></a>00040 <span class="preprocessor">#include &lt;pcl/kdtree/kdtree_flann.h&gt;</span>
+<a name="l00041"></a>00041 
+<a name="l00042"></a>00042 <span class="preprocessor">#include &lt;pcl/sample_consensus/method_types.h&gt;</span>
+<a name="l00043"></a>00043 <span class="preprocessor">#include &lt;pcl/sample_consensus/model_types.h&gt;</span>
+<a name="l00044"></a>00044 <span class="preprocessor">#include &lt;pcl/segmentation/sac_segmentation.h&gt;</span>
+<a name="l00045"></a>00045 <span class="preprocessor">#include &lt;pcl/segmentation/extract_clusters.h&gt;</span>
+<a name="l00046"></a>00046 
+<a name="l00047"></a>00047 <span class="preprocessor">#include &lt;pcl/surface/grid_projection.h&gt;</span>
+<a name="l00048"></a>00048 <span class="preprocessor">#include &lt;pcl/io/vtk_io.h&gt;</span>
+<a name="l00049"></a>00049 <span class="preprocessor">#include &lt;pcl/surface/vtk_smoothing/vtk_mesh_smoothing_windowed_sinc.h&gt;</span>
+<a name="l00050"></a>00050 
+<a name="l00051"></a>00051 <span class="preprocessor">#include &lt;pcl/features/normal_3d.h&gt;</span>
+<a name="l00052"></a>00052 <span class="preprocessor">#include &lt;pcl/surface/gp3.h&gt;</span>
+<a name="l00053"></a>00053 
+<a name="l00054"></a>00054 <span class="preprocessor">#include &lt;pcl/registration/icp.h&gt;</span>
+<a name="l00055"></a>00055 <span class="preprocessor">#include &lt;pcl/registration/icp_nl.h&gt;</span>
+<a name="l00056"></a>00056 <span class="preprocessor">#include &lt;pcl/registration/transforms.h&gt;</span>
+<a name="l00057"></a>00057 
+<a name="l00058"></a>00058 <span class="preprocessor">#include &lt;pcl/filters/voxel_grid.h&gt;</span>
+<a name="l00059"></a>00059 <span class="preprocessor">#include &lt;pcl/filters/statistical_outlier_removal.h&gt;</span>
 <a name="l00060"></a>00060 
-<a name="l00065"></a><a class="code" href="_helper_functions_8h.html#af8717e40603e7d4bcd56c56ec09aa10e">00065</a> <span class="keyword">typedef</span> pcl::PointNormal <a class="code" href="_helper_functions_8h.html#af8717e40603e7d4bcd56c56ec09aa10e" title="A standard PCL point that also includes Normal Information for that point.">PointNormalT</a>;
+<a name="l00065"></a><a class="code" href="_helper_functions_8h.html#a33eafffb7a0480b3f826230a0ebba532">00065</a> <span class="keyword">typedef</span> pcl::PointXYZRGB <a class="code" href="_helper_functions_8h.html#a33eafffb7a0480b3f826230a0ebba532" title="Have all points in the project represented by pcl::PointXYZRGB.">PointT</a>;
 <a name="l00066"></a>00066 
-<a name="l00071"></a><a class="code" href="_helper_functions_8h.html#a8bd43f695aeb20e077921614455eaacd">00071</a> <span class="keyword">typedef</span> pcl::PointCloud&lt;PointNormalT&gt; <a class="code" href="_helper_functions_8h.html#a8bd43f695aeb20e077921614455eaacd" title="A Standard PCL PointCloud but where the points all contain normal information as well.">PointCloudWithNormals</a>;
-<a name="l00072"></a>00072 
-<a name="l00077"></a><a class="code" href="class_helper_functions.html">00077</a> <span class="keyword">class </span><a class="code" href="class_helper_functions.html" title="This class is a grouping of functions that can be accessed from any.">HelperFunctions</a>
-<a name="l00078"></a>00078 {
-<a name="l00079"></a>00079 <span class="keyword">public</span>:
-<a name="l00080"></a>00080 
-<a name="l00094"></a>00094   <span class="keyword">static</span> <a class="code" href="_helper_functions_8h.html#abb956d1047f4dd2c956fe3cb0dd0004d" title="Have all pointclouds used in the project made up from PointT.">PointCloud</a> <a class="code" href="class_helper_functions.html#a2e817646b20092d5f7179ba89635b50f" title="This function is responsible for pre-processing the input pointcloud before we attempt object reconst...">PreparePointCloud</a>( <a class="code" href="_helper_functions_8h.html#abb956d1047f4dd2c956fe3cb0dd0004d" title="Have all pointclouds used in the project made up from PointT.">PointCloud</a> input_cloud );
-<a name="l00095"></a>00095 
-<a name="l00096"></a>00096 
-<a name="l00105"></a>00105   <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="class_helper_functions.html#a4b25abbfbd620e9218b2949c758a8872" title="A function that is used to write a standard PCL pointcloud to a PointCloud Data File (PCD)...">WriteToPCD</a>( std::string file_name, <a class="code" href="_helper_functions_8h.html#abb956d1047f4dd2c956fe3cb0dd0004d" title="Have all pointclouds used in the project made up from PointT.">PointCloud</a> input_cloud );
-<a name="l00106"></a>00106 
-<a name="l00114"></a>00114   <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="class_helper_functions.html#a4428222439104c10e58e04958a231c37" title="Function that is used to write out multiple PointClouds to Multiple PCD Files.">WriteMultipleToPCD</a>( std::string file_name, std::vector&lt;PointCloud&gt; input_clouds );
-<a name="l00115"></a>00115 };
-<a name="l00116"></a>00116 <span class="preprocessor">#endif </span><span class="comment">/* HELPERFUNCTIONS_H_ */</span>
+<a name="l00074"></a><a class="code" href="_helper_functions_8h.html#abb956d1047f4dd2c956fe3cb0dd0004d">00074</a> <span class="keyword">typedef</span> pcl::PointCloud&lt;PointT&gt; <a class="code" href="_helper_functions_8h.html#abb956d1047f4dd2c956fe3cb0dd0004d" title="Have all pointclouds used in the project made up from PointT.">PointCloud</a>;
+<a name="l00075"></a>00075 
+<a name="l00080"></a><a class="code" href="_helper_functions_8h.html#af8717e40603e7d4bcd56c56ec09aa10e">00080</a> <span class="keyword">typedef</span> pcl::PointXYZRGBNormal <a class="code" href="_helper_functions_8h.html#af8717e40603e7d4bcd56c56ec09aa10e" title="A standard PCL point that also includes Normal Information for that point.">PointNormalT</a>;
+<a name="l00081"></a>00081 
+<a name="l00086"></a><a class="code" href="_helper_functions_8h.html#a8bd43f695aeb20e077921614455eaacd">00086</a> <span class="keyword">typedef</span> pcl::PointCloud&lt;PointNormalT&gt; <a class="code" href="_helper_functions_8h.html#a8bd43f695aeb20e077921614455eaacd" title="A Standard PCL PointCloud but where the points all contain normal information as well.">PointCloudWithNormals</a>;
+<a name="l00087"></a>00087 
+<a name="l00092"></a><a class="code" href="_helper_functions_8h.html#a1ee4898d5040989c5fad6726ea5b2056">00092</a> <span class="keyword">typedef</span> pcl::PolygonMesh <a class="code" href="_helper_functions_8h.html#a1ee4898d5040989c5fad6726ea5b2056" title="PointCloudLibrary polygon mesh representation.">PCLMesh</a>;
+<a name="l00093"></a>00093 
+<a name="l00098"></a><a class="code" href="class_helper_functions.html">00098</a> <span class="keyword">class </span><a class="code" href="class_helper_functions.html" title="This class is a grouping of functions that can be accessed from any.">HelperFunctions</a>
+<a name="l00099"></a>00099 {
+<a name="l00100"></a>00100 <span class="keyword">public</span>:
+<a name="l00101"></a>00101 
+<a name="l00115"></a>00115   <span class="keyword">static</span> <a class="code" href="_helper_functions_8h.html#abb956d1047f4dd2c956fe3cb0dd0004d" title="Have all pointclouds used in the project made up from PointT.">PointCloud</a> <a class="code" href="class_helper_functions.html#a2e817646b20092d5f7179ba89635b50f" title="This function is responsible for pre-processing the input pointcloud before we attempt object reconst...">PreparePointCloud</a>( <a class="code" href="_helper_functions_8h.html#abb956d1047f4dd2c956fe3cb0dd0004d" title="Have all pointclouds used in the project made up from PointT.">PointCloud</a> input_cloud );
+<a name="l00116"></a>00116 
+<a name="l00117"></a>00117 
+<a name="l00126"></a>00126   <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="class_helper_functions.html#a4b25abbfbd620e9218b2949c758a8872" title="A function that is used to write a standard PCL pointcloud to a PointCloud Data File (PCD)...">WriteToPCD</a>( std::string file_name, <a class="code" href="_helper_functions_8h.html#abb956d1047f4dd2c956fe3cb0dd0004d" title="Have all pointclouds used in the project made up from PointT.">PointCloud</a> input_cloud );
+<a name="l00127"></a>00127 
+<a name="l00135"></a>00135   <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="class_helper_functions.html#a4428222439104c10e58e04958a231c37" title="Function that is used to write out multiple PointClouds to Multiple PCD Files.">WriteMultipleToPCD</a>( std::string file_name, std::vector&lt;PointCloud&gt; input_clouds );
+<a name="l00136"></a>00136 
+<a name="l00137"></a>00137   <span class="keyword">static</span> <a class="code" href="_helper_functions_8h.html#a1ee4898d5040989c5fad6726ea5b2056" title="PointCloudLibrary polygon mesh representation.">PCLMesh</a> <a class="code" href="class_helper_functions.html#a51d22836259590b5e4e27c551bba93f3">ConvertCloudToMesh</a>( std::string file_name, <a class="code" href="_helper_functions_8h.html#abb956d1047f4dd2c956fe3cb0dd0004d" title="Have all pointclouds used in the project made up from PointT.">PointCloud</a> input_cloud );
+<a name="l00138"></a>00138 
+<a name="l00139"></a>00139   <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="class_helper_functions.html#a5b355421138212e50b90b120734854ef">PublishMeshMarker</a>( ros::Publisher mesh_publisher, std::string file_name );
+<a name="l00140"></a>00140 };
+<a name="l00141"></a>00141 <span class="preprocessor">#endif </span><span class="comment">/* HELPERFUNCTIONS_H_ */</span>
 </pre></div></div><!-- contents -->
 </div>
 <!-- window showing the filter options -->
@@ -176,7 +197,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul>
       <li class="navelem"><a class="el" href="_helper_functions_8h.html">HelperFunctions.h</a>      </li>
 
-    <li class="footer">Generated on Mon Jul 29 2013 22:08:00 for Occluded Geometry Estimation by
+    <li class="footer">Generated on Tue Jul 30 2013 23:02:21 for Occluded Geometry Estimation by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

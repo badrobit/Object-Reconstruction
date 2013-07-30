@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['env_5fvar_5fsubfolders',['ENV_VAR_SUBFOLDERS',['../namespace__setup__util.html#aa31804f1be8660156ce9394b33c68dc4',1,'_setup_util']]],
-  ['environ',['environ',['../namespace__setup__util.html#a0a3189a3fa13a696964c791ed2a5ea85',1,'_setup_util']]]
+  ['extracted_5fplatform_5fcloud',['extracted_platform_cloud',['../classhbrs__object__reconstruction_1_1srv_1_1___extract_platform_1_1_extract_platform_response.html#a541133d8573de59877d757d4412cc1b1',1,'hbrs_object_reconstruction::srv::_ExtractPlatform::ExtractPlatformResponse::extracted_platform_cloud()'],['../structhbrs__object__reconstruction_1_1_extract_platform_response__.html#a4a381bfcb814115a2c0cbeff6f16dbf3',1,'hbrs_object_reconstruction::ExtractPlatformResponse_::extracted_platform_cloud()']]]
 ];

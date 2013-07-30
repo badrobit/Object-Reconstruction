@@ -1,0 +1,7 @@
+var searchData=
+[
+  ['request',['Request',['../structhbrs__object__reconstruction_1_1_extract_platform.html#a20caf0ee2df329f57f79fb57560020d7',1,'hbrs_object_reconstruction::ExtractPlatform::Request()'],['../structhbrs__object__reconstruction_1_1_fix_occlusion.html#ad84cf29b5ac08d5c38b9bff6021d8280',1,'hbrs_object_reconstruction::FixOcclusion::Request()']]],
+  ['requesttype',['RequestType',['../structhbrs__object__reconstruction_1_1_extract_platform.html#a2532e833420e31a667c0f947c0903957',1,'hbrs_object_reconstruction::ExtractPlatform::RequestType()'],['../structhbrs__object__reconstruction_1_1_fix_occlusion.html#a81b9e631834e62676196c5861be0d018',1,'hbrs_object_reconstruction::FixOcclusion::RequestType()']]],
+  ['response',['Response',['../structhbrs__object__reconstruction_1_1_extract_platform.html#ad428e95b416f00284f5445b5771d2046',1,'hbrs_object_reconstruction::ExtractPlatform::Response()'],['../structhbrs__object__reconstruction_1_1_fix_occlusion.html#a8f008499ed365ef31d51c0680d25a427',1,'hbrs_object_reconstruction::FixOcclusion::Response()']]],
+  ['responsetype',['ResponseType',['../structhbrs__object__reconstruction_1_1_extract_platform.html#ab723bf3001138486f42d752c8fa7b63e',1,'hbrs_object_reconstruction::ExtractPlatform::ResponseType()'],['../structhbrs__object__reconstruction_1_1_fix_occlusion.html#a0c10bd2d3f7f922be7cdd7f4e141d16f',1,'hbrs_object_reconstruction::FixOcclusion::ResponseType()']]]
+];

@@ -1,0 +1,5 @@
+var structros_1_1message__traits_1_1_data_type_3_01_1_1hbrs__object__reconstruction_1_1_extract_platba4865a04dbdc83b21722f3becd58b36 =
+[
+    [ "value", "structros_1_1message__traits_1_1_data_type_3_01_1_1hbrs__object__reconstruction_1_1_extract_platba4865a04dbdc83b21722f3becd58b36.html#a20ec3c68f2119dc0c3f7088d0e65fc66", null ],
+    [ "value", "structros_1_1message__traits_1_1_data_type_3_01_1_1hbrs__object__reconstruction_1_1_extract_platba4865a04dbdc83b21722f3becd58b36.html#ae6a9227e9e3d94eba1e48cd51e802276", null ]
+];

@@ -14,13 +14,25 @@ static \hyperlink{_helper_functions_8h_abb956d1047f4dd2c956fe3cb0dd0004d}{\-Poin
 static bool \hyperlink{class_helper_functions_a4b25abbfbd620e9218b2949c758a8872}{\-Write\-To\-P\-C\-D} (std\-::string file\-\_\-name, \hyperlink{_helper_functions_8h_abb956d1047f4dd2c956fe3cb0dd0004d}{\-Point\-Cloud} input\-\_\-cloud)
 \begin{DoxyCompactList}\small\item\em \-A function that is used to write a standard \-P\-C\-L pointcloud to a \-Point\-Cloud \-Data \-File (\-P\-C\-D). \end{DoxyCompactList}\item 
 static bool \hyperlink{class_helper_functions_a4428222439104c10e58e04958a231c37}{\-Write\-Multiple\-To\-P\-C\-D} (std\-::string file\-\_\-name, std\-::vector$<$ \hyperlink{_helper_functions_8h_abb956d1047f4dd2c956fe3cb0dd0004d}{\-Point\-Cloud} $>$ input\-\_\-clouds)
-\begin{DoxyCompactList}\small\item\em \-Function that is used to write out multiple \-Point\-Clouds to \-Multiple \-P\-C\-D \-Files. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em \-Function that is used to write out multiple \-Point\-Clouds to \-Multiple \-P\-C\-D \-Files. \end{DoxyCompactList}\item 
+static \hyperlink{_helper_functions_8h_a1ee4898d5040989c5fad6726ea5b2056}{\-P\-C\-L\-Mesh} \hyperlink{class_helper_functions_a51d22836259590b5e4e27c551bba93f3}{\-Convert\-Cloud\-To\-Mesh} (std\-::string file\-\_\-name, \hyperlink{_helper_functions_8h_abb956d1047f4dd2c956fe3cb0dd0004d}{\-Point\-Cloud} input\-\_\-cloud)
+\item 
+static bool \hyperlink{class_helper_functions_a5b355421138212e50b90b120734854ef}{\-Publish\-Mesh\-Marker} (ros\-::\-Publisher mesh\-\_\-publisher, std\-::string file\-\_\-name)
+\end{DoxyCompactItemize}
 
 
 \subsection{\-Detailed \-Description}
 \-This class is a grouping of functions that can be accessed from any. 
 
 \subsection{\-Member \-Function \-Documentation}
+\hypertarget{class_helper_functions_a51d22836259590b5e4e27c551bba93f3}{\index{\-Helper\-Functions@{\-Helper\-Functions}!\-Convert\-Cloud\-To\-Mesh@{\-Convert\-Cloud\-To\-Mesh}}
+\index{\-Convert\-Cloud\-To\-Mesh@{\-Convert\-Cloud\-To\-Mesh}!HelperFunctions@{\-Helper\-Functions}}
+\subsubsection[{\-Convert\-Cloud\-To\-Mesh}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-P\-C\-L\-Mesh} {\bf \-Helper\-Functions\-::\-Convert\-Cloud\-To\-Mesh} (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{file\-\_\-name, }
+\item[{{\bf \-Point\-Cloud}}]{input\-\_\-cloud}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{class_helper_functions_a51d22836259590b5e4e27c551bba93f3}
 \hypertarget{class_helper_functions_a2e817646b20092d5f7179ba89635b50f}{\index{\-Helper\-Functions@{\-Helper\-Functions}!\-Prepare\-Point\-Cloud@{\-Prepare\-Point\-Cloud}}
 \index{\-Prepare\-Point\-Cloud@{\-Prepare\-Point\-Cloud}!HelperFunctions@{\-Helper\-Functions}}
 \subsubsection[{\-Prepare\-Point\-Cloud}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Point\-Cloud} {\bf \-Helper\-Functions\-::\-Prepare\-Point\-Cloud} (
@@ -42,6 +54,14 @@ static bool \hyperlink{class_helper_functions_a4428222439104c10e58e04958a231c37}
 \begin{DoxyReturn}{\-Returns}
 \-A pre-\/processed (noise removed \& subsampled) pointcloud. 
 \end{DoxyReturn}
+\hypertarget{class_helper_functions_a5b355421138212e50b90b120734854ef}{\index{\-Helper\-Functions@{\-Helper\-Functions}!\-Publish\-Mesh\-Marker@{\-Publish\-Mesh\-Marker}}
+\index{\-Publish\-Mesh\-Marker@{\-Publish\-Mesh\-Marker}!HelperFunctions@{\-Helper\-Functions}}
+\subsubsection[{\-Publish\-Mesh\-Marker}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Helper\-Functions\-::\-Publish\-Mesh\-Marker} (
+\begin{DoxyParamCaption}
+\item[{ros\-::\-Publisher}]{mesh\-\_\-publisher, }
+\item[{std\-::string}]{file\-\_\-name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{class_helper_functions_a5b355421138212e50b90b120734854ef}
 \hypertarget{class_helper_functions_a4428222439104c10e58e04958a231c37}{\index{\-Helper\-Functions@{\-Helper\-Functions}!\-Write\-Multiple\-To\-P\-C\-D@{\-Write\-Multiple\-To\-P\-C\-D}}
 \index{\-Write\-Multiple\-To\-P\-C\-D@{\-Write\-Multiple\-To\-P\-C\-D}!HelperFunctions@{\-Helper\-Functions}}
 \subsubsection[{\-Write\-Multiple\-To\-P\-C\-D}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Helper\-Functions\-::\-Write\-Multiple\-To\-P\-C\-D} (

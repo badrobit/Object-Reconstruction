@@ -1,0 +1,5 @@
+var structros_1_1serialization_1_1_serializer_3_01_1_1hbrs__object__reconstruction_1_1_extract_platfec7db37c76a5940d2c079d0cd2e0ad4d =
+[
+    [ "allInOne", "structros_1_1serialization_1_1_serializer_3_01_1_1hbrs__object__reconstruction_1_1_extract_platfec7db37c76a5940d2c079d0cd2e0ad4d.html#a1768d6e174e391ec821ee53ca9dec343", null ],
+    [ "ROS_DECLARE_ALLINONE_SERIALIZER", "structros_1_1serialization_1_1_serializer_3_01_1_1hbrs__object__reconstruction_1_1_extract_platfec7db37c76a5940d2c079d0cd2e0ad4d.html#a4ad1a065dc6689574a618ce644968f24", null ]
+];

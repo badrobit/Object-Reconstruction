@@ -5,6 +5,7 @@ var searchData=
   ['m_5ffix_5focclusions_5fservice',['m_fix_occlusions_service',['../classobject__reconstruction__node.html#a0beb4c4e79ee822d4ca5bb320eb8ddfd',1,'object_reconstruction_node']]],
   ['m_5fframe_5fid',['m_frame_id',['../class_point_cloud_accumulator.html#af8ef35b00c6d547b8d3fa89ad8a8b49a',1,'PointCloudAccumulator']]],
   ['m_5fglobal_5ftransform',['m_global_transform',['../class_point_cloud_accumulator.html#a7ea0dd4449475e6939cefbdb0fd260c5',1,'PointCloudAccumulator']]],
+  ['m_5fmesh_5fpublisher',['m_mesh_publisher',['../classobject__reconstruction__node.html#a6a72f63b7f73aea0f7b6c9f7cb058c82',1,'object_reconstruction_node']]],
   ['m_5fnode_5fhandler',['m_node_handler',['../class_object_candidate_extractor.html#a9a0da45687232f96360f76175a3cb097',1,'ObjectCandidateExtractor::m_node_handler()'],['../class_point_cloud_accumulator.html#ac9070e4cb82ddf04bb50cc2492e597ae',1,'PointCloudAccumulator::m_node_handler()'],['../classobject__reconstruction__node.html#ac4c5d38f03eefaea752963d27555c222',1,'object_reconstruction_node::m_node_handler()']]],
   ['m_5fobject_5fcandidate_5fextractor',['m_object_candidate_extractor',['../classobject__reconstruction__node.html#a5c9dce10dc493b97dff5f1aac13a7501',1,'object_reconstruction_node']]],
   ['m_5fobject_5fcandidates',['m_object_candidates',['../classobject__reconstruction__node.html#a1c2d6c9c999230706a087a87aca78cce',1,'object_reconstruction_node']]],

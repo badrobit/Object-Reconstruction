@@ -114,10 +114,39 @@ Static Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A function that is used to write a standard PCL pointcloud to a PointCloud Data File (PCD).  <a href="#a4b25abbfbd620e9218b2949c758a8872"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_helper_functions.html#a4428222439104c10e58e04958a231c37">WriteMultipleToPCD</a> (std::string file_name, std::vector&lt; <a class="el" href="_helper_functions_8h.html#abb956d1047f4dd2c956fe3cb0dd0004d">PointCloud</a> &gt; input_clouds)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Function that is used to write out multiple PointClouds to Multiple PCD Files.  <a href="#a4428222439104c10e58e04958a231c37"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static <a class="el" href="_helper_functions_8h.html#a1ee4898d5040989c5fad6726ea5b2056">PCLMesh</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_helper_functions.html#a51d22836259590b5e4e27c551bba93f3">ConvertCloudToMesh</a> (std::string file_name, <a class="el" href="_helper_functions_8h.html#abb956d1047f4dd2c956fe3cb0dd0004d">PointCloud</a> input_cloud)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_helper_functions.html#a5b355421138212e50b90b120734854ef">PublishMeshMarker</a> (ros::Publisher mesh_publisher, std::string file_name)</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>This class is a grouping of functions that can be accessed from any. </p>
 </div><hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="a51d22836259590b5e4e27c551bba93f3"></a><!-- doxytag: member="HelperFunctions::ConvertCloudToMesh" ref="a51d22836259590b5e4e27c551bba93f3" args="(std::string file_name, PointCloud input_cloud)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_helper_functions_8h.html#a1ee4898d5040989c5fad6726ea5b2056">PCLMesh</a> <a class="el" href="class_helper_functions.html#a51d22836259590b5e4e27c551bba93f3">HelperFunctions::ConvertCloudToMesh</a> </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>file_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_helper_functions_8h.html#abb956d1047f4dd2c956fe3cb0dd0004d">PointCloud</a>&#160;</td>
+          <td class="paramname"><em>input_cloud</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a2e817646b20092d5f7179ba89635b50f"></a><!-- doxytag: member="HelperFunctions::PreparePointCloud" ref="a2e817646b20092d5f7179ba89635b50f" args="(PointCloud input_cloud)" -->
 <div class="memitem">
 <div class="memproto">
@@ -142,6 +171,33 @@ Static Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>A pre-processed (noise removed &amp; subsampled) pointcloud. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a5b355421138212e50b90b120734854ef"></a><!-- doxytag: member="HelperFunctions::PublishMeshMarker" ref="a5b355421138212e50b90b120734854ef" args="(ros::Publisher mesh_publisher, std::string file_name)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="class_helper_functions.html#a5b355421138212e50b90b120734854ef">HelperFunctions::PublishMeshMarker</a> </td>
+          <td>(</td>
+          <td class="paramtype">ros::Publisher&#160;</td>
+          <td class="paramname"><em>mesh_publisher</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>file_name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
 
 </div>
 </div>
@@ -243,7 +299,7 @@ Static Public Member Functions</h2></td></tr>
     <ul>
       <li class="navelem"><a class="el" href="class_helper_functions.html">HelperFunctions</a>      </li>
 
-    <li class="footer">Generated on Mon Jul 29 2013 22:08:00 for Occluded Geometry Estimation by
+    <li class="footer">Generated on Tue Jul 30 2013 23:02:21 for Occluded Geometry Estimation by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

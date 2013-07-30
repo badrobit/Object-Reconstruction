@@ -1,5 +1,5 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$_helper_functions_8h.html" title="HelperFunctions.h" alt="" coords="1761,160,1889,189"/>
-<area shape="rect" id="node51" href="$_point_cloud_accumulator_8h.html" title="PointCloudAccumulator.h" alt="" coords="1965,83,2136,112"/>
-<area shape="rect" id="node56" href="$_object_candidate_extractor_8h.html" title="ObjectCandidateExtractor.h" alt="" coords="1760,83,1941,112"/>
+<area shape="rect" id="node3" href="$_helper_functions_8h.html" title="HelperFunctions.h" alt="" coords="2765,160,2893,189"/>
+<area shape="rect" id="node73" href="$_point_cloud_accumulator_8h.html" title="PointCloudAccumulator.h" alt="" coords="2744,83,2915,112"/>
+<area shape="rect" id="node76" href="$_object_candidate_extractor_8h.html" title="ObjectCandidateExtractor.h" alt="" coords="2939,83,3120,112"/>
 </map>
