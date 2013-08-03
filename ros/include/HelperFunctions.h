@@ -12,36 +12,48 @@
 
 #include <ros/ros.h>
 #include <ros/package.h>
+#include <visualization_msgs/Marker.h>
 
 #include <sensor_msgs/point_cloud_conversion.h>
 #include <sensor_msgs/PointCloud2.h>
 
 #include <boost/make_shared.hpp>
+
 #include <pcl/point_types.h>
 #include <pcl/point_cloud.h>
 #include <pcl/point_representation.h>
 
 #include <pcl/io/pcd_io.h>
+#include <pcl/io/vtk_io.h>
 
-#include <pcl/filters/voxel_grid.h>
+#include <pcl/common/common.h>
+
+#include <pcl/features/normal_3d.h>
+#include <pcl/features/normal_3d_omp.h>
+
+#include <pcl/surface/gp3.h>
+#include <pcl/surface/mls_omp.h>
+#include <pcl/surface/poisson.h>
+#include <pcl/surface/grid_projection.h>
+#include <pcl/surface/vtk_smoothing/vtk_mesh_smoothing_windowed_sinc.h>
+
 #include <pcl/filters/filter.h>
-
+#include <pcl/filters/voxel_grid.h>
 #include <pcl/filters/extract_indices.h>
+#include <pcl/filters/statistical_outlier_removal.h>
+
 #include <pcl/kdtree/kdtree.h>
+#include <pcl/kdtree/kdtree_flann.h>
 
 #include <pcl/sample_consensus/method_types.h>
 #include <pcl/sample_consensus/model_types.h>
+
 #include <pcl/segmentation/sac_segmentation.h>
 #include <pcl/segmentation/extract_clusters.h>
-
-#include <pcl/features/normal_3d.h>
 
 #include <pcl/registration/icp.h>
 #include <pcl/registration/icp_nl.h>
 #include <pcl/registration/transforms.h>
-
-#include <pcl/filters/voxel_grid.h>
-#include <pcl/filters/statistical_outlier_removal.h>
 
 /**
  * \typedef PointT
@@ -62,13 +74,19 @@ typedef pcl::PointCloud<PointT> PointCloud;
  * \typedef PointNormalT
  * \brief A standard PCL point that also includes Normal Information for that point.
  */
-typedef pcl::PointNormal PointNormalT;
+typedef pcl::PointXYZRGBNormal PointNormalT;
 
 /**
  * \typedef PointCloudWithNormals
  * \brief A Standard PCL PointCloud but where the points all contain normal information as well.
  */
 typedef pcl::PointCloud<PointNormalT> PointCloudWithNormals;
+
+/**
+ * \typedef PCLMesh
+ * \brief PointCloudLibrary polygon mesh representation.
+ */
+typedef pcl::PolygonMesh PCLMesh;
 
 /**
  * \class HelperFunctions
@@ -112,5 +130,9 @@ public:
    * @return If we where able to properly write to PCD files.
    */
   static bool WriteMultipleToPCD( std::string file_name, std::vector<PointCloud> input_clouds );
+
+  static PCLMesh ConvertCloudToMesh( std::string file_name, PointCloud input_cloud );
+
+  static bool PublishMeshMarker( ros::Publisher mesh_publisher, std::string file_name );
 };
 #endif /* HELPERFUNCTIONS_H_ */

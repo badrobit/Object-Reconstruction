@@ -95,6 +95,7 @@ ObjectCandidateExtractor::ExtractCandidateObjects( PointCloud input_cloud )
     object_candidates.push_back( *cloud_cluster );
     j++;
   }
+  ROS_INFO_STREAM( j << " Object Candidates Found" );
 
   return object_candidates;
 }

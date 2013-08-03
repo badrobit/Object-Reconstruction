@@ -9,7 +9,7 @@
 #define POINTCLOUDACCUMULATOR_H_
 
 #include <HelperFunctions.h>
-#include <hbrs_object_reconstruction/AccumulatePointCloud.h>
+//#include <hbrs_object_reconstruction/AccumulatePointCloud.h>
 
 /**
  * \class PointCloudAccumulator

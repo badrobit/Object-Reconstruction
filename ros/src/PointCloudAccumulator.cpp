@@ -180,5 +180,5 @@ PointCloudAccumulator::AlignClouds( const PointCloud::Ptr cloud_src,
     *output += *cloud_src;
 
     final_transform = targetToSource;
-    ROS_WARN_STREAM( "PointCloud Alignment Completed" );
+    ROS_DEBUG_STREAM( "PointCloud Alignment Completed" );
 }

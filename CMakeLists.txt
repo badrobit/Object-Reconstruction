@@ -17,7 +17,7 @@ endif(CMAKE_COMPILER_IS_GNUCXX)
 
 rosbuild_gensrv()
 
-find_package( PCL 1.4 REQUIRED )
+find_package( PCL 1.6 REQUIRED )
 
 set( GNG_DIR ${PROJECT_SOURCE_DIR}/common/growing_neural_gas )
 set( JOHNSON_APSP_DIR  ${PROJECT_SOURCE_DIR}/common/johnsonAPSP )

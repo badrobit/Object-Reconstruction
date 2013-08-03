@@ -40,6 +40,9 @@ public:
 
     m_fix_occlusions_service = m_node_handler.advertiseService( "FixOcclusions", &object_reconstruction_node::FixOcclusions, this );
     ROS_INFO_STREAM( "Advertised [FixOcclusions] Service" );
+
+    m_mesh_publisher = m_node_handler.advertise<visualization_msgs::Marker>( "MeshMarker", 0 );
+    ROS_INFO_STREAM( "Advertised [MeshMarker] ROS Topic" );
   }
 
 private:
@@ -55,7 +58,7 @@ private:
   bool FixOcclusions( hbrs_object_reconstruction::FixOcclusion::Request  &request,
                       hbrs_object_reconstruction::FixOcclusion::Response &response )
   {
-      m_resulting_cloud = m_point_cloud_accumulator.AccumulatePointClouds( 3 );
+      m_resulting_cloud = m_point_cloud_accumulator.AccumulatePointClouds( 1 );
 
       HelperFunctions::WriteToPCD( m_output_directory + "/" + "01-AccumulatedPointCloud", m_resulting_cloud );
 
@@ -68,6 +71,10 @@ private:
       m_object_candidate_extractor.PublishObjectCandidates( m_object_candidates );
 
       HelperFunctions::WriteMultipleToPCD( m_output_directory + "/" + "03-ObjectCandidate", m_object_candidates );
+
+      HelperFunctions::ConvertCloudToMesh( m_output_directory + "/" , m_object_candidates[0] );
+
+      HelperFunctions::PublishMeshMarker( m_mesh_publisher, m_output_directory + "/"  );
 
       response.success = true;
       return response.success;
@@ -86,7 +93,9 @@ private:
   /** \brief Reference object for the PointCloudAccumulator */
   PointCloudAccumulator		m_point_cloud_accumulator;
   /** \brief Reference object for the ObjectCandidateExtractor */
-  ObjectCandidateExtractor    m_object_candidate_extractor;
+  ObjectCandidateExtractor  m_object_candidate_extractor;
+
+  ros::Publisher            m_mesh_publisher;
 };
 
 /**

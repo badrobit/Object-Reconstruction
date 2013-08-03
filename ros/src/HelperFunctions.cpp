@@ -5,7 +5,7 @@
  *      Author: badrobot
  */
 
-#include <HelperFunctions.h>
+#include "HelperFunctions.h"
 
 /**
  * \brief This function is responsible for pre-processing the input pointcloud before we attempt
@@ -39,7 +39,7 @@ PointCloud HelperFunctions::PreparePointCloud( PointCloud input_cloud )
     ros::Time subsampling_start = ros::Time::now();
     pcl::VoxelGrid<PointT> subsample_filter;
     subsample_filter.setInputCloud( temp_cloud.makeShared() );
-    subsample_filter.setLeafSize( 0.01f, 0.01f, 0.01f );
+    subsample_filter.setLeafSize( 0.003f, 0.003f, 0.003f );
     subsample_filter.filter( temp_cloud );
     ROS_INFO_STREAM( "Removed " << initial_cloud_size - temp_cloud.size() << " Points during subsampling" );
     ROS_INFO_STREAM( "Subsampling took " << ros::Time::now() - subsampling_start << " seconds" );
@@ -71,9 +71,9 @@ bool HelperFunctions::WriteToPCD( std::string file_name, PointCloud input_cloud 
  */
 bool HelperFunctions::WriteMultipleToPCD( std::string file_name, std::vector<PointCloud> input_clouds )
 {
-  if( (int)input_clouds.size() < 2 )
+  if( (int)input_clouds.size() < 1 )
   {
-    ROS_ERROR_STREAM( "You provided [WriteMultipleToPCD] with less than 2 point clouds" );
+    ROS_ERROR_STREAM( "You provided [WriteMultipleToPCD] with less than 1 point clouds" );
     ROS_ERROR_STREAM( "Use [WriteToPCD] Instead .... Killing current process." );
     return false;
   }
@@ -89,4 +89,97 @@ bool HelperFunctions::WriteMultipleToPCD( std::string file_name, std::vector<Poi
     }
     return true;
   }
+}
+
+PCLMesh HelperFunctions::ConvertCloudToMesh( std::string file_name, PointCloud input_cloud )
+{
+  ROS_WARN_STREAM( "Starting PointCloud to Mesh Conversion" );
+  PCLMesh output_mesh;
+
+  ROS_WARN_STREAM( "MLS Processing" );
+  pcl::MovingLeastSquaresOMP<PointT, PointT> mls;
+  mls.setInputCloud( input_cloud.makeShared() );
+  mls.setSearchRadius( 0.01 );
+  mls.setPolynomialFit( true );
+  mls.setPolynomialOrder( 2 );
+  mls.setUpsamplingMethod( pcl::MovingLeastSquaresOMP<PointT, PointT>::VOXEL_GRID_DILATION );
+  mls.setUpsamplingRadius( 0.005 );
+  mls.setUpsamplingStepSize( 0.003 );
+  mls.setDilationVoxelSize( 0.001 );
+
+  PointCloud cloud_smoothed;
+  mls.process( cloud_smoothed );
+  WriteToPCD( file_name + "04-Upscaling", cloud_smoothed );
+
+  ROS_WARN_STREAM( "Normal Estimation" );
+  pcl::NormalEstimationOMP<PointT, pcl::Normal> ne;
+  ne.setNumberOfThreads( 8 );
+  ne.setInputCloud( input_cloud.makeShared() );
+  ne.setRadiusSearch( 0.01 );
+  Eigen::Vector4f centroid;
+  compute3DCentroid( input_cloud, centroid );
+  ne.setViewPoint( centroid[0], centroid[1], centroid[2] );
+
+  pcl::PointCloud<pcl::Normal>::Ptr cloud_normals( new pcl::PointCloud<pcl::Normal>() );
+  ne.compute( *cloud_normals );
+
+  for (size_t i = 0; i < cloud_normals->size (); ++i)
+  {
+    cloud_normals->points[i].normal_x *= -1;
+    cloud_normals->points[i].normal_y *= -1;
+    cloud_normals->points[i].normal_z *= -1;
+  }
+
+  PointCloudWithNormals::Ptr cloud_smoothed_normals (new PointCloudWithNormals );
+  concatenateFields( input_cloud, *cloud_normals, *cloud_smoothed_normals   );
+
+  // Create search tree*
+  pcl::search::KdTree<PointNormalT>::Ptr tree2 (new pcl::search::KdTree<PointNormalT>);
+  tree2->setInputCloud( cloud_smoothed_normals );
+
+  // Initialize objects
+  pcl::GridProjection<PointNormalT> gbpolygon;
+  PCLMesh triangles;
+
+  // Set parameters
+  gbpolygon.setResolution( 0.005 );
+  gbpolygon.setPaddingSize( 3 );
+  gbpolygon.setNearestNeighborNum( 100 );
+  gbpolygon.setMaxBinarySearchLevel( 10 );
+
+  // Get result
+  gbpolygon.setInputCloud( cloud_smoothed_normals );
+  gbpolygon.setSearchMethod( tree2 );
+  gbpolygon.reconstruct( triangles );
+
+  /*
+  pcl::Poisson<PointNormalT> poisson;
+  poisson.setDepth( 9 );
+  poisson.setInputCloud( cloud_smoothed_normals );
+  PCLMesh mesh;
+  poisson.reconstruct( mesh );
+  */
+
+  pcl::io::saveVTKFile( file_name + "mesh.vtk", triangles );
+  ROS_INFO_STREAM( "Mesh saved to: " << file_name << "mesh.vtk" );
+
+  return output_mesh;
+}
+
+bool HelperFunctions::PublishMeshMarker( ros::Publisher mesh_publisher, std::string file_name )
+{
+  ROS_WARN_STREAM( "Starting Mesh Conversion & Publication" );
+  visualization_msgs::Marker mesh_marker;
+
+  mesh_marker.header.frame_id = "\base_link";
+  mesh_marker.header.stamp = ros::Time();
+  mesh_marker.ns = "ObjectMesh";
+  mesh_marker.id = 0;
+  mesh_marker.type = visualization_msgs::Marker::MESH_RESOURCE;
+  mesh_marker.action = visualization_msgs::Marker::ADD;
+
+  //only if using a MESH_RESOURCE marker type:
+  mesh_marker.mesh_resource = file_name + "mesh.vtk";
+  mesh_publisher.publish( mesh_marker );
+  return true;
 }
