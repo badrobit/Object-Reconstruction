@@ -12,6 +12,10 @@ doc/
 
 #:.....: PCL FILES :...............................................................................#
 *.pcd
+*.vtk
+*.zip
+*.stl
+
 
 #:.....: Compiled Object files :...................................................................#
 *.slo
@@ -46,3 +50,4 @@ doc/
 /src/hbrs_object_reconstruction/srv/_FixOcclusion.py
 /_Doxyfile
 /libpeerconnection.log
+common/

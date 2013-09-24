@@ -5,6 +5,7 @@
  * \copyright GNU Public License.
  */
 
+#include <OcclusionRepair.h>
 #include <HelperFunctions.h>
 #include <PointCloudAccumulator.h>
 #include <ObjectCandidateExtractor.h>
@@ -32,11 +33,12 @@ public:
    */
   object_reconstruction_node()
   {
-    m_output_directory = ros::package::getPath( "hbrs_object_reconstruction" );
+    m_output_directory = HelperFunctions::SetOutputDirectory();
     ROS_WARN_STREAM( "Current Directory set to: " << m_output_directory );
 
     m_point_cloud_accumulator = PointCloudAccumulator();
     m_object_candidate_extractor = ObjectCandidateExtractor();
+    m_occlusion_repair = OcclusionRepair();
 
     m_fix_occlusions_service = m_node_handler.advertiseService( "FixOcclusions", &object_reconstruction_node::FixOcclusions, this );
     ROS_INFO_STREAM( "Advertised [FixOcclusions] Service" );
@@ -60,21 +62,25 @@ private:
   {
       m_resulting_cloud = m_point_cloud_accumulator.AccumulatePointClouds( 1 );
 
-      HelperFunctions::WriteToPCD( m_output_directory + "/" + "01-AccumulatedPointCloud", m_resulting_cloud );
+      HelperFunctions::WriteToPCD( m_output_directory + "01-AccumulatedPointCloud", m_resulting_cloud );
 
       m_resulting_cloud = HelperFunctions::PreparePointCloud( m_resulting_cloud );
 
-      HelperFunctions::WriteToPCD( m_output_directory + "/" + "02-PreProcessedPointCloud", m_resulting_cloud );
+      HelperFunctions::WriteToPCD( m_output_directory + "02-PreProcessedPointCloud", m_resulting_cloud );
 
       m_object_candidates = m_object_candidate_extractor.ExtractCandidateObjects( m_resulting_cloud );
 
       m_object_candidate_extractor.PublishObjectCandidates( m_object_candidates );
 
-      HelperFunctions::WriteMultipleToPCD( m_output_directory + "/" + "03-ObjectCandidate", m_object_candidates );
+      HelperFunctions::WriteMultipleToPCD( m_output_directory + "03-ObjectCandidate", m_object_candidates );
 
-      HelperFunctions::ConvertCloudToMesh( m_output_directory + "/" , m_object_candidates[0] );
+      HelperFunctions::ComputeBoundary( m_object_candidates[0] );
 
-      HelperFunctions::PublishMeshMarker( m_mesh_publisher, m_output_directory + "/"  );
+      m_operating_mesh = HelperFunctions::ConvertCloudToMesh( m_output_directory , m_object_candidates[0] );
+
+      m_occlusion_repair.DetectOcclusion( m_operating_mesh, m_output_directory );
+
+      HelperFunctions::PublishMeshMarker( m_mesh_publisher, m_output_directory );
 
       response.success = true;
       return response.success;
@@ -94,6 +100,10 @@ private:
   PointCloudAccumulator		m_point_cloud_accumulator;
   /** \brief Reference object for the ObjectCandidateExtractor */
   ObjectCandidateExtractor  m_object_candidate_extractor;
+
+  PCLMesh                   m_operating_mesh;
+
+  OcclusionRepair           m_occlusion_repair;
 
   ros::Publisher            m_mesh_publisher;
 };

@@ -18,6 +18,7 @@ endif(CMAKE_COMPILER_IS_GNUCXX)
 rosbuild_gensrv()
 
 find_package( PCL 1.6 REQUIRED )
+find_package( VTK REQUIRED )
 
 set( GNG_DIR ${PROJECT_SOURCE_DIR}/common/growing_neural_gas )
 set( JOHNSON_APSP_DIR  ${PROJECT_SOURCE_DIR}/common/johnsonAPSP )
@@ -51,11 +52,16 @@ target_link_libraries( ObjectCandidateExtractor ${PCL_LIBRARIES} )
 rosbuild_add_library( HelperFunctions ros/src/HelperFunctions.cpp )
 target_link_libraries( HelperFunctions ${PCL_LIBRARIES} )
 
+#.....: Occlusion Repair
+rosbuild_add_library( OcclusionRepair ros/src/OcclusionRepair.cpp )
+target_link_libraries( OcclusionRepair ${VTK_LIBRARIES} )
+
 #......: ROS NODE :................................................................................:
 rosbuild_add_executable( hbrs_object_reconstruction ros/nodes/object_reconstruction.cpp )
 target_link_libraries( hbrs_object_reconstruction PointCloudAccumulator )
 target_link_libraries( hbrs_object_reconstruction ObjectCandidateExtractor )
 target_link_libraries( hbrs_object_reconstruction HelperFunctions )
+target_link_libraries( hbrs_object_reconstruction OcclusionRepair )
 
 #.....: Generate Documentation :...................................................................:
 find_package(Doxygen REQUIRED)

@@ -40,6 +40,8 @@ public:
    */
   std::vector< PointCloud > ExtractCandidateObjects( PointCloud input_cloud );
 
+  PointCloud RestorePlaneInteraction( pcl::ModelCoefficients::Ptr i_coefficients, PointCloud i_model );
+
   /**
    * \brief Function that takes in multiple object candidate point clouds and creates a single
    * ros message for them.

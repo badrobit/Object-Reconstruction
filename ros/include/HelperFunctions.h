@@ -9,6 +9,7 @@
 #define HELPERFUNCTIONS_H_
 
 #include <vector>
+#include <ctime>
 
 #include <ros/ros.h>
 #include <ros/package.h>
@@ -18,6 +19,10 @@
 #include <sensor_msgs/PointCloud2.h>
 
 #include <boost/make_shared.hpp>
+#include <boost/thread/thread.hpp>
+#include <boost/filesystem.hpp>
+
+#include <pcl/visualization/pcl_visualizer.h>
 
 #include <pcl/point_types.h>
 #include <pcl/point_cloud.h>
@@ -25,6 +30,9 @@
 
 #include <pcl/io/pcd_io.h>
 #include <pcl/io/vtk_io.h>
+#include <pcl/io/vtk_lib_io.h>
+
+#include <pcl/ModelCoefficients.h>
 
 #include <pcl/common/common.h>
 
@@ -34,11 +42,16 @@
 #include <pcl/surface/gp3.h>
 #include <pcl/surface/mls_omp.h>
 #include <pcl/surface/poisson.h>
+#include <pcl/surface/convex_hull.h>
+#include <pcl/surface/concave_hull.h>
 #include <pcl/surface/grid_projection.h>
 #include <pcl/surface/vtk_smoothing/vtk_mesh_smoothing_windowed_sinc.h>
+#include <pcl/surface/vtk_smoothing/vtk_utils.h>
 
 #include <pcl/filters/filter.h>
 #include <pcl/filters/voxel_grid.h>
+#include <pcl/filters/passthrough.h>
+#include <pcl/filters/project_inliers.h>
 #include <pcl/filters/extract_indices.h>
 #include <pcl/filters/statistical_outlier_removal.h>
 
@@ -134,5 +147,9 @@ public:
   static PCLMesh ConvertCloudToMesh( std::string file_name, PointCloud input_cloud );
 
   static bool PublishMeshMarker( ros::Publisher mesh_publisher, std::string file_name );
+
+  static bool ComputeBoundary( PointCloud input_cloud );
+
+  static std::string SetOutputDirectory( );
 };
 #endif /* HELPERFUNCTIONS_H_ */

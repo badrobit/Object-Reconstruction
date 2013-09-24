@@ -23,7 +23,7 @@
 PointCloud HelperFunctions::PreparePointCloud( PointCloud input_cloud )
 {
     PointCloud temp_cloud;
-    int initial_cloud_size = input_cloud.size();
+    int cloud_size = input_cloud.size();
 
     // -------------- Statistical Outlier Removal ------------------------------------------------//
     ros::Time outlier_removal_start = ros::Time::now();
@@ -32,16 +32,30 @@ PointCloud HelperFunctions::PreparePointCloud( PointCloud input_cloud )
     sor.setMeanK( 50 );
     sor.setStddevMulThresh( 1.0 );
     sor.filter( temp_cloud );
-    ROS_INFO_STREAM( "Removed " << initial_cloud_size - temp_cloud.size() << " Points during statistical outlier removal" );
+    ROS_INFO_STREAM( "Removed " << cloud_size - temp_cloud.size() << " Points during statistical outlier removal" );
     ROS_INFO_STREAM( "Outlier Removal took " << ros::Time::now() - outlier_removal_start << " seconds" );
 
+    // -------------- Region of Interest Removal -------------------------------------------------//
+    cloud_size = temp_cloud.size();
+    ros::Time roi_start = ros::Time::now();
+
+    pcl::PassThrough<PointT> passthrough_filter;
+    passthrough_filter.setInputCloud( temp_cloud.makeShared() );
+    passthrough_filter.setFilterFieldName( "z" );
+    passthrough_filter.setFilterLimits( 0.60, 1.00 );
+    passthrough_filter.filter( temp_cloud );
+
+    ROS_INFO_STREAM( "Removed " << cloud_size - temp_cloud.size() << " Points during ROI" );
+    ROS_INFO_STREAM( "ROI took " << ros::Time::now() - roi_start << " seconds" );
+
     // -------------- Subsampling ----------------------------------------------------------------//
+    cloud_size = temp_cloud.size();
     ros::Time subsampling_start = ros::Time::now();
     pcl::VoxelGrid<PointT> subsample_filter;
     subsample_filter.setInputCloud( temp_cloud.makeShared() );
-    subsample_filter.setLeafSize( 0.003f, 0.003f, 0.003f );
+    subsample_filter.setLeafSize( 0.01f, 0.01f, 0.01f );
     subsample_filter.filter( temp_cloud );
-    ROS_INFO_STREAM( "Removed " << initial_cloud_size - temp_cloud.size() << " Points during subsampling" );
+    ROS_INFO_STREAM( "Removed " << cloud_size - temp_cloud.size() << " Points during subsampling" );
     ROS_INFO_STREAM( "Subsampling took " << ros::Time::now() - subsampling_start << " seconds" );
 
     return temp_cloud;
@@ -152,18 +166,11 @@ PCLMesh HelperFunctions::ConvertCloudToMesh( std::string file_name, PointCloud i
   gbpolygon.setSearchMethod( tree2 );
   gbpolygon.reconstruct( triangles );
 
-  /*
-  pcl::Poisson<PointNormalT> poisson;
-  poisson.setDepth( 9 );
-  poisson.setInputCloud( cloud_smoothed_normals );
-  PCLMesh mesh;
-  poisson.reconstruct( mesh );
-  */
+  pcl::io::savePolygonFileSTL( file_name + "mesh.stl", triangles );
+  //pcl::io::saveVTKFile( file_name + "mesh.vtk", triangles );
+  ROS_INFO_STREAM( "Mesh saved to: " << file_name << "mesh.stl" );
 
-  pcl::io::saveVTKFile( file_name + "mesh.vtk", triangles );
-  ROS_INFO_STREAM( "Mesh saved to: " << file_name << "mesh.vtk" );
-
-  return output_mesh;
+  return triangles;
 }
 
 bool HelperFunctions::PublishMeshMarker( ros::Publisher mesh_publisher, std::string file_name )
@@ -173,13 +180,81 @@ bool HelperFunctions::PublishMeshMarker( ros::Publisher mesh_publisher, std::str
 
   mesh_marker.header.frame_id = "\base_link";
   mesh_marker.header.stamp = ros::Time();
-  mesh_marker.ns = "ObjectMesh";
-  mesh_marker.id = 0;
+  mesh_marker.id = 775;
   mesh_marker.type = visualization_msgs::Marker::MESH_RESOURCE;
-  mesh_marker.action = visualization_msgs::Marker::ADD;
+  //mesh_marker.mesh_use_embedded_materials = true;
+  //mesh_marker.action = visualization_msgs::Marker::ADD;
 
-  //only if using a MESH_RESOURCE marker type:
-  mesh_marker.mesh_resource = file_name + "mesh.vtk";
+  mesh_marker.mesh_resource = file_name + "mesh.stl";
+  ROS_WARN_STREAM( "Loaded mesh from: " << mesh_marker.mesh_resource );
   mesh_publisher.publish( mesh_marker );
   return true;
+}
+
+bool HelperFunctions::ComputeBoundary( PointCloud input_cloud )
+{
+  PointCloud cloud_hull;
+  PCLMesh temp_mesh;
+  pcl::ConvexHull< PointT > hull;
+  hull.setInputCloud( input_cloud.makeShared() );
+  hull.setDimension( 3 );
+  hull.reconstruct ( cloud_hull );
+
+  if( cloud_hull.points.size() == 0 )
+  {
+    ROS_ERROR( "No points in reconstructed hull " );
+    return false;
+  }
+  else
+  {
+    temp_mesh = ConvertCloudToMesh( "TEST", cloud_hull );
+
+    boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer (new pcl::visualization::PCLVisualizer ("3D Viewer"));
+    viewer->setBackgroundColor (0, 0, 0);
+    viewer->addPolygonMesh( temp_mesh );
+
+    for( int i = 0; i < cloud_hull.points.size()-1; i++ )
+    {
+      std::stringstream ss;
+      ss << "line" << i;
+      viewer->addLine( cloud_hull.points[i], cloud_hull.points[i+1], ss.str() );
+    }
+
+    while (!viewer->wasStopped ())
+    {
+      viewer->spinOnce (100);
+      boost::this_thread::sleep (boost::posix_time::microseconds (100000));
+    }
+
+    return true;
+  }
+}
+
+std::string HelperFunctions::SetOutputDirectory()
+{
+  std::string output_directory;
+
+  output_directory += ros::package::getPath( "hbrs_object_reconstruction" );
+  output_directory += "/data/";
+
+  time_t t = time(0);   // get time now
+  struct tm* now = localtime( & t );
+  std::stringstream ss;
+  ss << (now->tm_year + 1900) << '-'
+     << (now->tm_mon + 1) << '-'
+     << now->tm_mday << '-'
+     << now->tm_hour << 'h'
+     << now->tm_min << 'm';
+
+  output_directory += ss.str();
+
+  boost::filesystem::path dir( output_directory );
+  if( boost::filesystem::create_directory(dir) )
+  {
+      ROS_INFO_STREAM( "Data Output Dir Created." );
+  }
+
+  output_directory += "/";
+
+  return output_directory;
 }

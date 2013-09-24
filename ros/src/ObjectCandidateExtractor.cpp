@@ -92,12 +92,54 @@ ObjectCandidateExtractor::ExtractCandidateObjects( PointCloud input_cloud )
     cloud_cluster->is_dense = true;
 
     ROS_INFO_STREAM( "PointCloud representing the Cluster: " << cloud_cluster->points.size () << " data points." );
-    object_candidates.push_back( *cloud_cluster );
+
+    PointCloud complete;
+    complete = RestorePlaneInteraction( coefficients, *cloud_cluster );
+
+    if( complete.points.size() > 0 )
+    {
+      object_candidates.push_back( complete );
+    }
+    else
+    {
+      object_candidates.push_back( *cloud_cluster );
+      ROS_WARN_STREAM( "Surface plane interaction not restored" );
+    }
     j++;
   }
   ROS_INFO_STREAM( j << " Object Candidates Found" );
 
   return object_candidates;
+}
+
+PointCloud ObjectCandidateExtractor::RestorePlaneInteraction( pcl::ModelCoefficients::Ptr i_coefficients, PointCloud i_model )
+{
+  PointCloud CompleteModel;
+
+  pcl::ProjectInliers<PointT> projection_filter;
+  projection_filter.setModelType( pcl::SACMODEL_PLANE );
+  projection_filter.setInputCloud( i_model.makeShared() );
+  projection_filter.setModelCoefficients( i_coefficients );
+  projection_filter.filter( CompleteModel );
+
+  if( CompleteModel.points.size() == 0 )
+  {
+    ROS_ERROR( "Projection Failed" );
+  }
+
+  // Add the object candidate to its projected plane.
+  CompleteModel += i_model;
+
+  boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer (new pcl::visualization::PCLVisualizer ("3D Viewer"));
+  viewer->setBackgroundColor (0, 0, 0);
+  viewer->addPointCloud<PointT>( CompleteModel.makeShared(), "sample cloud");
+  while (!viewer->wasStopped ())
+  {
+    viewer->spinOnce (100);
+    boost::this_thread::sleep (boost::posix_time::microseconds (100000));
+  }
+
+  return CompleteModel;
 }
 
 bool ObjectCandidateExtractor::PublishObjectCandidates( std::vector< PointCloud > input_vector )
