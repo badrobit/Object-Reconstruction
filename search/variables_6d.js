@@ -10,6 +10,8 @@ var searchData=
   ['m_5fobject_5fcandidate_5fextractor',['m_object_candidate_extractor',['../classobject__reconstruction__node.html#a5c9dce10dc493b97dff5f1aac13a7501',1,'object_reconstruction_node']]],
   ['m_5fobject_5fcandidates',['m_object_candidates',['../classobject__reconstruction__node.html#a1c2d6c9c999230706a087a87aca78cce',1,'object_reconstruction_node']]],
   ['m_5fobject_5fcandidates_5fpublisher',['m_object_candidates_publisher',['../class_object_candidate_extractor.html#a3b5cd0451266eafe0aba2d950a7434e8',1,'ObjectCandidateExtractor']]],
+  ['m_5focclusion_5frepair',['m_occlusion_repair',['../classobject__reconstruction__node.html#a7555f2606f0d98ad92aef4260346b016',1,'object_reconstruction_node']]],
+  ['m_5foperating_5fmesh',['m_operating_mesh',['../classobject__reconstruction__node.html#a4eb806cffef0fefce2d9b9959c7c78c0',1,'object_reconstruction_node']]],
   ['m_5foutput_5fdirectory',['m_output_directory',['../classobject__reconstruction__node.html#a4177671d10573e28564ba3945bb05cb5',1,'object_reconstruction_node']]],
   ['m_5fpoint_5fcloud_5faccumulator',['m_point_cloud_accumulator',['../classobject__reconstruction__node.html#aa3895b09cfc1f4e4ace4f7c28515b89d',1,'object_reconstruction_node']]],
   ['m_5fpoint_5fcloud_5fcount',['m_point_cloud_count',['../class_point_cloud_accumulator.html#a6ebb0ca53506f1ae2d0f6e411e2dff66',1,'PointCloudAccumulator']]],

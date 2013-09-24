@@ -112,14 +112,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00033"></a>00033 
 <a name="l00041"></a>00041   std::vector&lt; PointCloud &gt; <a class="code" href="class_object_candidate_extractor.html#a6a4adbcec19f94bc6073a4b2c2fa6f66" title="This function takes in a PCL Point Cloud and finds any candidate objects contained in the scene...">ExtractCandidateObjects</a>( <a class="code" href="_helper_functions_8h.html#abb956d1047f4dd2c956fe3cb0dd0004d" title="Have all pointclouds used in the project made up from PointT.">PointCloud</a> input_cloud );
 <a name="l00042"></a>00042 
-<a name="l00054"></a>00054   <span class="keywordtype">bool</span> <a class="code" href="class_object_candidate_extractor.html#ab8848f6d86f7d7798ea30c2e04ae8b59" title="Function that takes in multiple object candidate point clouds and creates a single ros message for th...">PublishObjectCandidates</a>( std::vector&lt; PointCloud &gt; input_vector );
-<a name="l00055"></a>00055 
-<a name="l00056"></a>00056 <span class="keyword">protected</span>:
-<a name="l00058"></a><a class="code" href="class_object_candidate_extractor.html#a9a0da45687232f96360f76175a3cb097">00058</a>   ros::NodeHandle   <a class="code" href="class_object_candidate_extractor.html#a9a0da45687232f96360f76175a3cb097" title="Node Handler for the ObjectCandidateExtractor class.">m_node_handler</a>;
-<a name="l00060"></a><a class="code" href="class_object_candidate_extractor.html#a3b5cd0451266eafe0aba2d950a7434e8">00060</a>   ros::Publisher    <a class="code" href="class_object_candidate_extractor.html#a3b5cd0451266eafe0aba2d950a7434e8" title="A ROS publisher for the compiled object candidates.">m_object_candidates_publisher</a>;
-<a name="l00061"></a>00061 };
-<a name="l00062"></a>00062 
-<a name="l00063"></a>00063 <span class="preprocessor">#endif </span><span class="comment">/* OBJECTCANDIDATEEXTRACTOR_H_ */</span>
+<a name="l00043"></a>00043   <a class="code" href="_helper_functions_8h.html#abb956d1047f4dd2c956fe3cb0dd0004d" title="Have all pointclouds used in the project made up from PointT.">PointCloud</a> <a class="code" href="class_object_candidate_extractor.html#a6d54ffc5a2c1690b418107a31e34dfd2">RestorePlaneInteraction</a>( pcl::ModelCoefficients::Ptr i_coefficients, <a class="code" href="_helper_functions_8h.html#abb956d1047f4dd2c956fe3cb0dd0004d" title="Have all pointclouds used in the project made up from PointT.">PointCloud</a> i_model );
+<a name="l00044"></a>00044 
+<a name="l00056"></a>00056   <span class="keywordtype">bool</span> <a class="code" href="class_object_candidate_extractor.html#ab8848f6d86f7d7798ea30c2e04ae8b59" title="Function that takes in multiple object candidate point clouds and creates a single ros message for th...">PublishObjectCandidates</a>( std::vector&lt; PointCloud &gt; input_vector );
+<a name="l00057"></a>00057 
+<a name="l00058"></a>00058 <span class="keyword">protected</span>:
+<a name="l00060"></a><a class="code" href="class_object_candidate_extractor.html#a9a0da45687232f96360f76175a3cb097">00060</a>   ros::NodeHandle   <a class="code" href="class_object_candidate_extractor.html#a9a0da45687232f96360f76175a3cb097" title="Node Handler for the ObjectCandidateExtractor class.">m_node_handler</a>;
+<a name="l00062"></a><a class="code" href="class_object_candidate_extractor.html#a3b5cd0451266eafe0aba2d950a7434e8">00062</a>   ros::Publisher    <a class="code" href="class_object_candidate_extractor.html#a3b5cd0451266eafe0aba2d950a7434e8" title="A ROS publisher for the compiled object candidates.">m_object_candidates_publisher</a>;
+<a name="l00063"></a>00063 };
+<a name="l00064"></a>00064 
+<a name="l00065"></a>00065 <span class="preprocessor">#endif </span><span class="comment">/* OBJECTCANDIDATEEXTRACTOR_H_ */</span>
 </pre></div></div><!-- contents -->
 </div>
 <!-- window showing the filter options -->
@@ -140,7 +142,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul>
       <li class="navelem"><a class="el" href="_object_candidate_extractor_8h.html">ObjectCandidateExtractor.h</a>      </li>
 
-    <li class="footer">Generated on Sat Aug 3 2013 11:46:36 for Occluded Geometry Estimation by
+    <li class="footer">Generated on Mon Sep 23 2013 22:27:29 for Occluded Geometry Estimation by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

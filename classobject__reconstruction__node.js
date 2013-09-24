@@ -7,6 +7,8 @@ var classobject__reconstruction__node =
     [ "m_node_handler", "classobject__reconstruction__node.html#ac4c5d38f03eefaea752963d27555c222", null ],
     [ "m_object_candidate_extractor", "classobject__reconstruction__node.html#a5c9dce10dc493b97dff5f1aac13a7501", null ],
     [ "m_object_candidates", "classobject__reconstruction__node.html#a1c2d6c9c999230706a087a87aca78cce", null ],
+    [ "m_occlusion_repair", "classobject__reconstruction__node.html#a7555f2606f0d98ad92aef4260346b016", null ],
+    [ "m_operating_mesh", "classobject__reconstruction__node.html#a4eb806cffef0fefce2d9b9959c7c78c0", null ],
     [ "m_output_directory", "classobject__reconstruction__node.html#a4177671d10573e28564ba3945bb05cb5", null ],
     [ "m_point_cloud_accumulator", "classobject__reconstruction__node.html#aa3895b09cfc1f4e4ace4f7c28515b89d", null ],
     [ "m_resulting_cloud", "classobject__reconstruction__node.html#ab8f97cd647f37bc708c8d7542150c17c", null ]
