@@ -29,6 +29,7 @@
 #include <pcl/point_representation.h>
 
 #include <pcl/io/pcd_io.h>
+#include <pcl/io/ply_io.h>
 #include <pcl/io/vtk_io.h>
 #include <pcl/io/vtk_lib_io.h>
 
@@ -40,7 +41,7 @@
 #include <pcl/features/normal_3d_omp.h>
 
 #include <pcl/surface/gp3.h>
-#include <pcl/surface/mls_omp.h>
+#include <pcl/surface/mls.h>
 #include <pcl/surface/poisson.h>
 #include <pcl/surface/convex_hull.h>
 #include <pcl/surface/concave_hull.h>
@@ -110,22 +111,6 @@ class HelperFunctions
 public:
 
   /**
-   * \brief This function is responsible for pre-processing the input pointcloud before we attempt
-   * object reconstruction.
-   *
-   * \details It will perform both a statistical outlier removal which will take the
-   * current point cloud and remove any points that are to far removed from all of its neighbors
-   * (cleaning up noise). It will also perform subsamling in order to make the following computations
-   * more efficient.
-   *
-   * @param input_cloud The point cloud which we want to perform the pre-processing on.
-   *
-   * @return A pre-processed (noise removed & subsampled) pointcloud.
-   */
-  static PointCloud PreparePointCloud( PointCloud input_cloud );
-
-
-  /**
    * \brief A function that is used to write a standard PCL pointcloud to a PointCloud Data File (PCD).
    *
    * @param file_name The file name as a string that you want the PCD file to have.
@@ -144,12 +129,26 @@ public:
    */
   static bool WriteMultipleToPCD( std::string file_name, std::vector<PointCloud> input_clouds );
 
+  /**
+   *
+   * @param file_name
+   * @param input_cloud
+   * @return
+   */
   static PCLMesh ConvertCloudToMesh( std::string file_name, PointCloud input_cloud );
 
+  /**
+   *
+   * @param mesh_publisher
+   * @param file_name
+   * @return
+   */
   static bool PublishMeshMarker( ros::Publisher mesh_publisher, std::string file_name );
 
-  static bool ComputeBoundary( PointCloud input_cloud );
-
+  /**
+   *
+   * @return
+   */
   static std::string SetOutputDirectory( );
 };
 #endif /* HELPERFUNCTIONS_H_ */

@@ -8,6 +8,8 @@
 #ifndef OBJECTCANDIDATEEXTRACTOR_H_
 #define OBJECTCANDIDATEEXTRACTOR_H_
 
+#include <pcl/surface/bilateral_upsampling.h>
+
 #include <HelperFunctions.h>
 
 /**
@@ -38,7 +40,7 @@ public:
    * @param input_cloud The PCL PointCloud that will be checked for candidate objects.
    * @return A Vector which contains all of the candidate objects.
    */
-  std::vector< PointCloud > ExtractCandidateObjects( PointCloud input_cloud );
+  std::vector< PointCloud > ExtractCandidateObjects( std::string file_name, PointCloud input_cloud );
 
   PointCloud RestorePlaneInteraction( pcl::ModelCoefficients::Ptr i_coefficients, PointCloud i_model );
 
@@ -54,6 +56,8 @@ public:
    * @return
    */
   bool PublishObjectCandidates( std::vector< PointCloud > input_vector );
+
+  PointCloud SmoothObjectCandidate( std::string file_name, PointCloud inputCandidate );
 
 protected:
   /** \brief Node Handler for the \ref ObjectCandidateExtractor class */

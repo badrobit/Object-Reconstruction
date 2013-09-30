@@ -25,7 +25,7 @@ PointCloudAccumulator::AccumulatePointClouds( int accumulation_time )
 
 	ROS_INFO_STREAM( "Starting polling from RGBD Sensor" );
     ros::Subscriber subscriber = 
-    	m_node_handler.subscribe("/camera/depth_registered/points", 1, &PointCloudAccumulator::PointCloudCallback, this );
+    	m_node_handler.subscribe("PreprocessedPointCloud", 1, &PointCloudAccumulator::PointCloudCallback, this );
 
     ros::Time start = ros::Time::now();
     while( ros::Time::now() < start + ros::Duration( accumulation_time ) && ros::ok())

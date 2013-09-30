@@ -60,30 +60,37 @@ private:
   bool FixOcclusions( hbrs_object_reconstruction::FixOcclusion::Request  &request,
                       hbrs_object_reconstruction::FixOcclusion::Response &response )
   {
+      std::string candidate_name = m_output_directory + "01-AccumulatedPointCloud";
       m_resulting_cloud = m_point_cloud_accumulator.AccumulatePointClouds( 1 );
 
-      HelperFunctions::WriteToPCD( m_output_directory + "01-AccumulatedPointCloud", m_resulting_cloud );
+      HelperFunctions::WriteToPCD( candidate_name, m_resulting_cloud );
 
-      m_resulting_cloud = HelperFunctions::PreparePointCloud( m_resulting_cloud );
+      candidate_name = m_output_directory + "00-Debugging";
+      m_object_candidates = m_object_candidate_extractor.ExtractCandidateObjects( candidate_name, m_resulting_cloud );
 
-      HelperFunctions::WriteToPCD( m_output_directory + "02-PreProcessedPointCloud", m_resulting_cloud );
+      if( m_object_candidates.size() != 0 )
+      {
+        m_object_candidate_extractor.PublishObjectCandidates( m_object_candidates );
 
-      m_object_candidates = m_object_candidate_extractor.ExtractCandidateObjects( m_resulting_cloud );
+        candidate_name = m_output_directory + "02-ObjectCandidates";
+        HelperFunctions::WriteMultipleToPCD( candidate_name , m_object_candidates );
 
-      m_object_candidate_extractor.PublishObjectCandidates( m_object_candidates );
+        for( int i = 0; i<m_object_candidates.size(); i++ )
+        {
+          candidate_name = m_output_directory + "03-ObjectCandidate-" + std::to_string( i );
+          m_operating_mesh = HelperFunctions::ConvertCloudToMesh( candidate_name , m_object_candidates[i] );
 
-      HelperFunctions::WriteMultipleToPCD( m_output_directory + "03-ObjectCandidate", m_object_candidates );
+          //m_occlusion_repair.DetectOcclusion( m_operating_mesh, candidate_name );
+        }
 
-      HelperFunctions::ComputeBoundary( m_object_candidates[0] );
-
-      m_operating_mesh = HelperFunctions::ConvertCloudToMesh( m_output_directory , m_object_candidates[0] );
-
-      m_occlusion_repair.DetectOcclusion( m_operating_mesh, m_output_directory );
-
-      HelperFunctions::PublishMeshMarker( m_mesh_publisher, m_output_directory );
-
-      response.success = true;
-      return response.success;
+        response.success = true;
+        return response.success;
+      }
+      else
+      {
+        response.success = false;
+        return response.success;
+      }
   }
 
   /** \brief Directory to write the PCD files to */

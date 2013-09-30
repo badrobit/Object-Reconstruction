@@ -17,7 +17,7 @@ endif(CMAKE_COMPILER_IS_GNUCXX)
 
 rosbuild_gensrv()
 
-find_package( PCL 1.6 REQUIRED )
+find_package( PCL 1.7 REQUIRED )
 find_package( VTK REQUIRED )
 
 set( GNG_DIR ${PROJECT_SOURCE_DIR}/common/growing_neural_gas )

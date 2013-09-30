@@ -7,7 +7,9 @@
 	<include file="$(find openni_launch)/launch/openni.launch" />
 
 	<!-- Transform Camera -->
-	<node pkg="tf" type="static_transform_publisher" name="debugging" args=" 0 0 0.7 0 0.5 0.0 /base_link /camera_link 100" />
+	<node pkg="tf" type="static_transform_publisher" name="debugging" args=" 0 0 0.81 0 0.5 0.0 /base_link /camera_link 100" />
+	
+	<node pkg="PointCloudPreprocessor" type="PointCloudPreprocessor" name="PointCloudPreprocessor" respawn="true"/>
 
 	<!-- Start the Object Reconstruction Node -->
     <node pkg="hbrs_object_reconstruction" type="hbrs_object_reconstruction" name="hbrs_object_reconstruction" output="screen" launch-prefix="gdb -ex run --args"/>
